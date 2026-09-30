@@ -178,3 +178,15 @@ footer{border-top:1px solid var(--line);padding:22px 0 30px;margin-top:10px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1f2430;color:#fff;padding:12px 22px;border-radius:12px;font-weight:600;opacity:0;transition:.3s;z-index:99;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%);opacity:1}
 @media(max-width:640px){.qcard{padding:16px}.qtext{font-size:1rem}.hero-cta .btn{flex:1;text-align:center}}
+
+/* Keyboard shortcuts */
+.kbd{display:inline-block;min-width:26px;text-align:center;background:var(--bg);border:1px solid var(--line);border-bottom-width:2.5px;border-radius:7px;padding:1px 7px;font-size:.78rem;font-weight:700;font-family:inherit}
+.hint{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.modal-back{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:18px;animation:fade .2s ease}
+.modal{background:var(--card);border-radius:18px;max-width:580px;width:100%;max-height:86vh;overflow:auto;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35);border:1px solid var(--line)}
+.modal h3{margin:0}
+.sc-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:12px}
+.sc-table td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.sc-table tr:last-child td{border-bottom:none}
+.sc-table td:first-child{width:170px}
+.qcard.exam-cur{outline:2.5px solid var(--red);outline-offset:3px}

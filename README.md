@@ -15,6 +15,7 @@ Website ôn tập trắc nghiệm **Lịch sử Đảng Cộng sản Việt Nam*
 
 - 6 chương: 1930–1945 → 1945–1954 → 1954–1975 → 1975–1986 → 1986–2006 → 2006–nay
 - Đảo đáp án ngẫu nhiên, responsive mobile, chế độ sáng/tối
+- ⌨️ Phím tắt đầy đủ: `A–D` trả lời, `→/Enter` qua câu, `S` ghim, `J/K` chuyển câu thi, `Ctrl+Enter` nộp bài, `Alt+1–6` chuyển tab, `/` tra cứu, `?` xem bảng phím tắt
 - 100% tĩnh (HTML/CSS/JS thuần) — không cần backend, chạy được offline
 
 ## 🚀 Chạy thử

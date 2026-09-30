@@ -226,7 +226,7 @@ const EXAM_MIN={15:20,30:40,40:60,50:60};
 $("examStart").addEventListener("click",()=>{
   const n=+$("examCount").value;
   const list=pickRandom(QBANK,n).map(q=>({q,order:$("examShuffle").checked?shuffle([0,1,2,3]):[0,1,2,3],ans:null}));
-  E={list,left:EXAM_MIN[n]*60,n};
+  E={list,left:EXAM_MIN[n]*60,n,cur:0};
   $("examSetup").classList.add("hidden"); $("examResult").classList.add("hidden");
   $("examBox").classList.remove("hidden");
   renderExam(); startTimer();
@@ -238,6 +238,7 @@ function renderExam(){
   $("examBar").style.width=Math.round(done/E.list.length*100)+"%";
   $("examPalette").innerHTML=E.list.map((x,i)=>`<button class="pal ${x.ans!==null?"done":""}" data-pal="${i}">${i+1}</button>`).join("");
   document.querySelectorAll("[data-pal]").forEach(b=>b.addEventListener("click",()=>{
+    E.cur=+b.dataset.pal; paintExamCur(false);
     document.querySelector(`[data-exam="${b.dataset.pal}"]`).scrollIntoView({behavior:"smooth",block:"center"});
   }));
   const box=$("examQ");
@@ -254,6 +255,23 @@ function renderExam(){
       const btn=card.querySelector(`[data-opt="${oi}"]`); if(btn) btn.classList.add("correct");
     }
   });
+  paintExamCur(false);
+}
+function paintExamCur(scroll){
+  if(!E) return;
+  document.querySelectorAll("#examQ [data-exam]").forEach((w,i)=>{
+    if(w.firstElementChild) w.firstElementChild.classList.toggle("exam-cur", i===E.cur);
+  });
+  document.querySelectorAll("[data-pal]").forEach((p,i)=>p.classList.toggle("current", i===E.cur));
+  if(scroll){ const w=document.querySelector(`[data-exam="${E.cur}"]`); if(w) w.scrollIntoView({behavior:"smooth",block:"center"}); }
+}
+function examGoto(i){
+  if(!E) return;
+  E.cur=Math.max(0,Math.min(E.list.length-1,i)); paintExamCur(true);
+}
+function examNextUnanswered(from){
+  for(let k=1;k<=E.list.length;k++){ const i=(from+k)%E.list.length; if(E.list[i].ans===null) return i; }
+  return from;
 }
 function renderExamMeta(){
   const done=E.list.filter(x=>x.ans!==null).length;
@@ -403,6 +421,118 @@ function doSearch(){
 $("searchInput").addEventListener("input",()=>{clearTimeout(searchH);searchH=setTimeout(doSearch,300);});
 $("searchChapter").addEventListener("change",doSearch);
 doSearch();
+
+/* ---------- KEYBOARD SHORTCUTS ---------- */
+const VIEW_ORDER=["home","practice","exam","endless","review","search"];
+function typingNow(){
+  const a=document.activeElement;
+  return a && (a.tagName==="INPUT"||a.tagName==="TEXTAREA"||a.tagName==="SELECT"||a.isContentEditable);
+}
+function activeView(){ const v=document.querySelector(".view.active"); return v?v.id.replace("view-",""):"home"; }
+function openHelp(){ $("helpModal").classList.remove("hidden"); }
+function closeHelp(){ $("helpModal").classList.add("hidden"); }
+$("helpBtn").addEventListener("click",openHelp);
+$("helpClose").addEventListener("click",closeHelp);
+$("helpModal").addEventListener("click",e=>{ if(e.target===$("helpModal")) closeHelp(); });
+
+function currentQuiz(){
+  const v=activeView();
+  if(v==="practice"&&P&&!$("practiceBox").classList.contains("hidden"))
+    return {type:"practice",card:$("practiceQ .qcard")};
+  if(v==="endless")
+    return {type:"endless",card:$("endlessQ .qcard")};
+  if(v==="review"){
+    const cards=[...document.querySelectorAll("#reviewList [data-rq]")];
+    const c=cards.find(c=>c.querySelector(".opt:not(:disabled)"))||null;
+    return {type:"review",card:c};
+  }
+  if(v==="exam"&&E&&!$("examBox").classList.contains("hidden")){
+    const w=document.querySelector(`[data-exam="${E.cur}"]`);
+    return {type:"exam",card:w?w.querySelector(".qcard"):null};
+  }
+  return {type:null,card:null};
+}
+function cardActionable(card){ return card && card.querySelector(".opt:not(:disabled)"); }
+function answerPos(card,pos){
+  if(!cardActionable(card)) return false;
+  const btns=card.querySelectorAll(".opt");
+  if(btns[pos]&&!btns[pos].disabled){ btns[pos].click(); return true; }
+  return false;
+}
+function starCard(card){ const b=card?card.querySelector("[data-mark]"):null; if(b){b.click();return true;} return false; }
+
+document.addEventListener("keydown",e=>{
+  const modalOpen=!$("helpModal").classList.contains("hidden");
+  if(e.key==="Escape"){ if(modalOpen) closeHelp(); return; }
+  if(modalOpen) return;
+  const k=e.key;
+
+  // Ctrl/Cmd + Enter: nộp bài thi
+  if((e.ctrlKey||e.metaKey)&&k==="Enter"){
+    if(activeView()==="exam"&&E&&!$("examBox").classList.contains("hidden")){
+      e.preventDefault(); if(confirm("Nộp bài và chấm điểm?")) submitExam();
+    }
+    return;
+  }
+  if(e.ctrlKey||e.metaKey) return;
+  // Alt + 1..6: chuyển tab mọi lúc
+  if(e.altKey){
+    if(k>="1"&&k<="6"){ e.preventDefault(); navTo(VIEW_ORDER[+k-1]); }
+    return;
+  }
+  if(typingNow()) return;
+
+  // ? : mở bảng phím tắt
+  if(k==="?"||k==="h"||k==="H"){ e.preventDefault(); openHelp(); return; }
+  // / : tra cứu
+  if(k==="/"){ e.preventDefault(); navTo("search"); setTimeout(()=>$("searchInput").focus(),50); return; }
+  // T : đổi giao diện
+  if(k==="t"||k==="T"){ themeBtn.click(); return; }
+
+  const q=currentQuiz();
+  const actionable=cardActionable(q.card);
+
+  // A-D / 1-4: trả lời
+  const posMap={a:0,b:1,c:2,d:3,A:0,B:1,C:2,D:3,"1":0,"2":1,"3":2,"4":3};
+  if(k in posMap){
+    if(actionable){
+      e.preventDefault();
+      if(q.type==="exam"){
+        // nếu câu hiện tại đã trả lời, nhảy tới câu chưa làm gần nhất rồi trả lời
+        if(E.list[E.cur].ans!==null){ examGoto(examNextUnanswered(E.cur)); }
+        const w=document.querySelector(`[data-exam="${E.cur}"] .qcard`);
+        answerPos(w,posMap[k]); paintExamCur(false);
+      }else{
+        answerPos(q.card,posMap[k]);
+      }
+      return;
+    }
+    // không có câu nào để trả lời: 1-6 chuyển tab
+    if(k>="1"&&k<="6"){ navTo(VIEW_ORDER[+k-1]); return; }
+    return;
+  }
+  if(k==="5"||k==="6"){ if(!actionable){ navTo(VIEW_ORDER[+k-1]); return; } }
+
+  // S: ghim câu hiện tại
+  if(k==="s"||k==="S"){ if(q.card){ e.preventDefault(); starCard(q.card); } return; }
+
+  // → / Enter: tiếp | ←: lùi
+  if(k==="ArrowRight"||k==="Enter"){
+    if(q.type==="practice"){ e.preventDefault(); $("practiceNext").click(); }
+    else if(q.type==="endless"){ const nx=$("endNext"); if(nx&&!nx.classList.contains("hidden")){e.preventDefault();nx.click();} }
+    else if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur+1); }
+    else if(q.type==="review"&&q.card){ e.preventDefault(); q.card.scrollIntoView({behavior:"smooth",block:"center"}); }
+    return;
+  }
+  if(k==="ArrowLeft"){
+    if(q.type==="practice"){ e.preventDefault(); $("practicePrev").click(); }
+    else if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur-1); }
+    return;
+  }
+  // J/K: chuyển câu trong bài thi
+  if(k==="j"||k==="J"){ if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur+1); } return; }
+  if(k==="k"||k==="K"){ if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur-1); } return; }
+});
 
 /* ---------- Init ---------- */
 renderHome();

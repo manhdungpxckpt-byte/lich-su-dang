@@ -32,6 +32,7 @@
       <button class="navbtn" data-nav="search">🔎 Tra cứu</button>
     </nav>
     <div class="top-actions">
+      <button id="helpBtn" class="iconbtn" title="Phím tắt (nhấn ?)">⌨️</button>
       <button id="themeBtn" class="iconbtn" title="Chế độ sáng / tối">🌙</button>
       <button id="menuBtn" class="iconbtn only-mobile" title="Menu">☰</button>
     </div>
@@ -139,6 +140,7 @@
         </div>
       </div>
       <div class="progress-track"><div class="progress-fill" id="practiceBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">←</span><span class="kbd">→</span> chuyển câu • <span class="kbd">S</span> ghim • <span class="kbd">?</span> tất cả phím tắt</div>
       <div id="practiceQ"></div>
       <div class="quiz-nav">
         <button class="btn ghost" id="practicePrev">← Câu trước</button>
@@ -175,6 +177,7 @@
         <button class="btn danger" id="examSubmit">Nộp bài</button>
       </div>
       <div class="progress-track"><div class="progress-fill danger" id="examBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời câu đang chọn • <span class="kbd">J</span><span class="kbd">K</span> chuyển câu • <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> nộp bài</div>
       <div id="examPalette" class="palette"></div>
       <div id="examQ"></div>
       <button class="btn danger big full" id="examSubmit2">📩 Nộp bài &amp; chấm điểm</button>
@@ -195,6 +198,7 @@
       <div class="stat-chip">❌ Sai: <strong id="endWrong">0</strong></div>
       <button class="btn small ghost" id="endReset">↺ Chơi lại</button>
     </div>
+    <div class="hint" style="margin-bottom:12px">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">Enter</span> câu tiếp • <span class="kbd">S</span> ghim</div>
     <div id="endlessQ"></div>
   </section>
 
@@ -235,6 +239,30 @@
     <div class="muted">Dữ liệu mang tính tham khảo ôn tập • Bám sát Giáo trình LSD CSVN 2021</div>
   </div>
 </footer>
+
+<div id="helpModal" class="modal-back hidden">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>⌨️ Phím tắt</h3>
+      <button class="iconbtn" id="helpClose">✕</button>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Ôn tập siêu tốc không cần chạm chuột. Nhấn <span class="kbd">Esc</span> để đóng bảng này.</p>
+    <table class="sc-table">
+      <tr><td><span class="kbd">A</span> <span class="kbd">B</span> <span class="kbd">C</span> <span class="kbd">D</span></td><td>Chọn đáp án của câu hiện tại</td></tr>
+      <tr><td><span class="kbd">1</span>–<span class="kbd">4</span></td><td>Chọn đáp án (khi đang làm bài) / chuyển tab 1–6 (khi ở trang chủ)</td></tr>
+      <tr><td><span class="kbd">Alt</span>+<span class="kbd">1</span>–<span class="kbd">6</span></td><td>Chuyển nhanh giữa 6 tab ở bất kỳ đâu</td></tr>
+      <tr><td><span class="kbd">→</span> / <span class="kbd">Enter</span></td><td>Câu tiếp theo (luyện tập / vô hạn / thi thử)</td></tr>
+      <tr><td><span class="kbd">←</span></td><td>Câu trước đó (luyện tập / thi thử)</td></tr>
+      <tr><td><span class="kbd">J</span> / <span class="kbd">K</span></td><td>Câu tiếp / câu trước trong bài thi thử</td></tr>
+      <tr><td><span class="kbd">S</span></td><td>Ghim ⭐ / bỏ ghim câu hiện tại</td></tr>
+      <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></td><td>Nộp bài thi thử</td></tr>
+      <tr><td><span class="kbd">/</span></td><td>Mở tab Tra cứu và gõ từ khóa ngay</td></tr>
+      <tr><td><span class="kbd">T</span></td><td>Bật / tắt chế độ tối</td></tr>
+      <tr><td><span class="kbd">?</span></td><td>Mở bảng phím tắt này</td></tr>
+      <tr><td><span class="kbd">Esc</span></td><td>Đóng bảng phím tắt</td></tr>
+    </table>
+  </div>
+</div>
 
 <div id="toast" class="toast"></div>
 
