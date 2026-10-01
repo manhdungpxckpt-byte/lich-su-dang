@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<!-- BẢN 1-FILE: toàn bộ website gộp trong file này. Tải file này về, nhấp đúp là chạy. Được tạo tự động bởi build-single.py -->
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Thi Trắc Nghiệm Lịch Sử Đảng — Ngân Hàng Câu Hỏi Khổng Lồ</title>
+<meta name="description" content="Website ôn tập trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam với hàng trăm câu hỏi có đáp án, giải thích chi tiết, chế độ luyện tập, thi thử và ôn tập vô hạn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* === embedded css/style.css === */
+:root{
+  --red:#da251d; --red-dark:#a5120c; --gold:#ffde00; --gold-soft:#fff3b0;
+  --bg:#faf7f0; --card:#ffffff; --ink:#1f2430; --muted:#6b7280; --line:#ece5d8;
+  --green:#16a34a; --green-bg:#e8f8ee; --danger:#dc2626; --danger-bg:#fdecec;
+  --blue:#2563eb; --blue-bg:#e8effe; --shadow:0 10px 30px rgba(160,20,10,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+body.dark{--bg:#141414;--card:#1f1f1f;--ink:#f3f4f6;--muted:#9ca3af;--line:#333;--shadow:0 10px 30px rgba(0,0,0,.4);--green-bg:#12331f;--danger-bg:#3a1414;--blue-bg:#15294d;--gold-soft:#3d3405}
+.bg-decor{position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(600px 300px at 10% -5%, rgba(218,37,29,.12), transparent),
+  radial-gradient(500px 260px at 95% 10%, rgba(255,222,0,.16), transparent),
+  radial-gradient(700px 400px at 50% 110%, rgba(218,37,29,.08), transparent)}
+.container{max-width:1120px;margin:0 auto;padding:0 18px}
+.hidden{display:none!important}
+.muted{color:var(--muted);font-size:.9rem}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+body.dark .topbar{background:rgba(20,20,20,.92)}
+.topbar-inner{display:flex;align-items:center;gap:14px;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;margin-right:auto}
+.brand-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(218,37,29,.35)}
+.brand-text strong{display:block;font-size:1.02rem;line-height:1.2}
+.brand-text small{color:var(--muted);font-size:.75rem}
+.mainnav{display:flex;gap:6px;flex-wrap:wrap}
+.navbtn{border:1px solid transparent;background:transparent;padding:8px 12px;border-radius:10px;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
+.navbtn:hover{background:var(--line);color:var(--ink)}
+.navbtn.active{background:var(--red);color:#fff;box-shadow:0 4px 12px rgba(218,37,29,.3)}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;cursor:pointer;font-size:1rem}
+.only-mobile{display:none}
+.mobile-nav{display:none;padding:8px 18px 12px;gap:6px;flex-wrap:wrap}
+.top-actions{display:flex;gap:8px}
+@media(max-width:920px){.mainnav{display:none}.only-mobile{display:block}.mobile-nav.open{display:flex}}
+
+/* Views */
+.view{display:none;padding:26px 0 40px}
+.view.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;margin-bottom:30px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+.pill{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;box-shadow:var(--shadow);margin-bottom:12px}
+.hero h1{font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.25;margin:0 0 10px}
+.hl{background:linear-gradient(120deg,var(--red),#ff6b4a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{color:var(--muted);margin:0 0 18px;max-width:620px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-stats{display:flex;gap:10px;flex-wrap:wrap}
+.hstat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;box-shadow:var(--shadow);text-align:center;min-width:110px}
+.hstat b{display:block;font-size:1.35rem;color:var(--red)}
+.hstat span{font-size:.76rem;color:var(--muted)}
+.flag-card{background:linear-gradient(150deg,#c1110b,#8f0d08);border-radius:20px;color:#fff;padding:28px 22px;text-align:center;box-shadow:0 16px 40px rgba(180,15,10,.35);position:relative;overflow:hidden}
+.flag-card::after{content:"";position:absolute;inset:0;background:radial-gradient(220px 160px at 50% 0%,rgba(255,222,0,.25),transparent)}
+.flag{font-size:64px;color:var(--gold);text-shadow:0 4px 18px rgba(255,222,0,.5);position:relative;z-index:1}
+.flag-caption{font-weight:700;margin:6px 0 16px;position:relative;z-index:1}
+.streak-box{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px;position:relative;z-index:1}
+.streak-num{font-size:2rem;font-weight:800;color:var(--gold)}
+.streak-label{font-size:.82rem;opacity:.9}
+
+/* Sections & cards */
+.sec-title{font-size:1.3rem;margin:8px 0 14px}
+.sec-sub{font-size:.85rem;color:var(--muted);font-weight:400}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+.card h3{margin:0 0 12px}
+.chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:26px}
+.chapter{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+.chapter:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(218,37,29,.14);border-color:var(--red)}
+.chapter .ch-num{font-size:.72rem;font-weight:800;letter-spacing:1px;color:#fff;background:var(--red);display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.chapter h4{margin:0 0 6px;font-size:1rem}
+.chapter p{margin:0 0 10px;font-size:.82rem;color:var(--muted)}
+.chapter .ch-meta{display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+.chapter .ch-count{font-weight:700;color:var(--red)}
+.chapter .ch-done{color:var(--muted)}
+.mini-bar{height:6px;background:var(--line);border-radius:99px;margin-top:8px;overflow:hidden}
+.mini-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),#ff7a45);border-radius:99px;transition:width .4s}
+.two-col{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-bottom:18px}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}}
+.mode-list{display:flex;flex-direction:column;gap:10px}
+.mode-item{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:.15s;width:100%}
+.mode-item:hover{border-color:var(--red);transform:translateX(3px)}
+.mode-ic{font-size:1.6rem}
+.mode-item strong{display:block}
+.mode-item small{color:var(--muted)}
+.mode-item .go{margin-left:auto;font-weight:800;color:var(--red)}
+.progress-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.78rem}
+
+/* Buttons */
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:10px 18px;font-family:inherit;font-weight:700;font-size:.92rem;cursor:pointer;transition:.15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.primary{background:linear-gradient(135deg,var(--red),#f04438);color:#fff;border:none}
+.btn.danger{background:linear-gradient(135deg,#b91c1c,#ef4444);color:#fff;border:none}
+.btn.ghost{background:transparent}
+.btn.big{padding:13px 22px;font-size:1rem;border-radius:14px}
+.btn.small{padding:6px 12px;font-size:.8rem;border-radius:9px}
+.btn.full{width:100%;margin-top:14px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Forms */
+.panel-head{margin-bottom:16px}
+.panel-head h2{margin:0}
+.panel-head p{margin:4px 0 0;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px;align-items:end}
+.form-grid label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:.88rem}
+.form-grid select,.search-bar input,.search-bar select{font-family:inherit;font-size:.95rem;padding:11px 13px;border-radius:11px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.form-grid select:focus,.search-bar input:focus{outline:2px solid var(--red);border-color:var(--red)}
+.check{flex-direction:row!important;align-items:center;gap:8px!important;font-weight:500!important}
+.check input{width:18px;height:18px;accent-color:var(--red)}
+
+/* Quiz */
+.quiz-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;font-weight:700}
+.quiz-meta.sticky{position:sticky;top:64px;z-index:20;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:var(--shadow)}
+.quiz-score{margin-left:auto;display:flex;gap:10px;align-items:center}
+.timer{font-size:1.4rem;font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+.timer.low{animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.4}}
+.progress-track{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff7a45);border-radius:99px;transition:width .3s}
+.progress-fill.danger{background:linear-gradient(90deg,#b91c1c,#f97316)}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+.qhead{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
+.qnum{background:var(--red);color:#fff;font-weight:800;font-size:.82rem;border-radius:9px;padding:4px 11px;white-space:nowrap;margin-top:2px}
+.qchap{font-size:.75rem;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:4px 10px;white-space:nowrap;margin-top:2px}
+.qmark{margin-left:auto;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:4px 10px;cursor:pointer;font-size:1rem;line-height:1}
+.qmark.on{background:var(--gold-soft);border-color:#d9b800}
+.qtext{font-size:1.08rem;font-weight:600;margin:0 0 4px}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;transition:.15s;background:var(--bg);font-size:.95rem;text-align:left;width:100%;font-family:inherit;color:inherit}
+.opt:hover:not(:disabled){border-color:var(--red);background:var(--card)}
+.opt .key{font-weight:800;min-width:30px;height:30px;border-radius:9px;background:var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.opt.correct{border-color:var(--green);background:var(--green-bg)}
+.opt.correct .key{background:var(--green);color:#fff}
+.opt.wrong{border-color:var(--danger);background:var(--danger-bg)}
+.opt.wrong .key{background:var(--danger);color:#fff}
+.opt.dim{opacity:.65}
+.opt:disabled{cursor:default}
+.explain{margin-top:14px;background:var(--blue-bg);border:1px solid #bcd0f7;border-radius:12px;padding:12px 15px;font-size:.9rem}
+body.dark .explain{border-color:#2c4a7c}
+.explain strong{color:var(--blue)}
+.quiz-nav{display:flex;justify-content:space-between;gap:10px;margin-top:6px}
+.result-hero{text-align:center;padding:30px 20px}
+.result-hero .big-score{font-size:3.4rem;font-weight:800;color:var(--red)}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:18px 0}
+.result-cell{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.result-cell b{display:block;font-size:1.5rem}
+.result-cell span{font-size:.8rem;color:var(--muted)}
+.palette{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.pal{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);font-family:inherit;font-weight:700;cursor:pointer;font-size:.82rem}
+.pal.done{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pal.current{outline:2px solid var(--red)}
+
+/* Endless */
+.endless-top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.stat-chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.9rem;box-shadow:var(--shadow)}
+.stat-chip strong{color:var(--red)}
+
+/* Review tabs */
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 18px;font-family:inherit;font-weight:700;cursor:pointer;color:var(--muted)}
+.tab.active{background:var(--red);color:#fff;border-color:var(--red)}
+.empty{text-align:center;padding:40px 20px;color:var(--muted)}
+.empty .big{font-size:3rem}
+
+/* Search */
+.search-bar{display:flex;gap:10px;flex-wrap:wrap}
+.search-bar input{flex:1;min-width:220px}
+#searchInfo{margin-top:10px}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:22px 0 30px;margin-top:10px}
+.foot-inner{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.88rem}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1f2430;color:#fff;padding:12px 22px;border-radius:12px;font-weight:600;opacity:0;transition:.3s;z-index:99;max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%);opacity:1}
+@media(max-width:640px){.qcard{padding:16px}.qtext{font-size:1rem}.hero-cta .btn{flex:1;text-align:center}}
+
+/* Keyboard shortcuts */
+.kbd{display:inline-block;min-width:26px;text-align:center;background:var(--bg);border:1px solid var(--line);border-bottom-width:2.5px;border-radius:7px;padding:1px 7px;font-size:.78rem;font-weight:700;font-family:inherit}
+.hint{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.modal-back{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:18px;animation:fade .2s ease}
+.modal{background:var(--card);border-radius:18px;max-width:580px;width:100%;max-height:86vh;overflow:auto;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35);border:1px solid var(--line)}
+.modal h3{margin:0}
+.sc-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:12px}
+.sc-table td{padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.sc-table tr:last-child td{border-bottom:none}
+.sc-table td:first-child{width:170px}
+.qcard.exam-cur{outline:2.5px solid var(--red);outline-offset:3px}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23da251d'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ffde00'>★</text></svg>">
+</head>
+<body>
+<div class="bg-decor" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#" data-nav="home">
+      <span class="brand-badge">★</span>
+      <span class="brand-text">
+        <strong>Ôn Thi Lịch Sử Đảng</strong>
+        <small>Ngân hàng trắc nghiệm toàn giáo trình</small>
+      </span>
+    </a>
+    <nav class="mainnav" id="mainnav">
+      <button class="navbtn active" data-nav="home">🏠 Trang chủ</button>
+      <button class="navbtn" data-nav="practice">📝 Luyện tập</button>
+      <button class="navbtn" data-nav="exam">⏱️ Thi thử</button>
+      <button class="navbtn" data-nav="endless">♾️ Vô hạn</button>
+      <button class="navbtn" data-nav="review">📌 Ôn câu sai</button>
+      <button class="navbtn" data-nav="search">🔎 Tra cứu</button>
+    </nav>
+    <div class="top-actions">
+      <button id="helpBtn" class="iconbtn" title="Phím tắt (nhấn ?)">⌨️</button>
+      <button id="themeBtn" class="iconbtn" title="Chế độ sáng / tối">🌙</button>
+      <button id="menuBtn" class="iconbtn only-mobile" title="Menu">☰</button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="navbtn active" data-nav="home">🏠 Trang chủ</button>
+    <button class="navbtn" data-nav="practice">📝 Luyện tập</button>
+    <button class="navbtn" data-nav="exam">⏱️ Thi thử</button>
+    <button class="navbtn" data-nav="endless">♾️ Vô hạn</button>
+    <button class="navbtn" data-nav="review">📌 Ôn câu sai</button>
+    <button class="navbtn" data-nav="search">🔎 Tra cứu</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view active">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="pill">📚 Bám sát Giáo trình Lịch sử Đảng CSVN (2021) • Có đáp án &amp; giải thích</div>
+        <h1>Ôn tập trắc nghiệm <span class="hl">Lịch Sử Đảng</span> với ngân hàng câu hỏi khổng lồ</h1>
+        <p class="hero-sub">Tổng hợp từ nhiều kho đề, tài liệu ôn thi sinh viên, đề thi các trường đại học. Luyện theo chương, thi thử bấm giờ, cày chế độ vô hạn — tất cả miễn phí, không cần đăng nhập.</p>
+        <div class="hero-cta">
+          <button class="btn primary big" data-nav="practice">📝 Luyện tập ngay</button>
+          <button class="btn danger big" data-nav="exam">⏱️ Vào thi thử</button>
+          <button class="btn ghost big" data-nav="endless">♾️ Cày vô hạn</button>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+      <div class="hero-right">
+        <div class="flag-card">
+          <div class="flag">★</div>
+          <div class="flag-caption">Đảng Cộng sản Việt Nam quang vinh muôn năm!</div>
+          <div class="streak-box">
+            <div class="streak-num" id="streakNum">0</div>
+            <div class="streak-label">🔥 Chuỗi ngày ôn tập liên tiếp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec-title">📖 Ôn tập theo chương <span class="sec-sub" id="chapterTotal"></span></h2>
+    <div class="chapters" id="chapterGrid"></div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>⚡ Chế độ ôn tập</h3>
+        <div class="mode-list">
+          <button class="mode-item" data-nav="practice"><span class="mode-ic">📝</span><span><strong>Luyện tập theo chương</strong><small>Chọn chương, số câu, xem đáp án &amp; giải thích ngay từng câu</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="exam"><span class="mode-ic">⏱️</span><span><strong>Thi thử bấm giờ</strong><small>Đề ngẫu nhiên 15–50 câu, tính giờ, chấm điểm như thi thật</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="endless"><span class="mode-ic">♾️</span><span><strong>Cày vô hạn</strong><small>Câu hỏi nối tiếp không bao giờ hết, giữ chuỗi streak</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="review"><span class="mode-ic">📌</span><span><strong>Ôn câu sai &amp; đã ghim</strong><small>Tự động lưu câu bạn làm sai để ôn lại cho nhớ</small></span><span class="go">→</span></button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📊 Tiến độ của bạn</h3>
+        <div id="progressBox"></div>
+        <div class="progress-actions">
+          <button class="btn small ghost" id="resetProgress">↺ Xóa tiến độ</button>
+          <button class="btn small ghost" id="exportBtn">⬇ Xuất kết quả</button>
+        </div>
+        <h3 style="margin-top:18px">🏆 Kỷ lục thi thử</h3>
+        <div id="bestBox"></div>
+      </div>
+    </div>
+
+    <div class="card sources">
+      <h3>📚 Nguồn câu hỏi tổng hợp</h3>
+      <p>Ngân hàng câu hỏi được biên soạn, đối chiếu từ nhiều nguồn: Giáo trình Lịch sử Đảng CSVN (NXB Chính trị Quốc gia, 2021) • Bộ 270–730 câu trắc nghiệm lưu hành sinh viên • Đề thi trắc nghiệm các trường (NEU, UEH, HUST, HVTC…) • Các kho đề mở trên mạng. Mỗi câu đều có đáp án và giải thích căn cứ rõ ràng.</p>
+      <div class="tag-row" id="sourceTags"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section id="view-practice" class="view">
+    <div class="panel-head">
+      <h2>📝 Luyện tập</h2>
+      <p>Chọn phạm vi và số câu, trả lời từng câu và xem giải thích ngay lập tức.</p>
+    </div>
+    <div class="card setup" id="practiceSetup">
+      <div class="form-grid">
+        <label>Phạm vi ôn tập
+          <select id="practiceScope"></select>
+        </label>
+        <label>Số câu mỗi lượt
+          <select id="practiceCount">
+            <option value="10">10 câu</option>
+            <option value="20" selected>20 câu</option>
+            <option value="30">30 câu</option>
+            <option value="40">40 câu</option>
+            <option value="50">50 câu</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="practiceShuffle" checked> Đảo thứ tự đáp án</label>
+        <label class="check"><input type="checkbox" id="practiceInstant" checked> Hiện đáp án ngay sau mỗi câu</label>
+      </div>
+      <button class="btn primary big" id="practiceStart">▶ Bắt đầu luyện tập</button>
+    </div>
+    <div id="practiceBox" class="hidden">
+      <div class="quiz-meta">
+        <span id="practiceProg"></span>
+        <div class="quiz-score"><span id="practiceScore"></span>
+          <button class="btn small ghost" id="practiceQuit">✕ Thoát</button>
+        </div>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="practiceBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">←</span><span class="kbd">→</span> chuyển câu • <span class="kbd">S</span> ghim • <span class="kbd">?</span> tất cả phím tắt</div>
+      <div id="practiceQ"></div>
+      <div class="quiz-nav">
+        <button class="btn ghost" id="practicePrev">← Câu trước</button>
+        <button class="btn primary" id="practiceNext">Câu tiếp →</button>
+      </div>
+    </div>
+    <div id="practiceResult" class="hidden"></div>
+  </section>
+
+  <!-- ============ EXAM ============ -->
+  <section id="view-exam" class="view">
+    <div class="panel-head">
+      <h2>⏱️ Thi thử bấm giờ</h2>
+      <p>Đề ngẫu nhiên từ toàn bộ ngân hàng, tính giờ và chấm điểm như thi thật.</p>
+    </div>
+    <div class="card setup" id="examSetup">
+      <div class="form-grid">
+        <label>Số câu hỏi
+          <select id="examCount">
+            <option value="15">15 câu — 20 phút</option>
+            <option value="30">30 câu — 40 phút</option>
+            <option value="40" selected>40 câu — 60 phút</option>
+            <option value="50">50 câu — 60 phút</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="examShuffle" checked> Đảo thứ tự đáp án</label>
+      </div>
+      <button class="btn danger big" id="examStart">▶ Bắt đầu làm bài</button>
+    </div>
+    <div id="examBox" class="hidden">
+      <div class="quiz-meta sticky">
+        <span id="examTimer" class="timer">60:00</span>
+        <span id="examProg"></span>
+        <button class="btn danger" id="examSubmit">Nộp bài</button>
+      </div>
+      <div class="progress-track"><div class="progress-fill danger" id="examBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời câu đang chọn • <span class="kbd">J</span><span class="kbd">K</span> chuyển câu • <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> nộp bài</div>
+      <div id="examPalette" class="palette"></div>
+      <div id="examQ"></div>
+      <button class="btn danger big full" id="examSubmit2">📩 Nộp bài &amp; chấm điểm</button>
+    </div>
+    <div id="examResult" class="hidden"></div>
+  </section>
+
+  <!-- ============ ENDLESS ============ -->
+  <section id="view-endless" class="view">
+    <div class="panel-head">
+      <h2>♾️ Chế độ vô hạn</h2>
+      <p>Câu hỏi nối tiếp không bao giờ hết. Trả lời đúng để giữ chuỗi 🔥, sai là mất chuỗi!</p>
+    </div>
+    <div class="endless-top">
+      <div class="stat-chip">🔥 Streak: <strong id="endStreak">0</strong></div>
+      <div class="stat-chip">🏅 Kỷ lục: <strong id="endBest">0</strong></div>
+      <div class="stat-chip">✅ Đúng: <strong id="endRight">0</strong></div>
+      <div class="stat-chip">❌ Sai: <strong id="endWrong">0</strong></div>
+      <button class="btn small ghost" id="endReset">↺ Chơi lại</button>
+    </div>
+    <div class="hint" style="margin-bottom:12px">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">Enter</span> câu tiếp • <span class="kbd">S</span> ghim</div>
+    <div id="endlessQ"></div>
+  </section>
+
+  <!-- ============ REVIEW ============ -->
+  <section id="view-review" class="view">
+    <div class="panel-head">
+      <h2>📌 Ôn câu sai &amp; đã ghim</h2>
+      <p>Các câu bạn từng trả lời sai sẽ tự động vào đây. Ghim ⭐ những câu khó để ôn riêng.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="wrong">❌ Câu từng sai (<span id="wrongCount">0</span>)</button>
+      <button class="tab" data-tab="marked">⭐ Câu đã ghim (<span id="markedCount">0</span>)</button>
+    </div>
+    <div id="reviewList"></div>
+  </section>
+
+  <!-- ============ SEARCH ============ -->
+  <section id="view-search" class="view">
+    <div class="panel-head">
+      <h2>🔎 Tra cứu câu hỏi</h2>
+      <p>Tìm nhanh trong toàn bộ ngân hàng theo từ khóa, đáp án hoặc nội dung giải thích.</p>
+    </div>
+    <div class="card">
+      <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Nhập từ khóa… ví dụ: Luận cương, Tân Trào, đổi mới, ASEAN…" autocomplete="off">
+        <select id="searchChapter"></select>
+      </div>
+      <div id="searchInfo" class="muted"></div>
+    </div>
+    <div id="searchList"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container foot-inner">
+    <div>★ <strong>Ôn Thi Lịch Sử Đảng</strong> — Học mọi lúc, đỗ mọi kỳ thi. Made with ❤️ cho sinh viên Việt Nam.</div>
+    <div class="muted">Dữ liệu mang tính tham khảo ôn tập • Bám sát Giáo trình LSD CSVN 2021</div>
+  </div>
+</footer>
+
+<div id="helpModal" class="modal-back hidden">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>⌨️ Phím tắt</h3>
+      <button class="iconbtn" id="helpClose">✕</button>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Ôn tập siêu tốc không cần chạm chuột. Nhấn <span class="kbd">Esc</span> để đóng bảng này.</p>
+    <table class="sc-table">
+      <tr><td><span class="kbd">A</span> <span class="kbd">B</span> <span class="kbd">C</span> <span class="kbd">D</span></td><td>Chọn đáp án của câu hiện tại</td></tr>
+      <tr><td><span class="kbd">1</span>–<span class="kbd">4</span></td><td>Chọn đáp án (khi đang làm bài) / chuyển tab 1–6 (khi ở trang chủ)</td></tr>
+      <tr><td><span class="kbd">Alt</span>+<span class="kbd">1</span>–<span class="kbd">6</span></td><td>Chuyển nhanh giữa 6 tab ở bất kỳ đâu</td></tr>
+      <tr><td><span class="kbd">→</span> / <span class="kbd">Enter</span></td><td>Câu tiếp theo (luyện tập / vô hạn / thi thử)</td></tr>
+      <tr><td><span class="kbd">←</span></td><td>Câu trước đó (luyện tập / thi thử)</td></tr>
+      <tr><td><span class="kbd">J</span> / <span class="kbd">K</span></td><td>Câu tiếp / câu trước trong bài thi thử</td></tr>
+      <tr><td><span class="kbd">S</span></td><td>Ghim ⭐ / bỏ ghim câu hiện tại</td></tr>
+      <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></td><td>Nộp bài thi thử</td></tr>
+      <tr><td><span class="kbd">/</span></td><td>Mở tab Tra cứu và gõ từ khóa ngay</td></tr>
+      <tr><td><span class="kbd">T</span></td><td>Bật / tắt chế độ tối</td></tr>
+      <tr><td><span class="kbd">?</span></td><td>Mở bảng phím tắt này</td></tr>
+      <tr><td><span class="kbd">Esc</span></td><td>Đóng bảng phím tắt</td></tr>
+    </table>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+/* === embedded js/data-c1.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:1,q:"Thực dân Pháp nổ súng xâm lược Việt Nam tại Đà Nẵng vào thời gian nào?",o:["Ngày 1/9/1858","Ngày 6/6/1884","Ngày 5/6/1911","Ngày 1/9/1939"],a:0,e:"Ngày 1/9/1858, Pháp nổ súng tấn công Đà Nẵng, mở đầu cuộc xâm lược Việt Nam."},
+{c:1,q:"Trước khi thực dân Pháp xâm lược (1858), xã hội Việt Nam có những giai cấp cơ bản nào?",o:["Địa chủ phong kiến và nông dân","Công nhân và nông dân","Tư sản và công nhân","Địa chủ phong kiến và tư sản"],a:0,e:"Xã hội phong kiến Việt Nam gồm hai giai cấp cơ bản: địa chủ phong kiến và nông dân."},
+{c:1,q:"Sau khi bình định cơ bản Việt Nam, năm 1897 Pháp cử ai sang làm Toàn quyền Đông Dương để tiến hành khai thác thuộc địa lần thứ nhất?",o:["Pôn Đu-me (Paul Doumer)","Méc-lanh (Merlin)","Pôn Bô (Paul Beau)","Đờ-cu (Decoux)"],a:0,e:"Năm 1897, Pôn Đu-me được cử sang làm Toàn quyền Đông Dương, tiến hành khai thác thuộc địa lần thứ nhất (1897–1914)."},
+{c:1,q:"Cuộc khai thác thuộc địa lần thứ nhất của thực dân Pháp ở Việt Nam diễn ra trong khoảng thời gian nào?",o:["1897 – 1914","1914 – 1918","1919 – 1929","1930 – 1945"],a:0,e:"Khai thác thuộc địa lần thứ nhất: 1897–1914; lần thứ hai: 1919–1929."},
+{c:1,q:"Dưới tác động của chính sách thống trị và khai thác của Pháp, xã hội Việt Nam biến đổi thành xã hội gì?",o:["Thuộc địa, nửa phong kiến","Tư bản chủ nghĩa","Phong kiến thuần túy","Xã hội chủ nghĩa"],a:0,e:"Chính sách của Pháp làm xã hội VN từ phong kiến chuyển thành xã hội thuộc địa, nửa phong kiến."},
+{c:1,q:"Mâu thuẫn cơ bản và chủ yếu ở Việt Nam đầu thế kỷ XX là mâu thuẫn nào?",o:["Giữa dân tộc Việt Nam với đế quốc xâm lược và tay sai","Giữa nông dân với địa chủ phong kiến","Giữa công nhân với tư sản","Giữa tư sản với đế quốc Pháp"],a:0,e:"Mâu thuẫn dân tộc (toàn thể dân tộc VN với đế quốc và tay sai) là mâu thuẫn cơ bản, chủ yếu."},
+{c:1,q:"Hai giai cấp mới ra đời ở Việt Nam do tác động của cuộc khai thác thuộc địa của Pháp là:",o:["Công nhân và tư sản","Nông dân và địa chủ","Tiểu tư sản và nông dân","Công nhân và nông dân"],a:0,e:"Khai thác thuộc địa cho ra đời hai giai cấp mới: công nhân và tư sản Việt Nam."},
+{c:1,q:"Đặc điểm ra đời của giai cấp công nhân Việt Nam là gì?",o:["Ra đời trước giai cấp tư sản, gắn bó với nông dân, sớm có tinh thần đấu tranh","Ra đời sau giai cấp tư sản, số lượng đông đảo","Ra đời cùng lúc với giai cấp tư sản, sống tập trung ở nông thôn","Ra đời muộn, ít có tinh thần cách mạng"],a:0,e:"Giai cấp công nhân VN ra đời trước tư sản (trong khai thác lần 1), gắn bó máu thịt với nông dân, sớm giác ngộ."},
+{c:1,q:"Phong trào công nhân Việt Nam hoàn toàn trở thành một phong trào tự giác khi nào?",o:["Năm 1930, khi Đảng Cộng sản Việt Nam ra đời","Năm 1925, với cuộc bãi công Ba Son","Năm 1929, khi ba tổ chức cộng sản ra đời","Năm 1920, khi Công hội Sài Gòn thành lập"],a:0,e:"Chỉ khi có Đảng lãnh đạo (1930), phong trào công nhân mới hoàn toàn tự giác."},
+{c:1,q:"Chiếu Cần Vương được ban bố năm nào, dưới danh nghĩa của vua nào?",o:["1885, vua Hàm Nghi","1884, vua Tự Đức","1896, vua Thành Thái","1916, vua Duy Tân"],a:0,e:"Tháng 7/1885, Tôn Thất Thuyết nhân danh vua Hàm Nghi phát chiếu Cần Vương."},
+{c:1,q:"Các cuộc khởi nghĩa nào sau đây hưởng ứng chiếu Cần Vương?",o:["Ba Đình, Bãi Sậy, Hương Khê","Yên Thế, Yên Bái, Thái Nguyên","Ba Đình, Yên Thế, Thái Nguyên","Hương Khê, Yên Bái, Bãi Sậy"],a:0,e:"Phong trào Cần Vương gồm các khởi nghĩa Ba Đình, Bãi Sậy, Hương Khê. Yên Thế nằm ngoài phong trào này."},
+{c:1,q:"Phong trào nông dân Yên Thế (1884–1913) do ai lãnh đạo?",o:["Hoàng Hoa Thám (Đề Thám)","Phan Đình Phùng","Nguyễn Thiện Thuật","Đinh Công Tráng"],a:0,e:"Khởi nghĩa Yên Thế (Bắc Giang) do Hoàng Hoa Thám lãnh đạo, kéo dài gần 30 năm."},
+{c:1,q:"Người tổ chức phong trào Đông Du (1905) đưa thanh niên sang Nhật học là ai?",o:["Phan Bội Châu","Phan Châu Trinh","Nguyễn Thái Học","Lương Văn Can"],a:0,e:"Phan Bội Châu chủ trương dùng bạo động đánh đuổi Pháp, tổ chức phong trào Đông Du (1905)."},
+{c:1,q:"Chủ trương cứu nước của Phan Châu Trinh là gì?",o:["Cải cách, nâng cao dân trí, dựa vào Pháp để canh tân đất nước","Dùng bạo động đánh đuổi Pháp, khôi phục độc lập","Vận động Duy tân, bạo động vũ trang","Liên kết với Nhật để chống Pháp"],a:0,e:"Phan Châu Trinh theo khuynh hướng cải lương: khai dân trí, chấn dân khí, hậu dân sinh."},
+{c:1,q:"Đông Kinh Nghĩa Thục được thành lập vào năm nào?",o:["1907","1905","1908","1911"],a:0,e:"Đông Kinh Nghĩa Thục thành lập tháng 3/1907 tại Hà Nội, truyền bá tư tưởng duy tân."},
+{c:1,q:"Nguyễn Tất Thành ra đi tìm đường cứu nước vào thời gian nào, tại đâu?",o:["5/6/1911, Bến Nhà Rồng (Sài Gòn)","5/6/1912, Hải Phòng","1/9/1911, Đà Nẵng","5/6/1911, Bến Bạch Đằng (Huế)"],a:0,e:"Ngày 5/6/1911, Nguyễn Tất Thành rời Bến Nhà Rồng trên tàu Latouche Tréville."},
+{c:1,q:"Nguyễn Tất Thành ra đi tìm đường cứu nước trên con tàu nào?",o:["Tàu Latouche Tréville (Amiral Latouche Tréville)","Tàu Thành phố Hồ Chí Minh","Tàu Bình Chuẩn","Tàu Đô đốc Pháp"],a:0,e:"Người làm phụ bếp trên tàu buôn Pháp Latouche Tréville để sang phương Tây."},
+{c:1,q:"Năm 1919, Nguyễn Ái Quốc đã gửi tới Hội nghị Véc-xây (Versailles) văn kiện nào?",o:["Bản yêu sách của nhân dân An Nam (8 điểm)","Bản án chế độ thực dân Pháp","Luận cương về vấn đề dân tộc","Tuyên ngôn của Đảng Cộng sản Pháp"],a:0,e:"Tháng 6/1919, NAQ gửi Bản yêu sách 8 điểm đòi quyền tự do, dân chủ cho nhân dân An Nam."},
+{c:1,q:"Tháng 7/1920, Nguyễn Ái Quốc đã đọc tác phẩm nào của Lê-nin và tìm thấy con đường cứu nước?",o:["Sơ thảo lần thứ nhất Luận cương về vấn đề dân tộc và thuộc địa","Nhà nước và cách mạng","Chủ nghĩa đế quốc – giai đoạn tột cùng của CNTB","Làm gì?"],a:0,e:"Đọc Sơ thảo Luận cương của Lê-nin đăng trên báo Nhân đạo (L'Humanité) tại Pháp, NAQ tìm thấy con đường cứu nước."},
+{c:1,q:"Sự kiện nào đánh dấu Nguyễn Ái Quốc trở thành người cộng sản Việt Nam đầu tiên?",o:["Bỏ phiếu tán thành Quốc tế III tại Đại hội Tours (12/1920), tham gia sáng lập ĐCS Pháp","Đọc Sơ thảo Luận cương của Lê-nin (7/1920)","Gửi Bản yêu sách 8 điểm (1919)","Thành lập Hội Liên hiệp thuộc địa (1921)"],a:0,e:"Đại hội Tours (12/1920): NAQ bỏ phiếu tán thành Quốc tế III, trở thành một trong những người sáng lập ĐCS Pháp."},
+{c:1,q:"Năm 1921, Nguyễn Ái Quốc tham gia thành lập tổ chức nào tại Pháp?",o:["Hội Liên hiệp thuộc địa","Hội Việt Nam Cách mạng Thanh niên","Đảng Cộng sản Việt Nam","Hội Liên hiệp các dân tộc bị áp bức"],a:0,e:"Năm 1921, NAQ tham gia sáng lập Hội Liên hiệp thuộc địa, năm 1922 ra báo Người cùng khổ (Le Paria)."},
+{c:1,q:"Tờ báo nào do Nguyễn Ái Quốc sáng lập năm 1922 tại Pháp?",o:["Người cùng khổ (Le Paria)","Thanh niên","Nhân đạo","Búa Liềm"],a:0,e:"Báo Người cùng khổ (Le Paria) – cơ quan ngôn luận của Hội Liên hiệp thuộc địa."},
+{c:1,q:"Câu nói: “Dù màu da có khác nhau, trên đời này chỉ có hai giống người: giống người bóc lột và giống người bị bóc lột” là của ai?",o:["Nguyễn Ái Quốc (trong Bản án chế độ thực dân Pháp)","Phan Bội Châu","Phan Châu Trinh","Trần Phú"],a:0,e:"Câu nói nổi tiếng trong tác phẩm Bản án chế độ thực dân Pháp (1925) của Nguyễn Ái Quốc."},
+{c:1,q:"Năm 1923, Nguyễn Ái Quốc đi đâu để nghiên cứu chủ nghĩa Mác – Lê-nin?",o:["Liên Xô","Trung Quốc","Đức","Thái Lan"],a:0,e:"Tháng 6/1923, NAQ từ Pháp sang Liên Xô, dự các đại hội của Quốc tế Cộng sản."},
+{c:1,q:"Tháng 6/1924, Nguyễn Ái Quốc tham dự sự kiện quốc tế nào?",o:["Đại hội lần thứ V của Quốc tế Cộng sản","Đại hội Tours của Đảng Xã hội Pháp","Hội nghị Véc-xây","Đại hội lần thứ VII của Quốc tế Cộng sản"],a:0,e:"NAQ dự Đại hội V QTCS (1924) và trình bày vấn đề dân tộc, thuộc địa."},
+{c:1,q:"Sự kiện được Nguyễn Ái Quốc đánh giá “như chim én nhỏ báo hiệu mùa xuân” là gì?",o:["Vụ mưu sát toàn quyền Méclanh của Phạm Hồng Thái (6/1924)","Cách mạng tháng Mười Nga thắng lợi","Thành lập Đảng Cộng sản Pháp","Thành lập Hội VN Cách mạng Thanh niên"],a:0,e:"Tiếng bom Sa Diện của Phạm Hồng Thái (6/1924) được NAQ ví như chim én báo hiệu mùa xuân cách mạng."},
+{c:1,q:"Nguyễn Ái Quốc từ Liên Xô về Quảng Châu (Trung Quốc) vào thời gian nào?",o:["Tháng 11/1924","Tháng 12/1925","Tháng 6/1925","Tháng 2/1930"],a:0,e:"Tháng 11/1924, NAQ về Quảng Châu, mở lớp huấn luyện cán bộ, chuẩn bị thành lập Đảng."},
+{c:1,q:"Hội Việt Nam Cách mạng Thanh niên được thành lập vào thời gian nào?",o:["Tháng 6/1925","Tháng 6/1924","Tháng 7/1928","Tháng 2/1930"],a:0,e:"Tháng 6/1925, Hội VNCM Thanh niên ra đời tại Quảng Châu – tổ chức tiền thân của Đảng."},
+{c:1,q:"Cơ quan tuyên truyền (báo chí) của Hội Việt Nam Cách mạng Thanh niên là gì?",o:["Báo Thanh niên (ra số đầu 21/6/1925)","Báo Người cùng khổ","Báo Búa Liềm","Báo Nhân đạo"],a:0,e:"Báo Thanh niên – cơ quan ngôn luận của Hội, số đầu ra ngày 21/6/1925 (nay là Ngày Báo chí CMVN)."},
+{c:1,q:"Tác phẩm “Đường Kách mệnh” (1927) của Nguyễn Ái Quốc là gì?",o:["Tập hợp các bài giảng trong lớp huấn luyện cán bộ ở Quảng Châu","Bản án chế độ thực dân Pháp","Cương lĩnh chính trị đầu tiên của Đảng","Hồi ký của Nguyễn Ái Quốc"],a:0,e:"Đường Kách mệnh (1927) tập hợp bài giảng của NAQ, trang bị lý luận cho cán bộ cách mạng."},
+{c:1,q:"Cuộc bãi công của công nhân Ba Son (Sài Gòn) diễn ra năm nào, do ai lãnh đạo?",o:["1925, Tôn Đức Thắng","1926, Nguyễn Đức Cảnh","1929, Ngô Gia Tự","1930, Trần Phú"],a:0,e:"Tháng 8/1925, thợ máy xưởng Ba Son bãi công do Tôn Đức Thắng (Công hội) lãnh đạo."},
+{c:1,q:"Phong trào đòi trả tự do cho cụ Phan Bội Châu diễn ra sôi nổi năm nào?",o:["1925","1924","1926","1927"],a:0,e:"Năm 1925, phong trào đòi ân xá Phan Bội Châu lan rộng cả nước."},
+{c:1,q:"Lễ truy điệu, để tang cụ Phan Châu Trinh diễn ra năm nào?",o:["1926","1925","1927","1928"],a:0,e:"Tháng 3/1926, Phan Châu Trinh mất; lễ tang biến thành phong trào đấu tranh sôi nổi."},
+{c:1,q:"Việt Nam Quốc dân Đảng được thành lập lúc nào, do ai đứng đầu?",o:["25/12/1927, Nguyễn Thái Học","7/1928, Trần Phú","6/1925, Nguyễn Ái Quốc","2/1930, Hồ Tùng Mậu"],a:0,e:"VNQDĐ thành lập 25/12/1927 tại Hà Nội, lãnh tụ Nguyễn Thái Học, theo khuynh hướng dân chủ tư sản."},
+{c:1,q:"Khởi nghĩa Yên Bái do Việt Nam Quốc dân Đảng lãnh đạo bùng nổ khi nào?",o:["9/2/1930","10/2/1930","9/2/1929","25/12/1927"],a:0,e:"Đêm 9 rạng 10/2/1930, khởi nghĩa Yên Bái bùng nổ và nhanh chóng thất bại."},
+{c:1,q:"“Không thành công cũng thành nhân” là khẩu hiệu của cuộc khởi nghĩa nào?",o:["Khởi nghĩa Yên Bái","Khởi nghĩa Yên Thế","Khởi nghĩa Thái Nguyên","Khởi nghĩa Hương Khê"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.48), đây là khẩu hiệu của khởi nghĩa Yên Bái do VNQDĐ lãnh đạo."},
+{c:1,q:"Tân Việt Cách mạng Đảng được thành lập vào thời gian nào?",o:["Tháng 7/1928","Tháng 6/1925","Tháng 12/1927","Tháng 6/1929"],a:0,e:"Tân Việt CMĐ (tiền thân là Hội Phục Việt) thành lập tháng 7/1928 ở Trung Kỳ."},
+{c:1,q:"Chi bộ cộng sản đầu tiên ở Việt Nam được thành lập khi nào, ở đâu, ai làm Bí thư?",o:["3/1929, số nhà 5D Hàm Long (Hà Nội), Trần Văn Cung","6/1929, Hà Nội, Ngô Gia Tự","8/1929, Sài Gòn, Nguyễn Đức Cảnh","2/1930, Hương Cảng, Nguyễn Ái Quốc"],a:0,e:"Tháng 3/1929, chi bộ cộng sản đầu tiên gồm 7 đảng viên, Bí thư Trần Văn Cung."},
+{c:1,q:"Đông Dương Cộng sản Đảng được thành lập vào thời gian nào?",o:["Tháng 6/1929","Tháng 8/1929","Tháng 9/1929","Tháng 2/1930"],a:0,e:"Tháng 6/1929 tại Bắc Kỳ, Đông Dương CSĐ ra đời trên cơ sở Kỳ bộ Bắc Kỳ của Hội VNCM Thanh niên."},
+{c:1,q:"An Nam Cộng sản Đảng được thành lập vào thời gian nào?",o:["Tháng 8/1929","Tháng 6/1929","Tháng 9/1929","Tháng 11/1929"],a:0,e:"Tháng 8/1929 tại Nam Kỳ, An Nam CSĐ được thành lập."},
+{c:1,q:"Đông Dương Cộng sản Liên đoàn được thành lập từ tổ chức nào, khi nào?",o:["Từ Tân Việt CMĐ, tháng 9/1929","Từ Hội VNCM Thanh niên, tháng 6/1929","Từ VNQDĐ, tháng 2/1930","Từ Kỳ bộ Nam Kỳ, tháng 8/1929"],a:0,e:"Tháng 9/1929, các đảng viên tiên tiến của Tân Việt lập Đông Dương CS Liên đoàn ở Trung Kỳ."},
+{c:1,q:"Hội nghị hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam diễn ra khi nào, ở đâu?",o:["3–7/2/1930, Cửu Long – Hương Cảng (Trung Quốc)","10/1930, Hà Nội","3/1935, Ma Cao","5/1941, Pác Bó"],a:0,e:"Hội nghị hợp nhất họp từ 3 đến 7/2/1930 tại Cửu Long (Hương Cảng), do Nguyễn Ái Quốc chủ trì."},
+{c:1,q:"Ai là người chủ trì Hội nghị hợp nhất thành lập Đảng (2/1930)?",o:["Nguyễn Ái Quốc","Trần Phú","Lê Hồng Phong","Hồ Tùng Mậu"],a:0,e:"Với tư cách phái viên của Quốc tế Cộng sản, Nguyễn Ái Quốc chủ trì hội nghị."},
+{c:1,q:"Hội nghị thành lập Đảng (2/1930) đã thông qua những văn kiện nào?",o:["Chính cương vắn tắt, Sách lược vắn tắt, Chương trình tóm tắt, Điều lệ vắn tắt","Luận cương chính trị và Điều lệ Đảng","Tuyên ngôn độc lập và Hiến pháp","Chỉ thị Kháng chiến kiến quốc"],a:0,e:"Các văn kiện hợp thành Cương lĩnh chính trị đầu tiên của Đảng."},
+{c:1,q:"Cương lĩnh đầu tiên của Đảng xác định mục tiêu chiến lược của cách mạng Việt Nam là gì?",o:["Làm tư sản dân quyền cách mạng và thổ địa cách mạng để đi tới xã hội cộng sản","Xây dựng nước Việt Nam dân giàu, nước mạnh, dân chủ, công bằng, văn minh","Đánh đổ phong kiến, giành ruộng đất cho dân cày ngay lập tức","Xây dựng chủ nghĩa xã hội ngay sau khi giành chính quyền"],a:0,e:"Mục tiêu chiến lược: tư sản dân quyền CM và thổ địa CM để đi tới xã hội cộng sản."},
+{c:1,q:"Cương lĩnh đầu tiên xác định lực lượng lãnh đạo cách mạng Việt Nam là giai cấp nào?",o:["Giai cấp công nhân (thông qua Đảng Cộng sản)","Giai cấp nông dân","Giai cấp tư sản dân tộc","Tầng lớp trí thức"],a:0,e:"Giai cấp công nhân, thông qua chính đảng của mình, giữ vai trò lãnh đạo cách mạng."},
+{c:1,q:"Đông Dương Cộng sản Liên đoàn gia nhập Đảng Cộng sản Việt Nam vào ngày nào?",o:["24/2/1930","3/2/1930","7/2/1930","10/2/1930"],a:0,e:"Ngày 24/2/1930, Đông Dương CS Liên đoàn chính thức gia nhập Đảng CSVN."},
+{c:1,q:"Sự ra đời của Đảng Cộng sản Việt Nam có ý nghĩa lịch sử nào quan trọng nhất?",o:["Chấm dứt sự khủng hoảng, bế tắc về đường lối cứu nước, đưa CMVN sang bước ngoặt vĩ đại","Chấm dứt ách thống trị của thực dân Pháp","Giành chính quyền trong cả nước","Hoàn thành cách mạng dân tộc dân chủ"],a:0,e:"Đảng ra đời chấm dứt khủng hoảng đường lối, CMVN trở thành bộ phận của CM thế giới."},
+{c:1,q:"Hội nghị Ban Chấp hành Trung ương lần thứ nhất (10/1930) đã quyết định đổi tên Đảng thành gì?",o:["Đảng Cộng sản Đông Dương","Đảng Lao động Việt Nam","Đảng Dân chủ Đông Dương","Đảng Cộng sản Việt Nam (giữ nguyên)"],a:0,e:"Hội nghị TW lần thứ nhất (10/1930) đổi tên Đảng thành ĐCS Đông Dương."},
+{c:1,q:"Ai được bầu làm Tổng Bí thư đầu tiên của Đảng tại Hội nghị TW lần thứ nhất (10/1930)?",o:["Trần Phú","Nguyễn Ái Quốc","Lê Hồng Phong","Ngô Gia Tự"],a:0,e:"Trần Phú được cử làm Tổng Bí thư đầu tiên của Đảng (10/1930)."},
+{c:1,q:"Luận cương chính trị tháng 10/1930 do ai soạn thảo?",o:["Trần Phú","Nguyễn Ái Quốc","Hà Huy Tập","Nguyễn Văn Cừ"],a:0,e:"Luận cương chính trị 10/1930 do Trần Phú khởi thảo và được Hội nghị TW lần thứ nhất thông qua."},
+{c:1,q:"“Vấn đề thổ địa là cái cốt của cách mạng tư sản dân quyền”. Quan điểm này được nêu trong văn kiện nào?",o:["Luận cương chính trị 10/1930","Chính cương vắn tắt 2/1930","Chỉ thị 12/3/1945","Nghị quyết TW 8 (5/1941)"],a:0,e:"Luận cương 10/1930 nhấn mạnh: vấn đề thổ địa là cái cốt của CM tư sản dân quyền."},
+{c:1,q:"Hạn chế lớn nhất của Luận cương chính trị 10/1930 so với Cương lĩnh 2/1930 là gì?",o:["Chưa thấy rõ mâu thuẫn chủ yếu, nặng về đấu tranh giai cấp, đánh giá chưa đúng khả năng cách mạng của các tầng lớp","Không xác định được kẻ thù của cách mạng","Không đề ra khẩu hiệu ruộng đất","Không xác định lực lượng lãnh đạo"],a:0,e:"Luận cương chưa nêu cao nhiệm vụ chống đế quốc, chưa mở rộng mặt trận dân tộc như Cương lĩnh đầu tiên."},
+{c:1,q:"Phong trào cách mạng 1930–1931 đạt đỉnh cao với sự kiện nào?",o:["Sự ra đời của Xô viết Nghệ – Tĩnh","Khởi nghĩa Yên Bái","Khởi nghĩa Nam Kỳ","Tổng khởi nghĩa tháng Tám"],a:0,e:"Phong trào 1930–1931 với đỉnh cao là Xô viết Nghệ – Tĩnh – chính quyền công nông đầu tiên."},
+{c:1,q:"Nhận định “Khẳng định trong thực tế quyền lãnh đạo và năng lực lãnh đạo cách mạng của giai cấp vô sản” của Lê Duẩn nói về sự kiện nào?",o:["Phong trào cách mạng 1930–1931","Thành lập Đảng (2/1930)","Mặt trận Việt Minh ra đời (1941)","Phong trào Đồng khởi (1960)"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.74), Lê Duẩn đánh giá về phong trào 1930–1931."},
+{c:1,q:"“Hãy giữ vững chí khí chiến đấu” là lời căn dặn của ai trước khi hy sinh?",o:["Trần Phú","Lý Tự Trọng","Nguyễn Đức Cảnh","Lê Hồng Phong"],a:0,e:"TBT Trần Phú hy sinh ngày 6/9/1931, căn dặn đồng chí “Hãy giữ vững chí khí chiến đấu” (tr.79)."},
+{c:1,q:"Tổng Bí thư Trần Phú hy sinh ngày nào?",o:["6/9/1931","3/2/1930","10/10/1930","28/1/1941"],a:0,e:"Trần Phú bị bắt và hy sinh ngày 6/9/1931 tại Sài Gòn."},
+{c:1,q:"Câu nói “Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác” là của ai?",o:["Lý Tự Trọng","Nguyễn Văn Cừ","Trần Phú","Ngô Gia Tự"],a:0,e:"Lý Tự Trọng – đoàn viên thanh niên cộng sản đầu tiên – anh dũng hy sinh năm 1931."},
+{c:1,q:"Với sự giúp đỡ của Quốc tế Cộng sản, Đảng ta công bố Chương trình hành động của ĐCS Đông Dương vào thời gian nào?",o:["Tháng 6/1932","Tháng 10/1930","Tháng 3/1935","Tháng 7/1936"],a:0,e:"Tháng 6/1932, Chương trình hành động của ĐCS Đông Dương được công bố."},
+{c:1,q:"Đại hội đại biểu lần thứ nhất của Đảng họp khi nào, ở đâu?",o:["3/1935, Ma Cao (Trung Quốc)","2/1930, Hương Cảng","10/1930, Hà Nội","2/1951, Tuyên Quang"],a:0,e:"Đại hội I họp tháng 3/1935 tại Ma Cao, đánh dấu khôi phục hệ thống tổ chức Đảng."},
+{c:1,q:"Ai được bầu làm Tổng Bí thư tại Đại hội lần thứ I của Đảng (3/1935)?",o:["Lê Hồng Phong","Trần Phú","Hà Huy Tập","Nguyễn Văn Cừ"],a:0,e:"Đại hội I bầu Lê Hồng Phong làm Tổng Bí thư của Đảng."},
+{c:1,q:"Đại hội lần thứ VII của Quốc tế Cộng sản họp khi nào, ở đâu?",o:["7–8/1935, Mát-xcơ-va (Liên Xô)","6/1924, Mát-xcơ-va","12/1920, Tours (Pháp)","7/1936, Thượng Hải"],a:0,e:"Đại hội VII QTCS (7–8/1935) chủ trương thành lập mặt trận nhân dân chống phát xít."},
+{c:1,q:"Hội nghị Ban Chấp hành Trung ương tháng 7/1936 chủ trương thành lập mặt trận nào?",o:["Mặt trận Thống nhất nhân dân phản đế Đông Dương","Mặt trận Việt Minh","Mặt trận Dân tộc Giải phóng miền Nam","Mặt trận Tổ quốc Việt Nam"],a:0,e:"HN TW 7/1936 lập Mặt trận Thống nhất nhân dân phản đế; đến 3/1938 đổi thành Mặt trận Dân chủ Đông Dương."},
+{c:1,q:"Tháng 3/1938, Mặt trận Thống nhất nhân dân phản đế Đông Dương được đổi tên thành gì?",o:["Mặt trận Dân chủ Đông Dương","Mặt trận Việt Minh","Mặt trận Phản đế Đồng minh","Mặt trận Liên Việt"],a:0,e:"Đầu 1938, mặt trận đổi tên thành Mặt trận Dân chủ Đông Dương phù hợp tình hình mới."},
+{c:1,q:"Mục tiêu cụ thể, trước mắt của cao trào dân chủ 1936–1939 là gì?",o:["Các quyền dân chủ đơn sơ: tự do, dân sinh, dân chủ, cơm áo, hòa bình","Giành độc lập dân tộc ngay lập tức","Ruộng đất cho dân cày","Lật đổ chính quyền thực dân bằng bạo lực"],a:0,e:"Đảng chủ trương đấu tranh đòi các quyền dân chủ đơn sơ, chống phát xít, chống chiến tranh."},
+{c:1,q:"Hình thức tổ chức và đấu tranh trong cao trào dân chủ 1936–1939 là gì?",o:["Công khai, nửa công khai; hợp pháp, nửa hợp pháp","Bí mật, bất hợp pháp","Vũ trang khởi nghĩa","Đấu tranh nghị trường"],a:0,e:"Đảng kết hợp công khai – nửa công khai, hợp pháp – nửa hợp pháp trong cao trào 1936–1939."},
+{c:1,q:"Ai là Tổng Bí thư của Đảng từ năm 1938?",o:["Nguyễn Văn Cừ","Hà Huy Tập","Lê Hồng Phong","Trường Chinh"],a:0,e:"Nguyễn Văn Cừ làm Tổng Bí thư từ 1938 (sau Hà Huy Tập), hy sinh năm 1941."},
+{c:1,q:"Tác phẩm “Tự chỉ trích” là của ai, xuất bản khi nào?",o:["Nguyễn Văn Cừ, 7/1939","Trường Chinh, 1947","Trần Phú, 1930","Lê Duẩn, 1956"],a:0,e:"Tự chỉ trích (7/1939) của Nguyễn Văn Cừ – vũ khí chống khuynh hướng hữu khuynh trong Đảng."},
+{c:1,q:"Chiến tranh thế giới thứ hai bùng nổ khi nào?",o:["1/9/1939, Đức tấn công Ba Lan","9/3/1945, Nhật đảo chính Pháp","7/7/1937, Nhật xâm lược Trung Quốc","22/6/1941, Đức tấn công Liên Xô"],a:0,e:"Ngày 1/9/1939, Đức tấn công Ba Lan, mở đầu Chiến tranh thế giới thứ hai."},
+{c:1,q:"Ngày 28/9/1939, Toàn quyền Đông Dương ban bố quyết định gì?",o:["Cấm tuyên truyền chủ nghĩa cộng sản, đặt ĐCS Đông Dương ra ngoài vòng pháp luật","Ân xá tù chính trị","Cho Đông Dương độc lập","Thành lập Mặt trận Dân chủ"],a:0,e:"Pháp thẳng tay đàn áp, đặt Đảng ra ngoài vòng pháp luật, cách mạng chuyển vào bí mật."},
+{c:1,q:"Hội nghị Trung ương lần thứ 6 (11/1939) do ai chủ trì?",o:["Nguyễn Văn Cừ","Nguyễn Ái Quốc","Trường Chinh","Lê Hồng Phong"],a:0,e:"HN TW 6 (11/1939) do TBT Nguyễn Văn Cừ chủ trì, mở đầu chuyển hướng chỉ đạo chiến lược."},
+{c:1,q:"Nội dung chuyển hướng của Hội nghị TW 6 (11/1939) là gì?",o:["Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, thành lập Mặt trận Thống nhất dân tộc phản đế","Đẩy mạnh đấu tranh đòi dân chủ, cơm áo","Chuẩn bị tổng khởi nghĩa ngay lập tức","Giải tán Đảng, rút vào bí mật"],a:0,e:"HN TW 6 chuyển hướng: giải phóng dân tộc là nhiệm vụ hàng đầu, lập Mặt trận phản đế."},
+{c:1,q:"Khởi nghĩa Bắc Sơn bùng nổ ngày nào?",o:["27/9/1940","23/11/1940","13/1/1941","9/3/1945"],a:0,e:"Đêm 27/9/1940, khởi nghĩa Bắc Sơn (Lạng Sơn) bùng nổ, sau đó hình thành căn cứ Vũ Nhai."},
+{c:1,q:"Khởi nghĩa Nam Kỳ bùng nổ ngày nào?",o:["23/11/1940","27/9/1940","13/1/1941","19/8/1945"],a:0,e:"Đêm 22 rạng 23/11/1940, khởi nghĩa Nam Kỳ bùng nổ, lập chính quyền ở nhiều nơi."},
+{c:1,q:"Binh biến Đô Lương diễn ra khi nào, do ai lãnh đạo?",o:["13/1/1941, Đội Cung (Nguyễn Văn Cung)","27/9/1940, Đội Cấn","23/11/1940, Phan Đăng Lưu","9/3/1945, Võ Nguyên Giáp"],a:0,e:"Ngày 13/1/1941, Đội Cung lãnh đạo binh biến Đô Lương (Nghệ An)."},
+{c:1,q:"Nguyễn Ái Quốc về nước sau 30 năm tìm đường cứu nước vào ngày nào, ở đâu?",o:["28/1/1941, Pác Bó (Cao Bằng)","28/1/1941, Tân Trào (Tuyên Quang)","19/5/1941, Hà Nội","2/9/1945, Hà Nội"],a:0,e:"Ngày 28/1/1941, NAQ về Pác Bó (Cao Bằng), trực tiếp lãnh đạo cách mạng."},
+{c:1,q:"Hội nghị Trung ương lần thứ 8 họp khi nào, ở đâu, do ai chủ trì?",o:["5/1941, Pác Bó (Cao Bằng), Nguyễn Ái Quốc","11/1939, Bà Điểm, Nguyễn Văn Cừ","3/1945, Hà Nội, Trường Chinh","8/1945, Tân Trào, Hồ Chí Minh"],a:0,e:"HN TW 8 (10–19/5/1941) tại Pác Bó do NAQ chủ trì, hoàn chỉnh chuyển hướng chiến lược."},
+{c:1,q:"Hội nghị TW 8 (5/1941) quyết định thành lập mặt trận nào?",o:["Mặt trận Việt Nam độc lập đồng minh (Việt Minh)","Mặt trận Dân chủ Đông Dương","Mặt trận Liên Việt","Mặt trận Tổ quốc"],a:0,e:"Ngày 19/5/1941, Mặt trận Việt Minh ra đời – mặt trận dân tộc thống nhất rộng rãi."},
+{c:1,q:"Hội nghị TW 8 xác định nhiệm vụ bức thiết nhất của cách mạng lúc này là gì?",o:["Giải phóng dân tộc","Giành ruộng đất cho dân cày","Xây dựng chủ nghĩa xã hội","Đòi các quyền dân chủ"],a:0,e:"Giải phóng dân tộc là nhiệm vụ bức thiết nhất; khẩu hiệu: phá kho thóc, giải quyết nạn đói..."},
+{c:1,q:"Năm 1942, Nguyễn Ái Quốc bị chính quyền Tưởng Giới Thạch bắt giam ở đâu?",o:["Quảng Tây (Trung Quốc)","Quảng Đông (Trung Quốc)","Cao Bằng (Việt Nam)","Lạng Sơn (Việt Nam)"],a:0,e:"Tháng 8/1942, NAQ bị bắt ở Quảng Tây; trong tù Người viết Nhật ký trong tù."},
+{c:1,q:"Tác phẩm “Nhật ký trong tù” của Hồ Chí Minh được sáng tác trong hoàn cảnh nào?",o:["Khi bị giam trong nhà tù Tưởng Giới Thạch (1942–1943)","Khi ở Pác Bó (1941)","Khi ở Pháp (1920)","Khi ở Thái Lan (1929)"],a:0,e:"Từ 8/1942 đến 9/1943, NAQ bị giam và sáng tác Nhật ký trong tù."},
+{c:1,q:"“Đề cương về văn hóa Việt Nam” (1943) do ai soạn thảo?",o:["Trường Chinh","Hồ Chí Minh","Võ Nguyên Giáp","Phạm Văn Đồng"],a:0,e:"Tháng 2/1943, TBT Trường Chinh soạn Đề cương văn hóa: dân tộc – khoa học – đại chúng."},
+{c:1,q:"Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập ngày nào?",o:["22/12/1944","19/5/1941","15/5/1945","19/8/1945"],a:0,e:"Ngày 22/12/1944 tại Cao Bằng – nay là Ngày thành lập Quân đội nhân dân VN."},
+{c:1,q:"Ai phụ trách thành lập Đội Việt Nam Tuyên truyền Giải phóng quân theo chỉ thị của NAQ?",o:["Võ Nguyên Giáp","Văn Tiến Dũng","Chu Văn Tấn","Hoàng Văn Thụ"],a:0,e:"NAQ chỉ thị, Võ Nguyên Giáp trực tiếp thành lập Đội VN Tuyên truyền GPQ."},
+{c:1,q:"Văn kiện nào được coi như một cương lĩnh quân sự tóm tắt của Đảng?",o:["Chỉ thị thành lập Đội Việt Nam Tuyên truyền Giải phóng quân","Chỉ thị Nhật – Pháp bắn nhau","Lời kêu gọi toàn quốc kháng chiến","Luận cương chính trị 1930"],a:0,e:"Chỉ thị thành lập Đội VN Tuyên truyền GPQ có giá trị như cương lĩnh quân sự tóm tắt."},
+{c:1,q:"Nhật đảo chính Pháp ở Đông Dương vào đêm nào?",o:["9/3/1945","12/3/1945","19/8/1945","2/9/1945"],a:0,e:"Đêm 9/3/1945, Nhật đảo chính Pháp, độc chiếm Đông Dương."},
+{c:1,q:"Ngày 12/3/1945, Ban Thường vụ Trung ương Đảng ra chỉ thị nào?",o:["“Nhật – Pháp bắn nhau và hành động của chúng ta”","“Sửa soạn khởi nghĩa”","“Kháng chiến kiến quốc”","“Toàn dân kháng chiến”"],a:0,e:"Chỉ thị 12/3/1945 phát động cao trào kháng Nhật cứu nước."},
+{c:1,q:"Phong trào “Phá kho thóc của Nhật để giải quyết nạn đói” diễn ra mạnh mẽ ở đâu?",o:["Đồng bằng Bắc Bộ và Bắc Trung Bộ","Nam Bộ và Nam Trung Bộ","Tây Nguyên","Việt Bắc"],a:0,e:"Phong trào phá kho thóc Nhật lan rộng ở đồng bằng Bắc Bộ và Bắc Trung Bộ năm 1945."},
+{c:1,q:"Hội nghị quân sự cách mạng Bắc Kỳ họp khi nào?",o:["Tháng 4/1945","Tháng 3/1945","Tháng 5/1941","Tháng 8/1945"],a:0,e:"Tháng 4/1945, Hội nghị quân sự Bắc Kỳ thống nhất các lực lượng vũ trang."},
+{c:1,q:"Ngày 15/5/1945, sự kiện nào diễn ra với lực lượng vũ trang cách mạng?",o:["Hợp nhất Việt Nam Tuyên truyền GPQ với Cứu quốc quân thành Việt Nam Giải phóng quân","Thành lập Đội VN Tuyên truyền GPQ","Thành lập Quân đội Quốc gia","Tổng khởi nghĩa toàn quốc"],a:0,e:"Ngày 15/5/1945 tại Thái Nguyên, hai lực lượng hợp nhất thành VN Giải phóng quân."},
+{c:1,q:"Khu giải phóng Việt Bắc được thành lập tháng nào năm 1945?",o:["Tháng 6/1945","Tháng 4/1945","Tháng 8/1945","Tháng 3/1945"],a:0,e:"Tháng 6/1945, Khu giải phóng Việt Bắc ra đời gồm 6 tỉnh, thủ phủ Tân Trào."},
+{c:1,q:"Hội nghị toàn quốc của Đảng (13–15/8/1945) họp ở đâu và quyết định gì?",o:["Tân Trào (Tuyên Quang), phát lệnh Tổng khởi nghĩa","Pác Bó (Cao Bằng), thành lập Việt Minh","Hà Nội, thành lập Chính phủ","Huế, thoái vị Bảo Đại"],a:0,e:"Hội nghị toàn quốc tại Tân Trào quyết định Tổng khởi nghĩa giành chính quyền."},
+{c:1,q:"Quốc dân Đại hội Tân Trào họp ngày nào?",o:["16/8/1945","15/8/1945","19/8/1945","2/9/1945"],a:0,e:"Ngày 16/8/1945, Quốc dân Đại hội thông qua 10 chính sách của Việt Minh."},
+{c:1,q:"Quốc dân Đại hội Tân Trào đã quyết định thành lập cơ quan nào, ai làm Chủ tịch?",o:["Ủy ban Dân tộc Giải phóng Việt Nam, Hồ Chí Minh","Chính phủ lâm thời, Phạm Văn Đồng","Quốc hội, Trường Chinh","Mặt trận Việt Minh, Tôn Đức Thắng"],a:0,e:"Đại hội cử Ủy ban Dân tộc Giải phóng (Chính phủ lâm thời) do HCM đứng đầu."},
+{c:1,q:"Nhân dân Hà Nội giành chính quyền thắng lợi ngày nào?",o:["19/8/1945","23/8/1945","25/8/1945","2/9/1945"],a:0,e:"Ngày 19/8/1945 – Hà Nội khởi nghĩa thắng lợi (nay là Ngày CMT8 và Quốc khánh tiền thân)."},
+{c:1,q:"Nhân dân Huế và Sài Gòn giành chính quyền vào ngày nào?",o:["Huế 23/8, Sài Gòn 25/8/1945","Huế 19/8, Sài Gòn 23/8/1945","Cả hai cùng ngày 19/8/1945","Huế 25/8, Sài Gòn 2/9/1945"],a:0,e:"Huế khởi nghĩa thắng lợi 23/8, Sài Gòn 25/8/1945."},
+{c:1,q:"Vua Bảo Đại tuyên bố thoái vị ngày nào?",o:["30/8/1945","25/8/1945","2/9/1945","19/8/1945"],a:0,e:"Ngày 30/8/1945, Bảo Đại thoái vị, chế độ phong kiến VN sụp đổ hoàn toàn."},
+{c:1,q:"Chủ tịch Hồ Chí Minh đọc Tuyên ngôn độc lập khi nào, ở đâu?",o:["2/9/1945, Quảng trường Ba Đình (Hà Nội)","19/8/1945, Hà Nội","16/8/1945, Tân Trào","30/8/1945, Huế"],a:0,e:"Ngày 2/9/1945 tại Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa."},
+{c:1,q:"Cách mạng tháng Tám 1945 có tính chất gì?",o:["Cách mạng giải phóng dân tộc, mang tính chất dân chủ nhân dân sâu sắc","Cách mạng xã hội chủ nghĩa","Cách mạng tư sản","Cách mạng văn hóa"],a:0,e:"CMT8 là cuộc CM giải phóng dân tộc, đồng thời mang tính dân chủ nhân dân."},
+{c:1,q:"Nguyên nhân quyết định nhất đưa tới thắng lợi của Cách mạng tháng Tám là gì?",o:["Sự lãnh đạo đúng đắn, sáng suốt của Đảng đứng đầu là Hồ Chí Minh","Quân Đồng minh thắng phát xít","Nhật đầu hàng Đồng minh","Nhân dân nổi dậy đồng loạt"],a:0,e:"Sự lãnh đạo của Đảng là nguyên nhân quyết định nhất của thắng lợi CMT8."},
+{c:1,q:"Bài học kinh nghiệm lớn nhất của Cách mạng tháng Tám 1945 là gì?",o:["Nắm vững ngọn cờ độc lập dân tộc và chủ nghĩa xã hội; sự lãnh đạo đúng đắn của Đảng","Dựa vào sự giúp đỡ quốc tế","Chỉ dùng đấu tranh vũ trang","Chỉ dùng đấu tranh chính trị"],a:0,e:"Bài học lớn: giương cao ngọn cờ độc lập dân tộc, xây dựng Đảng vững mạnh, nắm thời cơ."}
+);
+
+</script>
+<script>
+/* === embedded js/data-c2.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:2,q:"Sau Cách mạng tháng Tám 1945, khó khăn được ví như “giặc” mà chính quyền cách mạng phải đối mặt là gì?",o:["Giặc đói, giặc dốt, giặc ngoại xâm","Giặc Pháp, giặc Nhật, giặc Tưởng","Nội phản, ngoại xâm, thiên tai","Đói nghèo, lạc hậu, chia cắt"],a:0,e:"Chính phủ lâm thời xác định nhiệm vụ cấp bách: diệt giặc đói, giặc dốt, giặc ngoại xâm."},
+{c:2,q:"Chỉ thị “Kháng chiến kiến quốc” của Ban Thường vụ Trung ương Đảng ra đời ngày nào?",o:["25/11/1945","25/11/1946","12/3/1945","19/12/1946"],a:0,e:"Ngày 25/11/1945, BTV TW ra Chỉ thị Kháng chiến kiến quốc (Giáo trình LSĐ 2021, tr.131)."},
+{c:2,q:"Khẩu hiệu của cách mạng Việt Nam sau CMT8 theo Chỉ thị Kháng chiến kiến quốc là gì?",o:["Dân tộc trên hết, Tổ quốc trên hết","Độc lập – Tự do – Hạnh phúc","Tất cả vì miền Nam ruột thịt","Không có gì quý hơn độc lập tự do"],a:0,e:"Khẩu hiệu: “Dân tộc trên hết, Tổ quốc trên hết” (tr.131–132)."},
+{c:2,q:"Kẻ thù chính của cách mạng Việt Nam ngay sau CMT8 được xác định là ai?",o:["Thực dân Pháp xâm lược","Quân Tưởng Giới Thạch","Phát xít Nhật","Đế quốc Mỹ"],a:0,e:"Thực dân Pháp là kẻ thù chính, nguy hiểm và trực tiếp; phải tập trung chống Pháp ở miền Nam."},
+{c:2,q:"Để gạt mũi nhọn tiến công của kẻ thù, Đảng ta tuyên bố “tự giải tán” khi nào và lấy tên là gì?",o:["11/11/1945 – Hội Nghiên cứu chủ nghĩa Mác ở Đông Dương","2/9/1945 – Đảng Dân chủ","6/1/1946 – Đảng Xã hội","19/12/1946 – Đảng Lao động"],a:0,e:"Ngày 11/11/1945, Đảng tuyên bố tự giải tán (thực chất rút vào hoạt động bí mật)."},
+{c:2,q:"Cuộc Tổng tuyển cử đầu tiên bầu Quốc hội nước Việt Nam Dân chủ Cộng hòa diễn ra ngày nào?",o:["6/1/1946","2/9/1945","2/3/1946","9/11/1946"],a:0,e:"Ngày 6/1/1946, hơn 90% cử tri đi bầu, bầu 333 đại biểu Quốc hội khóa I."},
+{c:2,q:"Kỳ họp đầu tiên của Quốc hội khóa I (Quốc hội đầu tiên) diễn ra ngày nào?",o:["2/3/1946","6/1/1946","9/11/1946","19/12/1946"],a:0,e:"Ngày 2/3/1946, Quốc hội khóa I họp, lập Chính phủ liên hiệp kháng chiến do HCM đứng đầu."},
+{c:2,q:"Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa được Quốc hội thông qua ngày nào?",o:["9/11/1946","2/3/1946","6/1/1946","19/12/1946"],a:0,e:"Ngày 9/11/1946, Quốc hội thông qua Hiến pháp 1946 – Hiến pháp đầu tiên của nước VN mới."},
+{c:2,q:"Hiệp định Sơ bộ giữa Việt Nam và Pháp được ký ngày nào?",o:["6/3/1946","14/9/1946","19/12/1946","21/7/1954"],a:0,e:"Ngày 6/3/1946, Hồ Chí Minh ký Hiệp định Sơ bộ với Pháp để đuổi quân Tưởng về nước."},
+{c:2,q:"Nội dung cơ bản của Hiệp định Sơ bộ 6/3/1946 là gì?",o:["Pháp công nhận VN là quốc gia tự do; VN cho 15.000 quân Pháp ra Bắc thay quân Tưởng","Pháp công nhận VN độc lập hoàn toàn","VN gia nhập Liên hiệp Pháp vĩnh viễn","Pháp rút hết quân khỏi Đông Dương"],a:0,e:"Pháp công nhận VN tự do, có chính phủ, nghị viện, quân đội, tài chính riêng; quân Pháp thay Tưởng ở miền Bắc."},
+{c:2,q:"Tạm ước Việt – Pháp được ký ngày nào?",o:["14/9/1946","6/3/1946","19/12/1946","8/5/1945"],a:0,e:"Ngày 14/9/1946, HCM ký Tạm ước với Pháp để kéo dài hòa hoãn, chuẩn bị kháng chiến."},
+{c:2,q:"Để quân Tưởng và tay sai khỏi kiếm cớ sách nhiễu, Đảng ta đã chủ trương gì?",o:["Cho Việt Quốc, Việt Cách tham gia Quốc hội, Chính phủ; nhân nhượng có nguyên tắc","Đánh đuổi quân Tưởng bằng vũ lực ngay","Cầu viện quân Đồng minh","Giải tán chính quyền cách mạng"],a:0,e:"Đảng nhân nhượng có nguyên tắc: cho Việt Quốc, Việt Cách 70 ghế Quốc hội, 4 ghế bộ trưởng..."},
+{c:2,q:"Phong trào ủng hộ Nam Bộ kháng chiến chống Pháp (từ 23/9/1945) có tên là gì?",o:["Nam tiến / Hướng về miền Nam ruột thịt / Miền Nam thành đồng Tổ quốc","Tây tiến","Bắc tiến","Đồng khởi"],a:0,e:"Cả nước phát động phong trào Nam tiến, hướng về miền Nam ruột thịt."},
+{c:2,q:"Ngày Nam Bộ kháng chiến chống thực dân Pháp trở lại xâm lược là ngày nào?",o:["23/9/1945","19/12/1946","6/3/1946","2/9/1945"],a:0,e:"Sáng 23/9/1945, Pháp nổ súng đánh chiếm Sài Gòn; Nam Bộ bước vào kháng chiến."},
+{c:2,q:"Chủ tịch Hồ Chí Minh ra “Lời kêu gọi toàn quốc kháng chiến” ngày nào?",o:["19/12/1946","20/12/1946","6/1/1946","22/12/1944"],a:0,e:"Tối 19/12/1946, tiếng súng kháng chiến toàn quốc bùng nổ; HCM ra Lời kêu gọi."},
+{c:2,q:"Câu nói nổi tiếng nào trong Lời kêu gọi toàn quốc kháng chiến (19/12/1946)?",o:["“Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ”","“Không có gì quý hơn độc lập, tự do”","“Dân tộc trên hết, Tổ quốc trên hết”","“Tiến lên! Toàn thắng ắt về ta”"],a:0,e:"Lời hiệu triệu thiêng liêng mở đầu cuộc kháng chiến toàn quốc chống Pháp."},
+{c:2,q:"Đường lối kháng chiến chống Pháp của Đảng là gì?",o:["Toàn dân, toàn diện, trường kỳ, tự lực cánh sinh","Thần tốc, táo bạo, bất ngờ","Đánh nhanh thắng nhanh","Vừa đánh vừa đàm"],a:0,e:"Đường lối: toàn dân, toàn diện, trường kỳ, tự lực cánh sinh (Chỉ thị 12/12/1946)."},
+{c:2,q:"Chỉ thị “Toàn dân kháng chiến” của Ban Thường vụ Trung ương ra ngày nào?",o:["12/12/1946","19/12/1946","25/11/1945","6/3/1946"],a:0,e:"Ngày 12/12/1946, BTV TW ra Chỉ thị Toàn dân kháng chiến."},
+{c:2,q:"Tác phẩm “Kháng chiến nhất định thắng lợi” (1947) là của ai?",o:["Trường Chinh","Hồ Chí Minh","Võ Nguyên Giáp","Lê Duẩn"],a:0,e:"Năm 1947, TBT Trường Chinh viết Kháng chiến nhất định thắng lợi, luận giải đường lối kháng chiến."},
+{c:2,q:"Chiến dịch Việt Bắc Thu – Đông 1947 có ý nghĩa gì?",o:["Đánh bại cuộc tấn công quy mô lớn đầu tiên của Pháp, bảo vệ căn cứ địa","Giải phóng hoàn toàn Việt Bắc","Kết thúc cuộc kháng chiến","Mở đầu Tổng tiến công"],a:0,e:"Thắng lợi Việt Bắc 1947 đập tan chiến lược “đánh nhanh thắng nhanh” của Pháp."},
+{c:2,q:"Chiến dịch Biên giới Thu – Đông 1950 có ý nghĩa chiến lược gì?",o:["Giải phóng tuyến biên giới Việt – Trung, nối cách mạng VN với phe XHCN","Giải phóng Hà Nội","Giải phóng Điện Biên Phủ","Kết thúc chiến tranh"],a:0,e:"Chiến thắng Biên giới 1950 khai thông biên giới, nối VN với Trung Quốc, Liên Xô."},
+{c:2,q:"Đại hội đại biểu toàn quốc lần thứ II của Đảng họp khi nào, ở đâu?",o:["2/1951, Chiêm Hóa (Tuyên Quang)","3/1935, Ma Cao","9/1960, Hà Nội","12/1976, Hà Nội"],a:0,e:"Đại hội II họp tháng 2/1951 tại Chiêm Hóa, Tuyên Quang."},
+{c:2,q:"Đại hội II (2/1951) quyết định Đảng ra hoạt động công khai với tên gọi là gì?",o:["Đảng Lao động Việt Nam","Đảng Cộng sản Việt Nam","Đảng Cộng sản Đông Dương","Đảng Nhân dân Cách mạng"],a:0,e:"Đại hội II: Đảng ra công khai, lấy tên Đảng Lao động Việt Nam."},
+{c:2,q:"Đại hội II bầu ai làm Chủ tịch Đảng và ai làm Tổng Bí thư?",o:["Hồ Chí Minh – Chủ tịch, Trường Chinh – Tổng Bí thư","Trường Chinh – Chủ tịch, Lê Duẩn – TBT","Hồ Chí Minh – TBT, Phạm Văn Đồng – Chủ tịch","Lê Duẩn – Chủ tịch, Trường Chinh – TBT"],a:0,e:"Đại hội II bầu HCM làm Chủ tịch Đảng, Trường Chinh làm Tổng Bí thư."},
+{c:2,q:"Chính cương của Đảng Lao động Việt Nam (2/1951) xác định tính chất xã hội Việt Nam là gì?",o:["Xã hội thuộc địa, nửa phong kiến","Xã hội xã hội chủ nghĩa","Xã hội tư bản chủ nghĩa","Xã hội dân chủ nhân dân hoàn chỉnh"],a:0,e:"Chính cương 1951: XH VN là thuộc địa nửa phong kiến; nhiệm vụ dân tộc và dân chủ."},
+{c:2,q:"Nhiệm vụ nào KHÔNG thuộc Chính cương Đảng Lao động VN tháng 2/1951?",o:["Giải phóng hoàn toàn miền Nam, thống nhất nước nhà","Đánh đuổi đế quốc xâm lược, giành độc lập thật sự","Xóa bỏ di tích phong kiến, người cày có ruộng","Phát triển chế độ dân chủ nhân dân, gây cơ sở cho CNXH"],a:0,e:"Ba nhiệm vụ 1951 không gồm giải phóng miền Nam (nhiệm vụ của giai đoạn sau 1954)."},
+{c:2,q:"Đại hội Chiến sĩ thi đua và Cán bộ gương mẫu toàn quốc lần thứ nhất họp năm nào?",o:["1952","1951","1953","1954"],a:0,e:"Năm 1952 – đẩy mạnh phong trào thi đua yêu nước trong kháng chiến."},
+{c:2,q:"Anh hùng nào lấy thân mình lấp lỗ châu mai trong chiến dịch Điện Biên Phủ?",o:["Phan Đình Giót","Tô Vĩnh Diện","Bế Văn Đàn","La Văn Cầu"],a:0,e:"Phan Đình Giót (Him Lam) lấp lỗ châu mai; Tô Vĩnh Diện chèn lưng cứu pháo; Bế Văn Đàn lấy thân làm giá súng."},
+{c:2,q:"Anh hùng nào lấy thân mình làm giá súng trong chiến dịch Điện Biên Phủ?",o:["Bế Văn Đàn","Phan Đình Giót","Tô Vĩnh Diện","Trần Can"],a:0,e:"Bế Văn Đàn lấy thân làm giá súng – tấm gương anh dũng Điện Biên Phủ."},
+{c:2,q:"Chiến dịch Điện Biên Phủ diễn ra trong thời gian nào?",o:["13/3 – 7/5/1954","13/3 – 7/5/1955","10/10 – 7/5/1954","1/9 – 7/5/1954"],a:0,e:"Chiến dịch Điện Biên Phủ: 56 ngày đêm (13/3–7/5/1954), chia 3 đợt."},
+{c:2,q:"Ai là Tổng tư lệnh kiêm Bí thư Đảng ủy mặt trận Điện Biên Phủ?",o:["Võ Nguyên Giáp","Văn Tiến Dũng","Hoàng Văn Thái","Lê Trọng Tấn"],a:0,e:"Đại tướng Võ Nguyên Giáp trực tiếp chỉ huy chiến dịch Điện Biên Phủ."},
+{c:2,q:"Quyết định lịch sử nào của Bộ Chỉ huy chiến dịch Điện Biên Phủ trước giờ nổ súng?",o:["Chuyển từ “đánh nhanh thắng nhanh” sang “đánh chắc tiến chắc”","Chuyển từ đánh chắc sang đánh nhanh","Rút quân khỏi Điện Biên","Xin ngừng chiến dịch"],a:0,e:"Tháng 1/1954, ta chuyển phương châm sang “đánh chắc, tiến chắc” – quyết định đúng đắn."},
+{c:2,q:"Tướng Pháp nào là Tổng chỉ huy tập đoàn cứ điểm Điện Biên Phủ?",o:["Đờ Cát (De Castries)","Na-va (Navarre)","Cô-nhi (Cogny)","Xa-lăng (Salan)"],a:0,e:"Tướng Đờ Cát chỉ huy tập đoàn cứ điểm; Na-va là Tổng chỉ huy quân Pháp ở Đông Dương."},
+{c:2,q:"Kế hoạch quân sự của Pháp ở Đông Dương năm 1953–1954 mang tên gì?",o:["Kế hoạch Na-va","Kế hoạch Đờ Cát","Kế hoạch Mác-san","Kế hoạch Rơ-ve"],a:0,e:"Kế hoạch Na-va (1953) – nỗ lực cuối cùng của Pháp, bị phá sản sau Điện Biên Phủ."},
+{c:2,q:"Hiệp định Giơ-ne-vơ về Đông Dương được ký ngày nào?",o:["21/7/1954","27/1/1973","6/3/1946","7/5/1954"],a:0,e:"Ngày 21/7/1954, Hiệp định Giơ-ne-vơ được ký, kết thúc chiến tranh Đông Dương."},
+{c:2,q:"Theo Hiệp định Giơ-ne-vơ 1954, giới tuyến quân sự tạm thời ở Việt Nam là vĩ tuyến nào?",o:["Vĩ tuyến 17 (sông Bến Hải)","Vĩ tuyến 16","Vĩ tuyến 20","Sông Hồng"],a:0,e:"Lấy vĩ tuyến 17 làm giới tuyến tạm thời; tổng tuyển cử thống nhất sau 2 năm (7/1956)."},
+{c:2,q:"Theo Hiệp định Giơ-ne-vơ, tổng tuyển cử thống nhất đất nước dự kiến tổ chức khi nào?",o:["Tháng 7/1956","Tháng 7/1954","Tháng 1/1973","Tháng 4/1976"],a:0,e:"Hiệp định quy định hiệp thương (7/1955) và tổng tuyển cử (7/1956), nhưng Mỹ – Diệm phá hoại."},
+{c:2,q:"Ý nghĩa thắng lợi của cuộc kháng chiến chống Pháp (1945–1954) là gì?",o:["Chấm dứt ách thống trị thực dân Pháp, giải phóng miền Bắc, mở ra thời kỳ mới","Giải phóng hoàn toàn cả nước","Hoàn thành thống nhất đất nước","Đưa cả nước lên CNXH"],a:0,e:"Thắng lợi 1954 giải phóng miền Bắc, mở ra thời kỳ: miền Bắc quá độ lên CNXH, miền Nam tiếp tục CM dân tộc dân chủ."},
+{c:2,q:"Ngày giải phóng Thủ đô Hà Nội là ngày nào?",o:["10/10/1954","7/5/1954","21/7/1954","2/9/1954"],a:0,e:"Sáng 10/10/1954, bộ đội ta tiến vào tiếp quản Hà Nội trong rừng cờ hoa."},
+{c:2,q:"Trong kháng chiến chống Pháp, Đảng chủ trương thực hiện chính sách ruộng đất nào?",o:["Triệt để giảm tô, giảm tức; thí điểm và tiến tới cải cách ruộng đất","Tịch thu toàn bộ ruộng đất ngay lập tức","Giữ nguyên chế độ phong kiến","Chia ruộng cho địa chủ"],a:0,e:"Đảng thực hiện giảm tô giảm tức, thí điểm cải cách ruộng đất (1953–1956)."},
+{c:2,q:"Luật Cải cách ruộng đất được thông qua năm nào?",o:["1953","1951","1954","1956"],a:0,e:"Tháng 12/1953, Quốc hội thông qua Luật Cải cách ruộng đất: tịch thu ruộng đất địa chủ chia cho dân cày."},
+{c:2,q:"Mặt trận Liên Việt được thành lập năm nào trên cơ sở hợp nhất Việt Minh và Liên Việt?",o:["1951","1945","1946","1954"],a:0,e:"Tháng 3/1951, Việt Minh và Hội Liên Việt hợp nhất thành Mặt trận Liên Việt."},
+{c:2,q:"Hội nghị Giơ-ne-vơ về Đông Dương khai mạc ngày nào?",o:["8/5/1954","21/7/1954","7/5/1954","26/4/1954"],a:0,e:"Hội nghị Giơ-ne-vơ khai mạc 8/5/1954 (một ngày sau chiến thắng Điện Biên Phủ)."},
+{c:2,q:"Trưởng đoàn Việt Nam Dân chủ Cộng hòa tại Hội nghị Giơ-ne-vơ 1954 là ai?",o:["Phạm Văn Đồng","Hồ Chí Minh","Võ Nguyên Giáp","Trường Chinh"],a:0,e:"Phó Thủ tướng Phạm Văn Đồng làm Trưởng đoàn đàm phán tại Giơ-ne-vơ."},
+{c:2,q:"“Lời kêu gọi toàn quốc kháng chiến” khẳng định quyết tâm gì của dân tộc?",o:["Thà hy sinh tất cả chứ nhất định không chịu mất nước, không chịu làm nô lệ","Kiên quyết đàm phán đến cùng","Rút lui chiến lược bảo toàn lực lượng","Cầu viện quốc tế"],a:0,e:"Tinh thần “Quyết tử để Tổ quốc quyết sinh” của quân dân Thủ đô cuối 1946."},
+{c:2,q:"Cuộc chiến đấu giam chân địch ở các đô thị cuối 1946 – đầu 1947 có ý nghĩa gì?",o:["Tạo điều kiện cho cả nước chuyển vào kháng chiến lâu dài","Đánh bại hoàn toàn quân Pháp","Giải phóng các đô thị","Buộc Pháp ký hiệp định"],a:0,e:"60 ngày đêm chiến đấu ở Hà Nội và các đô thị giúp Trung ương rút lui an toàn, triển khai kháng chiến lâu dài."},
+{c:2,q:"Căn cứ địa chính của Trung ương Đảng, Chính phủ trong kháng chiến chống Pháp là ở đâu?",o:["Việt Bắc (Tuyên Quang, Thái Nguyên, Bắc Kạn, Cao Bằng, Lạng Sơn)","Tây Bắc","Liên khu 5","Nam Bộ"],a:0,e:"An toàn khu Việt Bắc – Thủ đô kháng chiến, nơi Trung ương đóng (1946–1954)."},
+{c:2,q:"Chiến dịch nào mở đầu cho các chiến dịch tiến công lớn của ta trong kháng chiến chống Pháp?",o:["Chiến dịch Biên giới Thu – Đông 1950","Chiến dịch Việt Bắc 1947","Chiến dịch Điện Biên Phủ","Chiến dịch Hòa Bình 1951"],a:0,e:"Biên giới 1950 là chiến dịch tiến công lớn đầu tiên do ta chủ động mở, giành thắng lợi."},
+{c:2,q:"Phương châm tác chiến của ta trong chiến dịch Điện Biên Phủ là gì?",o:["Đánh chắc, tiến chắc","Đánh nhanh, thắng nhanh","Thần tốc, táo bạo","Vây, lấn, tấn, phá, triệt, diệt"],a:0,e:"Phương châm “đánh chắc, tiến chắc” được quán triệt suốt 56 ngày đêm."},
+{c:2,q:"Ai là người kéo pháo vào trận địa Điện Biên Phủ và anh dũng hy sinh chèn lưng cứu pháo?",o:["Tô Vĩnh Diện","Phan Đình Giót","Bế Văn Đàn","La Văn Cầu"],a:0,e:"Tô Vĩnh Diện hy sinh khi chèn lưng cứu khẩu pháo khỏi lao xuống dốc."},
+{c:2,q:"Chiến thắng Điện Biên Phủ có ý nghĩa quốc tế gì?",o:["Giáng đòn quyết định vào ý chí xâm lược của Pháp, cổ vũ phong trào giải phóng dân tộc thế giới","Kết thúc Chiến tranh thế giới thứ hai","Giải phóng Đông Nam Á","Thành lập Liên hợp quốc"],a:0,e:"Điện Biên Phủ “lừng lẫy năm châu, chấn động địa cầu”, mở đầu sụp đổ của chủ nghĩa thực dân."},
+{c:2,q:"Sau Hiệp định Giơ-ne-vơ, miền Bắc nước ta bước vào thời kỳ nào?",o:["Quá độ lên chủ nghĩa xã hội","Tiếp tục kháng chiến","Thuộc địa của Pháp","Chia cắt lâu dài"],a:0,e:"Miền Bắc hoàn toàn giải phóng, bước vào thời kỳ quá độ lên CNXH."},
+{c:2,q:"Sau 1954, đế quốc nào nhảy vào miền Nam, dựng chính quyền tay sai Ngô Đình Diệm?",o:["Đế quốc Mỹ","Thực dân Pháp","Phát xít Nhật","Đế quốc Anh"],a:0,e:"Mỹ thay Pháp, dựng chính quyền Ngô Đình Diệm, âm mưu chia cắt lâu dài đất nước."},
+{c:2,q:"Chính sách “tố cộng, diệt cộng” của Mỹ – Diệm ở miền Nam sau 1954 nhằm mục đích gì?",o:["Tiêu diệt lực lượng cách mạng, khủng bố nhân dân","Cải cách ruộng đất","Phát triển kinh tế","Hòa hợp dân tộc"],a:0,e:"Mỹ – Diệm phát động “tố cộng, diệt cộng”, đặt CS ra ngoài vòng pháp luật."},
+{c:2,q:"Trong kháng chiến chống Pháp, khẩu hiệu hành động của toàn Đảng, toàn dân là gì?",o:["“Tất cả cho tiền tuyến, tất cả để chiến thắng”","“Thóc không thiếu một cân, quân không thiếu một người”","“Xe chưa qua, nhà không tiếc”","“Tay cày tay súng”"],a:0,e:"Khẩu hiệu “Tất cả cho tiền tuyến, tất cả để chiến thắng” động viên toàn dân kháng chiến."},
+{c:2,q:"Phong trào thi đua yêu nước trong kháng chiến chống Pháp do ai phát động (1948)?",o:["Chủ tịch Hồ Chí Minh","Trường Chinh","Phạm Văn Đồng","Võ Nguyên Giáp"],a:0,e:"Ngày 11/6/1948, HCM ra Lời kêu gọi thi đua ái quốc."},
+{c:2,q:"Đại hội Anh hùng, Chiến sĩ thi đua toàn quốc lần thứ nhất (1952) tuyên dương bao nhiêu anh hùng?",o:["7 anh hùng (trong đó có Cù Chính Lan, La Văn Cầu, Nguyễn Thị Chiên...)","10 anh hùng","4 anh hùng","15 anh hùng"],a:0,e:"Đại hội (1952) tuyên dương 7 Anh hùng lực lượng vũ trang đầu tiên."},
+{c:2,q:"“Sóng Duyên Hải” là phong trào thi đua của giai cấp nào trong kháng chiến chống Pháp?",o:["Công nhân","Nông dân","Bộ đội","Thanh niên"],a:0,e:"Phong trào Sóng Duyên Hải (Nhà máy Duyên Hải, Hải Phòng) của công nhân."},
+{c:2,q:"Nguyên nhân quyết định thắng lợi của cuộc kháng chiến chống Pháp là gì?",o:["Sự lãnh đạo đúng đắn, sáng suốt của Đảng đứng đầu là Chủ tịch Hồ Chí Minh","Sự giúp đỡ của Liên Xô, Trung Quốc","Quân Pháp suy yếu","Nhân dân Pháp phản đối chiến tranh"],a:0,e:"Sự lãnh đạo của Đảng là nguyên nhân quyết định nhất."},
+{c:2,q:"Bài học kinh nghiệm của kháng chiến chống Pháp được Đảng tổng kết là gì?",o:["Xây dựng Đảng vững mạnh; phát huy sức mạnh đại đoàn kết; kết hợp sức mạnh dân tộc với thời đại","Chỉ dựa vào đấu tranh quân sự","Chỉ dựa vào đàm phán","Cầu viện nước ngoài"],a:0,e:"Bài học: Đảng vững mạnh, đại đoàn kết toàn dân, kết hợp sức mạnh dân tộc – thời đại."},
+{c:2,q:"Ngày 7/5/1954, lá cờ nào tung bay trên nóc hầm tướng Đờ Cát?",o:["Cờ đỏ sao vàng “Quyết chiến – Quyết thắng”","Cờ trắng đầu hàng của Pháp","Cờ Liên hợp quốc","Cờ Mặt trận Việt Minh"],a:0,e:"Chiều 7/5/1954, ta bắt sống Đờ Cát; cờ “Quyết chiến – Quyết thắng” tung bay."},
+{c:2,q:"Cụm từ “56 ngày đêm” gắn với chiến dịch nào?",o:["Điện Biên Phủ","Biên giới 1950","Hồ Chí Minh 1975","Việt Bắc 1947"],a:0,e:"56 ngày đêm (13/3–7/5/1954) – chiến dịch Điện Biên Phủ lịch sử."},
+{c:2,q:"Ai là Anh hùng lấy thân chèn pháo, quê ở Thanh Hóa?",o:["Tô Vĩnh Diện","Phan Đình Giót","Bế Văn Đàn","Trần Can"],a:0,e:"Tô Vĩnh Diện (Thanh Hóa) – chèn lưng cứu pháo ở Điện Biên Phủ."},
+{c:2,q:"Trong kháng chiến chống Pháp, cơ quan lãnh đạo cao nhất của Đảng khi Trung ương phân tán là gì?",o:["Ban Thường vụ Trung ương","Bộ Chính trị","Ban Bí thư","Quân ủy Trung ương"],a:0,e:"Ban Thường vụ Trung ương trực tiếp lãnh đạo kháng chiến."},
+{c:2,q:"Hội nghị Trung ương nào (1948) chủ trương mở rộng đấu tranh du kích, xây dựng căn cứ?",o:["Hội nghị cán bộ Trung ương lần thứ 4","Hội nghị TW 6","Hội nghị TW 8","Hội nghị Đà Lạt"],a:0,e:"Hội nghị cán bộ TW lần 4 (1948) đẩy mạnh chiến tranh du kích."},
+{c:2,q:"“ Декларация” – Hội nghị trù bị Đà Lạt (4–5/1946) giữa Việt Nam và Pháp bàn về vấn đề gì?",o:["Chuẩn bị cho Hội nghị Phông-ten-nơ-blô (Fontainebleau)","Ký Hiệp định Sơ bộ","Ký Tạm ước","Đình chiến ở Nam Bộ"],a:0,e:"Hội nghị trù bị Đà Lạt chuẩn bị cho đàm phán Fontainebleau (7–9/1946)."},
+{c:2,q:"Phái đoàn Việt Nam tại Hội nghị Phông-ten-nơ-blô (1946) do ai dẫn đầu?",o:["Phạm Văn Đồng","Hồ Chí Minh","Võ Nguyên Giáp","Nguyễn Tường Tam"],a:0,e:"Phạm Văn Đồng dẫn đầu phái đoàn đàm phán tại Fontainebleau; HCM thăm Pháp song song."},
+{c:2,q:"Vì sao Đảng chủ trương ký Hiệp định Sơ bộ 6/3/1946 với Pháp?",o:["Để đuổi quân Tưởng về nước, hòa hoãn với Pháp, chuẩn bị lực lượng","Vì tin tưởng Pháp thật lòng hòa bình","Vì muốn gia nhập Liên hiệp Pháp","Vì bị ép buộc"],a:0,e:"Hòa hoãn để tập trung diệt nội phản, đuổi Tưởng, chuẩn bị kháng chiến lâu dài."},
+{c:2,q:"Sau khi ký Hiệp định Sơ bộ, ta còn phải đối phó với quân đội nước nào ở miền Nam?",o:["Quân Anh (và quân Pháp núp bóng Anh)","Quân Mỹ","Quân Nhật","Quân Hà Lan"],a:0,e:"Quân Anh vào giải giáp Nhật ở Nam vĩ tuyến 16, tạo điều kiện cho Pháp trở lại."},
+{c:2,q:"“Tuần lễ vàng” (1945) là phong trào gì?",o:["Quyên góp vàng, tiền ủng hộ Chính phủ, xây dựng “Quỹ độc lập”","Tuần lễ học chữ quốc ngữ","Tuần lễ chống nạn đói","Tuần lễ quân sự"],a:0,e:"Tháng 9/1945, Chính phủ phát động Tuần lễ vàng, xây dựng Quỹ độc lập."},
+{c:2,q:"“Bình dân học vụ” là phong trào gì?",o:["Xóa nạn mù chữ, diệt giặc dốt","Chống nạn đói","Huấn luyện quân sự","Học tập chính trị"],a:0,e:"Phong trào Bình dân học vụ (8/9/1945) xóa mù chữ cho hàng triệu người."},
+{c:2,q:"“Ngày đồng tâm” (1945) là phong trào gì?",o:["Nhường cơm sẻ áo, cứu đói (lập hũ gạo cứu đói)","Quyên góp vàng","Đi dân công hỏa tuyến","Học chữ quốc ngữ"],a:0,e:"Hũ gạo cứu đói, ngày đồng tâm – nghĩa cử nhường cơm sẻ áo diệt giặc đói."},
+{c:2,q:"Quân Tưởng Giới Thạch vào Việt Nam giải giáp quân Nhật từ vĩ tuyến nào trở ra Bắc?",o:["Vĩ tuyến 16","Vĩ tuyến 17","Vĩ tuyến 20","Sông Hồng"],a:0,e:"Theo thỏa thuận Pốt-xđam: Tưởng vào Bắc vĩ tuyến 16, Anh vào Nam vĩ tuyến 16."},
+{c:2,q:"Số quân Tưởng Giới Thạch kéo vào miền Bắc nước ta sau CMT8 khoảng bao nhiêu?",o:["20 vạn quân","5 vạn quân","2 vạn quân","50 vạn quân"],a:0,e:"Khoảng 20 vạn quân Tưởng ồ ạt kéo vào, mang theo Việt Quốc, Việt Cách."},
+{c:2,q:"Âm mưu của quân Tưởng khi vào Việt Nam sau CMT8 là gì?",o:["Tiêu diệt Đảng Cộng sản, lật đổ chính quyền cách mạng, lập chính quyền tay sai","Giúp Việt Nam độc lập","Giải giáp Nhật đơn thuần","Bảo vệ chính quyền cách mạng"],a:0,e:"Tưởng âm mưu “diệt cộng cầm Hồ”, dựng chính quyền thân Tưởng."},
+{c:2,q:"Chính phủ Việt Nam Dân chủ Cộng hòa đầu tiên (2/3/1946) do ai làm Chủ tịch?",o:["Hồ Chí Minh","Trường Chinh","Phạm Văn Đồng","Huỳnh Thúc Kháng"],a:0,e:"Chính phủ liên hiệp kháng chiến do HCM làm Chủ tịch."},
+{c:2,q:"Khi Chủ tịch Hồ Chí Minh sang Pháp đàm phán (1946), ai được cử làm Quyền Chủ tịch nước?",o:["Huỳnh Thúc Kháng","Trường Chinh","Phạm Văn Đồng","Võ Nguyên Giáp"],a:0,e:"Cụ Huỳnh Thúc Kháng – Bộ trưởng Nội vụ – làm Quyền Chủ tịch nước."},
+{c:2,q:"“Hò kéo pháo” là bài hát gắn với chiến dịch nào?",o:["Điện Biên Phủ","Biên giới 1950","Hồ Chí Minh","Quảng Trị 1972"],a:0,e:"Bài Hò kéo pháo của Hoàng Vân vang lên trên đường kéo pháo vào Điện Biên Phủ."},
+{c:2,q:"Dân công hỏa tuyến trong chiến dịch Điện Biên Phủ có khoảng bao nhiêu người?",o:["Hơn 26 vạn người","5 vạn người","10 vạn người","2 vạn người"],a:0,e:"Hơn 26 vạn dân công, cùng hàng vạn xe đạp thồ, ngựa thồ chi viện Điện Biên."},
+{c:2,q:"“Xe đạp thồ” trở thành biểu tượng của chiến dịch nào?",o:["Điện Biên Phủ","Hồ Chí Minh","Biên giới","Tây Nguyên"],a:0,e:"Đội quân xe đạp thồ vận chuyển lương thực, đạn dược lên Điện Biên Phủ."},
+{c:2,q:"Câu nói “Nâng cao năng lực lãnh đạo...” KHÔNG liên quan giai đoạn 1945–1954 mà thuộc Đại hội nào?",o:["Đại hội X (2006)","Đại hội II (1951)","Đại hội IV (1976)","Đại hội VI (1986)"],a:0,e:"Đây là chủ đề Đại hội X – câu hỏi liên hệ để tránh nhầm lẫn giai đoạn."},
+{c:2,q:"Thắng lợi quân sự nào buộc Pháp phải ngồi vào bàn đàm phán Giơ-ne-vơ?",o:["Điện Biên Phủ","Biên giới 1950","Việt Bắc 1947","Hòa Bình 1952"],a:0,e:"Điện Biên Phủ giáng đòn quyết định, buộc Pháp ký Hiệp định Giơ-ne-vơ."},
+{c:2,q:"Hiệp định Giơ-ne-vơ 1954 công nhận các quyền dân tộc cơ bản nào của Việt Nam?",o:["Độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ","Chỉ độc lập ở miền Bắc","Quyền tự trị trong Liên hiệp Pháp","Quyền trung lập"],a:0,e:"Các bên cam kết tôn trọng độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ VN."},
+{c:2,q:"Sau 1954, nhiệm vụ của cách mạng miền Bắc là gì?",o:["Xây dựng chủ nghĩa xã hội, làm hậu phương lớn cho miền Nam","Tiếp tục kháng chiến chống Pháp","Tổng khởi nghĩa","Cải cách ruộng đất mãi mãi"],a:0,e:"Miền Bắc quá độ lên CNXH, làm căn cứ địa, hậu phương cho CM miền Nam."},
+{c:2,q:"Sau 1954, nhiệm vụ của cách mạng miền Nam là gì?",o:["Cách mạng dân tộc dân chủ nhân dân, giải phóng miền Nam, thống nhất nước nhà","Xây dựng CNXH ngay lập tức","Đấu tranh nghị trường","Trung lập hóa"],a:0,e:"Miền Nam tiếp tục CM dân tộc dân chủ nhân dân chống Mỹ – Diệm."}
+);
+
+</script>
+<script>
+/* === embedded js/data-c3.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:3,q:"Sau Hiệp định Giơ-ne-vơ 1954, Mỹ đã dựng lên chính quyền tay sai nào ở miền Nam?",o:["Chính quyền Ngô Đình Diệm","Chính quyền Nguyễn Văn Thiệu","Chính quyền Bảo Đại","Chính quyền Dương Văn Minh"],a:0,e:"Tháng 7/1954, Mỹ đưa Ngô Đình Diệm về nước lập chính quyền tay sai."},
+{c:3,q:"Tháng 7/1955, Ngô Đình Diệm tuyên bố gì phá hoại Hiệp định Giơ-ne-vơ?",o:["Không hiệp thương tổng tuyển cử với miền Bắc","Tổ chức tổng tuyển cử thống nhất","Giải tán quân đội","Rút khỏi miền Nam"],a:0,e:"Diệm tuyên bố không hiệp thương, phá hoại tổng tuyển cử thống nhất."},
+{c:3,q:"Tháng 10/1955, Ngô Đình Diệm tổ chức “trưng cầu dân ý” nhằm mục đích gì?",o:["Phế truất Bảo Đại, lập “Việt Nam Cộng hòa” với Diệm làm tổng thống","Thống nhất đất nước","Hòa hợp với miền Bắc","Rút quân Mỹ"],a:0,e:"26/10/1955, Diệm lập “VN Cộng hòa”, làm tổng thống – chính quyền tay sai của Mỹ."},
+{c:3,q:"Luật 10/59 của Mỹ – Diệm được ban hành khi nào?",o:["6/5/1959","10/5/1959","6/5/1960","10/10/1959"],a:0,e:"Ngày 6/5/1959, Diệm ra Luật 10/59 đặt CS ra ngoài vòng pháp luật, lê máy chém khắp miền Nam."},
+{c:3,q:"Nội dung tàn bạo của Luật 10/59 là gì?",o:["Đặt đảng viên cộng sản ra ngoài vòng pháp luật, xử tử không cần xét xử","Cải cách ruộng đất","Ân xá tù chính trị","Tự do báo chí"],a:0,e:"Luật 10/59 – đạo luật phát xít, lê máy chém, khủng bố, tàn sát cán bộ và nhân dân."},
+{c:3,q:"Hội nghị Trung ương 15 (1/1959) có quyết định lịch sử gì?",o:["Cho phép nhân dân miền Nam dùng bạo lực cách mạng đánh đổ Mỹ – Diệm","Tiếp tục đấu tranh chính trị hòa bình đơn thuần","Rút cán bộ miền Nam ra Bắc","Ngừng hoạt động ở miền Nam"],a:0,e:"NQ TW 15 (1/1959) mở đường cho cao trào Đồng khởi, chuyển CM miền Nam sang thế tiến công."},
+{c:3,q:"Phong trào Đồng khởi (cuối 1959 – 1960) mở đầu từ tỉnh nào?",o:["Bến Tre (17/1/1960)","Trà Vinh","Mỹ Tho","Kiến Hòa khác"],a:0,e:"Đêm 17/1/1960, Bến Tre nổi dậy Đồng khởi do Nguyễn Thị Định lãnh đạo phong trào."},
+{c:3,q:"Ai là nữ tướng lãnh đạo phong trào Đồng khởi ở Bến Tre?",o:["Nguyễn Thị Định","Nguyễn Thị Bình","Võ Thị Sáu","Nguyễn Thị Minh Khai"],a:0,e:"Nguyễn Thị Định – “Đội quân tóc dài”, nữ tướng đầu tiên của QĐNDVN."},
+{c:3,q:"“Đội quân tóc dài” gắn với phong trào nào?",o:["Đồng khởi Bến Tre","Điện Biên Phủ","Mậu Thân 1968","Đồng bằng sông Cửu Long 1975"],a:0,e:"Đội quân tóc dài – lực lượng phụ nữ đấu tranh chính trị trong Đồng khởi."},
+{c:3,q:"Mặt trận Dân tộc Giải phóng miền Nam Việt Nam được thành lập ngày nào?",o:["20/12/1960","19/5/1941","10/3/1951","30/4/1975"],a:0,e:"Ngày 20/12/1960 tại Tây Ninh, Mặt trận DTGP miền Nam VN ra đời."},
+{c:3,q:"Đại hội đại biểu toàn quốc lần thứ III của Đảng họp khi nào?",o:["9/1960","2/1951","12/1976","12/1986"],a:0,e:"Đại hội III họp tháng 9/1960 tại Hà Nội – Đại hội xây dựng CNXH."},
+{c:3,q:"“Hoàn chỉnh đường lối chiến lược chung của cách mạng Việt Nam trong giai đoạn mới” là thành công của văn kiện nào?",o:["Văn kiện Đại hội III (9/1960)","Nghị quyết TW 15","Văn kiện Đại hội IV","Văn kiện Đại hội VI"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.197), đó là thành công của Văn kiện Đại hội III."},
+{c:3,q:"Đại hội III xác định nhiệm vụ chiến lược của cách mạng cả nước là gì?",o:["Tiến hành đồng thời hai nhiệm vụ: CM XHCN ở miền Bắc và CM dân tộc dân chủ ở miền Nam","Chỉ xây dựng CNXH ở miền Bắc","Chỉ giải phóng miền Nam","Trung lập hóa cả nước"],a:0,e:"Hai nhiệm vụ chiến lược quan hệ mật thiết, miền Bắc là hậu phương, miền Nam là tiền tuyến."},
+{c:3,q:"Đại hội III bầu ai làm Bí thư thứ nhất Ban Chấp hành Trung ương?",o:["Lê Duẩn","Hồ Chí Minh","Trường Chinh","Phạm Văn Đồng"],a:0,e:"Đại hội III bầu Lê Duẩn làm Bí thư thứ nhất; HCM làm Chủ tịch Đảng."},
+{c:3,q:"Kế hoạch 5 năm lần thứ nhất ở miền Bắc (1961–1965) nhằm mục tiêu gì?",o:["Xây dựng bước đầu cơ sở vật chất – kỹ thuật của CNXH","Hoàn thành CNH ngay lập tức","Tập thể hóa 100% nông nghiệp","Xóa bỏ kinh tế tư nhân"],a:0,e:"KH 5 năm lần 1 (1961–1965): bước đầu xây dựng CNXH, cải thiện đời sống."},
+{c:3,q:"Chiến lược “Chiến tranh đặc biệt” của Mỹ ở miền Nam diễn ra trong thời gian nào?",o:["1961 – 1965","1965 – 1968","1969 – 1973","1954 – 1960"],a:0,e:"Chiến tranh đặc biệt (1961–1965) với quốc sách “ấp chiến lược”, do cố vấn Mỹ chỉ huy."},
+{c:3,q:"“Ấp chiến lược” là quốc sách của chiến lược chiến tranh nào của Mỹ?",o:["Chiến tranh đặc biệt","Chiến tranh cục bộ","Việt Nam hóa chiến tranh","Chiến tranh phá hoại"],a:0,e:"Mỹ dồn dân lập ấp chiến lược nhằm tách dân khỏi cách mạng."},
+{c:3,q:"Chiến thắng Ấp Bắc (2/1/1963) có ý nghĩa gì?",o:["Đánh bại chiến thuật “trực thăng vận, thiết xa vận”, mở ra phong trào thi đua Ấp Bắc","Giải phóng Sài Gòn","Đánh bại B-52","Buộc Mỹ rút quân"],a:0,e:"Ấp Bắc (Mỹ Tho) – thắng lợi lớn đầu tiên chống Chiến tranh đặc biệt."},
+{c:3,q:"Chiến lược “Chiến tranh cục bộ” của Mỹ diễn ra thời gian nào?",o:["1965 – 1968","1961 – 1965","1969 – 1973","1968 – 1972"],a:0,e:"1965, Mỹ đưa quân viễn chinh vào, chuyển sang Chiến tranh cục bộ."},
+{c:3,q:"Sự kiện Vịnh Bắc Bộ (8/1964) được Mỹ dựng lên nhằm mục đích gì?",o:["Lấy cớ mở rộng chiến tranh phá hoại miền Bắc bằng không quân, hải quân","Rút quân khỏi Việt Nam","Đàm phán hòa bình","Giúp miền Bắc xây dựng"],a:0,e:"Mỹ dựng “sự kiện Vịnh Bắc Bộ” (5/8/1964) để ném bom miền Bắc."},
+{c:3,q:"Chiến thắng nào của ta đánh bại cuộc hành quân Gian-xơn Xi-ty (1967) của Mỹ?",o:["Phản công Đông Nam Bộ và các chiến thắng mùa khô 1966–1967","Ấp Bắc","Điện Biên Phủ","Khe Sanh"],a:0,e:"Ta đánh bại hai cuộc phản công mùa khô của Mỹ (1965–1966, 1966–1967)."},
+{c:3,q:"Cuộc Tổng tiến công và nổi dậy Tết Mậu Thân diễn ra khi nào?",o:["Đầu 1968","Đầu 1969","Đầu 1972","Đầu 1975"],a:0,e:"Đêm 30 rạng 31/1/1968, ta tổng tiến công đồng loạt vào các đô thị miền Nam."},
+{c:3,q:"Ý nghĩa của cuộc Tổng tiến công Mậu Thân 1968 là gì?",o:["Giáng đòn quyết định vào Chiến tranh cục bộ, buộc Mỹ xuống thang, đàm phán","Giải phóng hoàn toàn miền Nam","Đánh bại Chiến tranh đặc biệt","Buộc Mỹ rút hết quân ngay"],a:0,e:"Mậu Thân 1968 buộc Mỹ tuyên bố ngừng ném bom miền Bắc, đàm phán Paris."},
+{c:3,q:"Chiến lược “Việt Nam hóa chiến tranh” của Mỹ diễn ra thời gian nào?",o:["1969 – 1973","1965 – 1968","1961 – 1965","1973 – 1975"],a:0,e:"Dưới thời Ních-xơn (1969), Mỹ thực hiện Việt Nam hóa: rút dần quân Mỹ, dùng quân Sài Gòn."},
+{c:3,q:"Chủ tịch Hồ Chí Minh qua đời ngày nào?",o:["2/9/1969 (lễ truy điệu 9/9/1969)","3/9/1969","2/9/1975","19/5/1969"],a:0,e:"Bác mất 9h47 ngày 2/9/1969; lễ truy điệu 9/9/1969 (thông báo 3/9 để trùng Quốc khánh)."},
+{c:3,q:"Di chúc của Chủ tịch Hồ Chí Minh được viết lần đầu năm nào?",o:["1965","1968","1969","1960"],a:0,e:"Bác viết Di chúc lần đầu 10/5/1965 và bổ sung các năm 1968, 1969."},
+{c:3,q:"Câu nói “Không có gì quý hơn độc lập, tự do” của Hồ Chí Minh được khẳng định năm nào?",o:["1966","1945","1969","1954"],a:0,e:"Trong Lời kêu gọi 17/7/1966 chống Mỹ: “Không có gì quý hơn độc lập, tự do”."},
+{c:3,q:"Hội nghị Paris về Việt Nam khai mạc ngày nào?",o:["13/5/1968","27/1/1973","25/1/1969","19/5/1968"],a:0,e:"Đàm phán 4 bên họp phiên đầu 25/1/1969; hội nghị hai bên khai mạc 13/5/1968."},
+{c:3,q:"Trưởng đoàn Mặt trận DTGP miền Nam tại Hội nghị Paris là ai?",o:["Nguyễn Thị Bình","Xuân Thủy","Lê Đức Thọ","Phạm Văn Đồng"],a:0,e:"Nguyễn Thị Bình – Bộ trưởng Ngoại giao Chính phủ CM lâm thời Cộng hòa miền Nam VN."},
+{c:3,q:"Cố vấn đặc biệt của đoàn Việt Nam Dân chủ Cộng hòa tại Paris là ai?",o:["Lê Đức Thọ","Xuân Thủy","Nguyễn Cơ Thạch","Trần Bửu Kiếm"],a:0,e:"Lê Đức Thọ đàm phán bí mật với Kít-xinh-giơ, góp phần quyết định thắng lợi."},
+{c:3,q:"Chiến dịch Đường 9 – Nam Lào (1971) của ta đánh bại cuộc hành quân nào của địch?",o:["Lam Sơn 719","Gian-xơn Xi-ty","Ánh sáng sao","Sấm rền"],a:0,e:"Ta đánh bại cuộc hành quân Lam Sơn 719, giữ vững đường Trường Sơn."},
+{c:3,q:"Cuộc tiến công chiến lược 1972 của ta diễn ra trên những hướng nào?",o:["Quảng Trị, Tây Nguyên, Đông Nam Bộ","Chỉ ở Quảng Trị","Sài Gòn, Huế, Đà Nẵng","Đồng bằng sông Cửu Long"],a:0,e:"Tiến công 1972 trên 3 hướng, giải phóng Quảng Trị và nhiều vùng rộng lớn."},
+{c:3,q:"Trận “Điện Biên Phủ trên không” diễn ra khi nào?",o:["18–29/12/1972","12/1972 tại Hà Nội, Hải Phòng","1/1973","12/1968"],a:0,e:"12 ngày đêm cuối 1972, ta bắn rơi 81 máy bay Mỹ (34 B-52), buộc Mỹ ký hiệp định."},
+{c:3,q:"Ta đã bắn rơi bao nhiêu máy bay B-52 trong 12 ngày đêm cuối 1972?",o:["34 chiếc","81 chiếc","20 chiếc","50 chiếc"],a:0,e:"Bắn rơi 81 máy bay (34 B-52, 5 F-111) – “Điện Biên Phủ trên không”."},
+{c:3,q:"Hiệp định Paris về chấm dứt chiến tranh ở Việt Nam được ký ngày nào?",o:["27/1/1973","21/7/1954","30/4/1975","13/5/1968"],a:0,e:"Ngày 27/1/1973, Hiệp định Paris được ký kết."},
+{c:3,q:"Nội dung cơ bản của Hiệp định Paris 1973 là gì?",o:["Mỹ rút hết quân, tôn trọng độc lập, thống nhất, toàn vẹn lãnh thổ VN","Chia cắt VN lâu dài","Mỹ ở lại miền Nam","VN trung lập"],a:0,e:"Mỹ cam kết rút hết quân, phá dỡ căn cứ; miền Nam tự quyết tương lai."},
+{c:3,q:"Sau Hiệp định Paris, so sánh lực lượng ở miền Nam thay đổi thế nào?",o:["Có lợi cho cách mạng: Mỹ rút, ngụy suy yếu, vùng giải phóng mở rộng","Có lợi cho Mỹ – ngụy","Không thay đổi","Cách mạng gặp khó khăn"],a:0,e:"“Đánh cho Mỹ cút” đã xong; nhiệm vụ còn lại: “đánh cho ngụy nhào”."},
+{c:3,q:"Hội nghị Trung ương 21 (7/1973) khẳng định nhiệm vụ cơ bản của miền Nam là gì?",o:["Tiếp tục cách mạng dân tộc dân chủ, dùng bạo lực cách mạng giải phóng miền Nam","Đấu tranh hòa bình","Trung lập hóa miền Nam","Rút quân về Bắc"],a:0,e:"NQ TW 21: kiên quyết dùng bạo lực CM, giữ vững chiến lược tiến công."},
+{c:3,q:"Chiến thắng Phước Long (1/1975) có ý nghĩa gì?",o:["Tỉnh đầu tiên được giải phóng, khẳng định khả năng Mỹ không can thiệp trở lại","Giải phóng Sài Gòn","Kết thúc chiến tranh","Mở màn chiến dịch Tây Nguyên"],a:0,e:"Phước Long (6/1/1975) – tỉnh đầu tiên giải phóng, thử phản ứng Mỹ."},
+{c:3,q:"Bộ Chính trị quyết định giải phóng miền Nam trong năm nào tại Hội nghị cuối 1974 – đầu 1975?",o:["1975–1976, quyết tâm hoàn thành trong 1975 nếu thời cơ đến","Chỉ trong 1976","Trong 1974","Kéo dài đến 1980"],a:0,e:"Quyết tâm chiến lược: giải phóng miền Nam trong 2 năm 1975–1976, nhấn mạnh năm 1975."},
+{c:3,q:"Chiến dịch Tây Nguyên mở màn Đại thắng mùa Xuân 1975 ngày nào, đánh vào đâu?",o:["4/3/1975, đánh Buôn Ma Thuột (10/3)","30/4/1975, đánh Sài Gòn","26/4/1975, đánh Xuân Lộc","19/3/1975, đánh Huế"],a:0,e:"Ngày 4/3/1975 mở màn; 10/3 đánh Buôn Ma Thuột – trận then chốt."},
+{c:3,q:"Chiến dịch Huế – Đà Nẵng diễn ra tháng nào năm 1975?",o:["Tháng 3/1975 (giải phóng Huế 26/3, Đà Nẵng 29/3)","Tháng 4/1975","Tháng 1/1975","Tháng 5/1975"],a:0,e:"Huế giải phóng 26/3, Đà Nẵng 29/3/1975."},
+{c:3,q:"Chiến dịch Hồ Chí Minh diễn ra trong thời gian nào?",o:["26/4 – 30/4/1975","4/3 – 30/4/1975","10/3 – 30/4/1975","1/4 – 30/4/1975"],a:0,e:"5 cánh quân tiến công; 11h30 ngày 30/4/1975, Dinh Độc Lập thất thủ."},
+{c:3,q:"Ai là Tư lệnh chiến dịch Hồ Chí Minh?",o:["Văn Tiến Dũng","Võ Nguyên Giáp","Lê Trọng Tấn","Trần Văn Trà"],a:0,e:"Đại tướng Văn Tiến Dũng làm Tư lệnh; Phạm Hùng làm Chính ủy."},
+{c:3,q:"Trưa 30/4/1975, Tổng thống Dương Văn Minh tuyên bố gì?",o:["Đầu hàng vô điều kiện","Tử thủ Sài Gòn","Rút lui chiến thuật","Cầu viện Mỹ"],a:0,e:"11h30 ngày 30/4/1975, Dương Văn Minh đầu hàng; miền Nam hoàn toàn giải phóng."},
+{c:3,q:"Người cắm cờ trên Dinh Độc Lập trưa 30/4/1975 là ai?",o:["Bùi Quang Thận","Vũ Đăng Toàn","Lữ Văn Hỏa","Trần Công Mân"],a:0,e:"Đại úy Bùi Quang Thận cắm cờ giải phóng trên nóc Dinh Độc Lập."},
+{c:3,q:"Khẩu hiệu hành động trong chiến dịch Hồ Chí Minh là gì?",o:["“Thần tốc, táo bạo, bất ngờ, chắc thắng”","“Đánh chắc, tiến chắc”","“Tất cả cho tiền tuyến”","“Quyết tử để Tổ quốc quyết sinh”"],a:0,e:"Mệnh lệnh lịch sử của Đại tướng Võ Nguyên Giáp (7/4/1975): Thần tốc..."},
+{c:3,q:"Ý nghĩa lịch sử của Đại thắng mùa Xuân 1975 là gì?",o:["Hoàn thành cách mạng dân tộc dân chủ, thống nhất đất nước, mở ra kỷ nguyên mới","Mới chỉ giải phóng miền Bắc","Chấm dứt chiến tranh lạnh","Gia nhập Liên hợp quốc"],a:0,e:"1975 hoàn thành sự nghiệp giải phóng dân tộc, thống nhất Tổ quốc."},
+{c:3,q:"“Đường mòn Hồ Chí Minh” trên bộ được mở năm nào?",o:["1959","1960","1965","1954"],a:0,e:"Tháng 5/1959, Đoàn 559 mở đường Trường Sơn chi viện miền Nam."},
+{c:3,q:"“Đường mòn Hồ Chí Minh trên biển” được mở năm nào?",o:["1961 (Đoàn 759)","1959","1965","1968"],a:0,e:"Tháng 10/1961, Đoàn 759 mở đường biển chi viện miền Nam."},
+{c:3,q:"Phong trào “Ba sẵn sàng” là của lực lượng nào ở miền Bắc?",o:["Thanh niên","Phụ nữ","Công nhân","Nông dân"],a:0,e:"Thanh niên miền Bắc “Ba sẵn sàng” (1964): sẵn sàng chiến đấu, công tác, đi bất cứ đâu."},
+{c:3,q:"Phong trào “Ba đảm đang” là của lực lượng nào ở miền Bắc?",o:["Phụ nữ","Thanh niên","Công nhân","Bộ đội"],a:0,e:"Phụ nữ “Ba đảm đang”: đảm đang sản xuất, gia đình, phục vụ chiến đấu."},
+{c:3,q:"Phong trào “Mỗi người làm việc bằng hai” là của giai cấp nào?",o:["Công nhân","Nông dân","Trí thức","Học sinh"],a:0,e:"Công nhân miền Bắc thi đua “Mỗi người làm việc bằng hai vì miền Nam ruột thịt”."},
+{c:3,q:"“Tay cày tay súng, tay búa tay súng” là khẩu hiệu của phong trào nào?",o:["Vừa sản xuất vừa chiến đấu ở miền Bắc","Đồng khởi","Thi đua ở miền Nam","Xóa mù chữ"],a:0,e:"Khẩu hiệu vừa sản xuất vừa chiến đấu chống chiến tranh phá hoại của Mỹ."},
+{c:3,q:"Chính phủ Cách mạng lâm thời Cộng hòa miền Nam Việt Nam được thành lập khi nào?",o:["6/6/1969","20/12/1960","27/1/1973","30/4/1975"],a:0,e:"Ngày 6/6/1969, Chính phủ CMLT thành lập do Huỳnh Tấn Phát làm Chủ tịch."},
+{c:3,q:"Liên minh các lực lượng dân tộc, dân chủ và hòa bình VN thành lập năm nào?",o:["1968","1960","1969","1973"],a:0,e:"Tháng 4/1968, Liên minh ra đời do Trịnh Đình Thảo làm Chủ tịch."},
+{c:3,q:"“Ấp Tân... ” – Chiến thắng Bình Giã (12/1964 – 1/1965) có ý nghĩa gì?",o:["Đánh bại chiến thuật mới của Mỹ – ngụy, làm phá sản Chiến tranh đặc biệt","Mở đầu Mậu Thân","Giải phóng Sài Gòn","Đánh bại B-52"],a:0,e:"Bình Giã cùng Ba Gia, Đồng Xoài góp phần làm phá sản Chiến tranh đặc biệt."},
+{c:3,q:"Chiến thắng Vạn Tường (8/1965) có ý nghĩa gì?",o:["Đánh bại cuộc hành quân lớn đầu tiên của quân viễn chinh Mỹ","Đánh bại ấp chiến lược","Giải phóng Quảng Ngãi","Kết thúc chiến tranh"],a:0,e:"Vạn Tường – “quân Mỹ không phải là không thể đánh bại”."},
+{c:3,q:"“Thung lũng Ia Đrăng” (11/1965) là chiến thắng của ta trước quân đội nước nào?",o:["Quân viễn chinh Mỹ","Quân Pháp","Quân Úc","Quân Hàn Quốc"],a:0,e:"Plei Me – Ia Đrăng: lần đầu đánh bại quân chủ lực Mỹ."},
+{c:3,q:"Cuộc tập kích sân bay Tân Sơn Nhất trong Mậu Thân 1968 do đơn vị nào thực hiện?",o:["Đặc công – biệt động Sài Gòn","Bộ binh chủ lực","Pháo binh","Không quân"],a:0,e:"Biệt động Sài Gòn đánh vào Dinh Độc Lập, Đại sứ quán Mỹ, Tân Sơn Nhất..."},
+{c:3,q:"Ai là Bí thư Trung ương Cục miền Nam trong giai đoạn chống Mỹ?",o:["Nguyễn Văn Linh (1964–1975)","Lê Duẩn","Phạm Hùng","Võ Văn Kiệt"],a:0,e:"Nguyễn Văn Linh làm Bí thư Trung ương Cục miền Nam (sau Phạm Hùng)."},
+{c:3,q:"“Vành đai diệt Mỹ” nổi tiếng ở đâu?",o:["Trảng Bàng – Tây Ninh","Củ Chi","Quảng Trị","Khe Sanh"],a:0,e:"Trảng Bàng – vành đai diệt Mỹ; Củ Chi – đất thép thành đồng."},
+{c:3,q:"Địa đạo Củ Chi gắn với danh hiệu nào?",o:["Đất thép thành đồng","Thành đồng Tổ quốc","Vành đai diệt Mỹ","Thủ đô kháng chiến"],a:0,e:"Củ Chi – “Đất thép thành đồng” với 250km địa đạo."},
+{c:3,q:"“Thành đồng Tổ quốc” là danh hiệu của tỉnh nào?",o:["Sài Gòn – Gia Định (TP. Hồ Chí Minh)","Bến Tre","Quảng Trị","Tây Ninh"],a:0,e:"Sài Gòn – Gia Định được tặng danh hiệu “Thành đồng Tổ quốc”."},
+{c:3,q:"Trận Khe Sanh (1968) được ví như gì?",o:["“Điện Biên Phủ thứ hai” mà Mỹ lo sợ","Trận Stalingrad","Trận Waterloo","Trận Normandy"],a:0,e:"Mỹ lo sợ Khe Sanh thành “Điện Biên Phủ thứ hai”, tập trung phòng thủ rồi tháo chạy."},
+{c:3,q:"Nghị quyết Trung ương nào (1965) chuyển miền Bắc sang thời chiến?",o:["Hội nghị TW 11 và 12 (1965)","Hội nghị TW 15","Hội nghị TW 21","Hội nghị TW 8"],a:0,e:"HN TW 11, 12 (1965): chuyển hướng xây dựng và bảo vệ miền Bắc trong chiến tranh."},
+{c:3,q:"“Chống Mỹ, cứu nước” trở thành nhiệm vụ thiêng liêng từ khi nào?",o:["Từ 1965, khi Mỹ mở rộng chiến tranh ra miền Bắc","Từ 1954","Từ 1973","Từ 1960"],a:0,e:"Từ 1965, cả nước thực hiện: miền Bắc vừa sản xuất vừa chiến đấu, chi viện miền Nam."},
+{c:3,q:"“Xe chưa qua, nhà không tiếc” là khẩu hiệu của lực lượng nào?",o:["Thanh niên xung phong, dân công hỏa tuyến Trường Sơn","Công nhân","Nông dân","Bộ đội chủ lực"],a:0,e:"Tinh thần mở đường Trường Sơn: “Xe chưa qua, nhà không tiếc”."},
+{c:3,q:"Ngã ba Đồng Lộc gắn với sự hy sinh của lực lượng nào?",o:["10 nữ thanh niên xung phong (24/7/1968)","Bộ đội pháo binh","Dân quân","Công an"],a:0,e:"24/7/1968, 10 nữ TNXP ngã ba Đồng Lộc (Hà Tĩnh) anh dũng hy sinh."},
+{c:3,q:"Hang Tám Cô (Quảng Bình) gắn với sự hy sinh của lực lượng nào?",o:["8 thanh niên xung phong (1972)","Bộ đội Trường Sơn","Dân công","Y tá"],a:0,e:"Tháng 11/1972, 8 TNXP hy sinh trong hang đá do bom Mỹ đánh sập."},
+{c:3,q:"“Năm 1975” – Bộ Chính trị chọn nơi nào làm hướng tiến công chủ yếu?",o:["Tây Nguyên","Trị Thiên","Đông Nam Bộ","Đồng bằng sông Cửu Long"],a:0,e:"Tây Nguyên là hướng tiến công chủ yếu, Buôn Ma Thuột là trận then chốt."},
+{c:3,q:"Sau khi mất Buôn Ma Thuột, Nguyễn Văn Thiệu quyết định gì sai lầm?",o:["Rút bỏ Tây Nguyên về giữ đồng bằng (rút lui chiến lược)","Tử thủ Tây Nguyên","Phản công lấy lại Buôn Ma Thuột","Cầu viện Mỹ"],a:0,e:"Quyết định rút bỏ Tây Nguyên gây hỗn loạn, tạo thời cơ cho ta tiến công thần tốc."},
+{c:3,q:"Ngày giải phóng Đà Nẵng là ngày nào?",o:["29/3/1975","26/3/1975","30/4/1975","10/3/1975"],a:0,e:"Sáng 29/3/1975, Đà Nẵng hoàn toàn giải phóng."},
+{c:3,q:"Ngày giải phóng Huế là ngày nào?",o:["26/3/1975","29/3/1975","25/3/1975","30/4/1975"],a:0,e:"Ngày 26/3/1975, Huế hoàn toàn giải phóng."},
+{c:3,q:"Trận Xuân Lộc (4/1975) được gọi là gì?",o:["“Cánh cửa thép” bảo vệ Sài Gòn từ phía Đông","Cánh cửa phía Tây","Phòng tuyến cuối cùng phía Bắc","Căn cứ hải quân"],a:0,e:"Xuân Lộc – “cánh cửa thép” bị ta đập tan (21/4/1975)."},
+{c:3,q:"Nguyễn Văn Thiệu từ chức tổng thống ngụy ngày nào?",o:["21/4/1975","30/4/1975","26/4/1975","10/3/1975"],a:0,e:"Tối 21/4/1975, Thiệu từ chức, Trần Hương rồi Dương Văn Minh lên thay."},
+{c:3,q:"Ai là Chính ủy chiến dịch Hồ Chí Minh?",o:["Phạm Hùng","Lê Đức Anh","Trần Văn Trà","Lê Trọng Tấn"],a:0,e:"Phạm Hùng (Bí thư Trung ương Cục) làm Chính ủy chiến dịch."},
+{c:3,q:"5 cánh quân tiến vào Sài Gòn gồm các hướng nào?",o:["Tây Bắc, Bắc, Đông Bắc, Đông – Đông Nam, Tây – Tây Nam","Chỉ từ phía Bắc","Từ biển vào","Từ Campuchia sang"],a:0,e:"5 hướng đồng loạt tiến công vào trung tâm Sài Gòn ngày 30/4/1975."},
+{c:3,q:"Cờ giải phóng tung bay trên Dinh Độc Lập lúc mấy giờ ngày 30/4/1975?",o:["11 giờ 30 phút","12 giờ trưa","9 giờ sáng","15 giờ chiều"],a:0,e:"11h30 ngày 30/4/1975 – thời khắc lịch sử giải phóng Sài Gòn."},
+{c:3,q:"Nguyên nhân quyết định thắng lợi của cuộc kháng chiến chống Mỹ là gì?",o:["Sự lãnh đạo đúng đắn, sáng tạo của Đảng đứng đầu là Chủ tịch Hồ Chí Minh","Vũ khí hiện đại của Liên Xô","Mỹ suy yếu kinh tế","Phong trào phản chiến ở Mỹ"],a:0,e:"Sự lãnh đạo của Đảng là nguyên nhân quyết định nhất."},
+{c:3,q:"Ý nghĩa quốc tế của thắng lợi 30/4/1975 là gì?",o:["Đập tan cuộc chiến tranh xâm lược quy mô lớn nhất của Mỹ, cổ vũ phong trào giải phóng dân tộc","Kết thúc chiến tranh lạnh","Giải thể NATO","Thành lập ASEAN"],a:0,e:"Thắng lợi 1975 là thắng lợi chung của các dân tộc bị áp bức."},
+{c:3,q:"“Đánh cho Mỹ cút, đánh cho ngụy nhào” là lời của ai?",o:["Hồ Chí Minh (trong Di chúc)","Lê Duẩn","Võ Nguyên Giáp","Trường Chinh"],a:0,e:"Di chúc của Bác: “...đánh cho Mỹ cút, đánh cho ngụy nhào”."},
+{c:3,q:"Sau giải phóng, miền Nam còn chính quyền nào tồn tại đến 1976?",o:["Chính phủ Cách mạng lâm thời Cộng hòa miền Nam VN","Chính quyền Sài Gòn","Chính quyền Bảo Đại","Chính quyền quân quản Mỹ"],a:0,e:"Chính phủ CMLT tồn tại đến khi thống nhất (7/1976)."},
+{c:3,q:"Cuộc Tổng tuyển cử bầu Quốc hội chung của nước thống nhất diễn ra ngày nào?",o:["25/4/1976","6/1/1946","2/7/1976","30/4/1975"],a:0,e:"Ngày 25/4/1976, tổng tuyển cử bầu Quốc hội khóa VI – Quốc hội đầu tiên của nước thống nhất."}
+);
+
+</script>
+<script>
+/* === embedded js/data-c4.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:4,q:"Quốc hội khóa VI (1976) quyết định đổi tên nước thành gì?",o:["Cộng hòa xã hội chủ nghĩa Việt Nam","Việt Nam Dân chủ Cộng hòa","Cộng hòa miền Nam Việt Nam","Việt Nam Cộng hòa"],a:0,e:"Ngày 2/7/1976, Quốc hội đổi tên nước thành CHXHCN Việt Nam, thủ đô Hà Nội."},
+{c:4,q:"Quốc hội khóa VI quyết định đổi tên thành phố Sài Gòn – Gia Định thành gì?",o:["Thành phố Hồ Chí Minh","Thành phố Sài Gòn","Thành phố Gia Định","Thành phố Phương Nam"],a:0,e:"Tháng 7/1976, Sài Gòn – Gia Định mang tên Thành phố Hồ Chí Minh."},
+{c:4,q:"Quốc kỳ, Quốc ca, Quốc huy của nước thống nhất được Quốc hội 1976 quy định thế nào?",o:["Cờ đỏ sao vàng, Tiến quân ca, Quốc huy như hiện nay","Cờ nửa đỏ nửa xanh","Quốc ca mới","Giữ nguyên của hai miền"],a:0,e:"Quốc hội 1976: cờ đỏ sao vàng, Tiến quân ca, Quốc huy."},
+{c:4,q:"Đại hội đại biểu toàn quốc lần thứ IV của Đảng họp khi nào?",o:["12/1976","9/1960","3/1982","12/1986"],a:0,e:"Đại hội IV họp tháng 12/1976 – Đại hội toàn thắng của sự nghiệp giải phóng dân tộc."},
+{c:4,q:"Đại hội IV quyết định đổi tên Đảng Lao động Việt Nam thành gì?",o:["Đảng Cộng sản Việt Nam","Đảng Nhân dân Việt Nam","Đảng Xã hội Việt Nam","Giữ nguyên tên cũ"],a:0,e:"Đại hội IV: Đảng mang tên Đảng Cộng sản Việt Nam."},
+{c:4,q:"Đại hội IV bầu ai làm Tổng Bí thư?",o:["Lê Duẩn","Trường Chinh","Phạm Văn Đồng","Nguyễn Văn Linh"],a:0,e:"Đại hội IV bầu Lê Duẩn làm Tổng Bí thư."},
+{c:4,q:"Đường lối chung của cách mạng Việt Nam trong giai đoạn mới theo Đại hội IV là gì?",o:["Nắm vững chuyên chính vô sản, xây dựng CNXH, bảo vệ Tổ quốc XHCN","Tiếp tục kháng chiến","Đổi mới toàn diện","Hội nhập quốc tế"],a:0,e:"Đường lối: xây dựng CNXH và bảo vệ Tổ quốc XHCN trên cả nước."},
+{c:4,q:"Đại hội IV xác định đặc điểm lớn nhất của cách mạng VN sau 1975 là gì?",o:["Cả nước tiến lên CNXH trong hoàn cảnh có chiến tranh phá hoại và bao vây cấm vận","Đã hoàn thành CNH","Không còn kẻ thù","Kinh tế phát triển cao"],a:0,e:"Từ một nước nông nghiệp lạc hậu, vừa có hòa bình vừa đối mặt thù địch bao vây."},
+{c:4,q:"Kế hoạch 5 năm 1976–1980 đặt mục tiêu gì?",o:["Bước đầu xây dựng cơ sở vật chất – kỹ thuật của CNXH trên cả nước","Hoàn thành CNH","Xóa bỏ kinh tế tư nhân hoàn toàn","Đạt thu nhập cao"],a:0,e:"KH 5 năm 1976–1980: cải tạo XHCN, bước đầu xây dựng CNXH cả nước."},
+{c:4,q:"Hiến pháp 1980 là Hiến pháp thứ mấy của nước ta?",o:["Thứ hai (sau Hiến pháp 1959)","Thứ nhất","Thứ ba","Thứ tư"],a:0,e:"Hiến pháp 1980 – Hiến pháp thứ hai (1946, 1959, 1980, 1992, 2013)."},
+{c:4,q:"Quốc hội thông qua Hiến pháp 1980 ngày nào?",o:["18/12/1980","9/11/1946","31/12/1959","15/4/1992"],a:0,e:"Ngày 18/12/1980, Quốc hội thông qua Hiến pháp – “Hiến pháp của thời kỳ quá độ lên CNXH”."},
+{c:4,q:"Tập đoàn Pôn Pốt – Iêng Xa-ri phát động chiến tranh xâm lược biên giới Tây Nam nước ta từ khi nào?",o:["1977 (đỉnh điểm 1978)","1975","1979","1984"],a:0,e:"Từ 1977, Khmer Đỏ đánh phá biên giới Tây Nam; 1978 đánh sâu vào lãnh thổ."},
+{c:4,q:"Thảm sát Ba Chúc (An Giang) do quân Pôn Pốt gây ra vào thời gian nào?",o:["4/1978","1/1979","2/1979","12/1978"],a:0,e:"Tháng 4/1978, Pôn Pốt thảm sát hơn 3.000 dân thường ở Ba Chúc."},
+{c:4,q:"Quân tình nguyện Việt Nam giúp Campuchia giải phóng Phnôm Pênh ngày nào?",o:["7/1/1979","17/2/1979","30/4/1975","7/5/1954"],a:0,e:"Ngày 7/1/1979, Phnôm Pênh giải phóng, chế độ diệt chủng Pôn Pốt sụp đổ."},
+{c:4,q:"Trung Quốc phát động chiến tranh xâm lược biên giới phía Bắc nước ta ngày nào?",o:["17/2/1979","7/1/1979","5/3/1979","30/4/1979"],a:0,e:"Rạng sáng 17/2/1979, 60 vạn quân Trung Quốc tấn công 6 tỉnh biên giới phía Bắc."},
+{c:4,q:"Việt Nam công bố Lệnh tổng động viên chống quân Trung Quốc xâm lược ngày nào?",o:["5/3/1979","17/2/1979","18/3/1979","7/1/1979"],a:0,e:"Ngày 5/3/1979, Chủ tịch nước Tôn Đức Thắng ký Lệnh tổng động viên."},
+{c:4,q:"Trung Quốc tuyên bố rút quân khỏi Việt Nam ngày nào?",o:["18/3/1979 (rút hết)","5/3/1979","17/2/1979","7/1/1979"],a:0,e:"Trước sức đánh trả của quân dân ta, Trung Quốc rút hết quân ngày 18/3/1979."},
+{c:4,q:"Mặt trận Vị Xuyên (Hà Giang) diễn ra ác liệt nhất trong thời gian nào?",o:["1984 – 1989","1979","1977","1991"],a:0,e:"Vị Xuyên – “lò vôi thế kỷ” (1984–1989), nơi diễn ra chiến sự ác liệt bảo vệ biên giới phía Bắc."},
+{c:4,q:"“Lò vôi thế kỷ” là tên gọi của mặt trận nào?",o:["Vị Xuyên (Hà Giang)","Lạng Sơn","Quảng Ninh","Cao Bằng"],a:0,e:"Vị Xuyên được gọi là “lò vôi thế kỷ” vì mức độ ác liệt của pháo kích."},
+{c:4,q:"Nghĩa trang liệt sĩ Vị Xuyên tưởng niệm các anh hùng hy sinh trong cuộc chiến nào?",o:["Bảo vệ biên giới phía Bắc (1979–1989)","Kháng chiến chống Pháp","Kháng chiến chống Mỹ","Biên giới Tây Nam"],a:0,e:"Hơn 1.700 liệt sĩ yên nghỉ tại Nghĩa trang Vị Xuyên."},
+{c:4,q:"Việt Nam gia nhập Liên hợp quốc ngày nào?",o:["20/9/1977","2/7/1976","7/11/2006","28/7/1995"],a:0,e:"Ngày 20/9/1977, VN trở thành thành viên thứ 149 của Liên hợp quốc."},
+{c:4,q:"Việt Nam là thành viên thứ mấy của Liên hợp quốc?",o:["Thứ 149","Thứ 150","Thứ 148","Thứ 193"],a:0,e:"VN là thành viên thứ 149 của LHQ (20/9/1977)."},
+{c:4,q:"Đại hội đại biểu toàn quốc lần thứ V của Đảng họp khi nào?",o:["3/1982","12/1976","12/1986","6/1991"],a:0,e:"Đại hội V họp tháng 3/1982."},
+{c:4,q:"Đại hội V bầu ai làm Tổng Bí thư?",o:["Lê Duẩn","Trường Chinh","Nguyễn Văn Linh","Đỗ Mười"],a:0,e:"Đại hội V tiếp tục bầu Lê Duẩn làm Tổng Bí thư."},
+{c:4,q:"Đại hội V xác định nhiệm vụ trọng tâm của kế hoạch 5 năm 1981–1985 là gì?",o:["Phát triển nông nghiệp, coi nông nghiệp là mặt trận hàng đầu","Ưu tiên công nghiệp nặng","Phát triển dịch vụ","Mở cửa hội nhập"],a:0,e:"Đại hội V: tập trung phát triển nông nghiệp, hàng tiêu dùng, hàng xuất khẩu."},
+{c:4,q:"Chỉ thị 100-CT/TW về khoán sản phẩm đến nhóm lao động trong nông nghiệp ra đời khi nào?",o:["13/1/1981","8/1979","6/1985","4/1988"],a:0,e:"Chỉ thị 100 (1/1981) – “khoán 100”, bước đột phá trong nông nghiệp."},
+{c:4,q:"Nghị quyết Trung ương 6 khóa IV (8/1979) có nội dung quan trọng gì?",o:["Mở đầu đổi mới tư duy kinh tế, cho phép sản xuất “bung ra”","Khoán 10 trong nông nghiệp","Đổi mới giá – lương – tiền","Gia nhập WTO"],a:0,e:"NQ TW 6 khóa IV (1979) – bước đột phá đầu tiên: cởi trói sản xuất, chấp nhận kinh tế nhiều thành phần."},
+{c:4,q:"Hội nghị nào KHÔNG thuộc ba bước đột phá tìm tòi đổi mới kinh tế (1975–1986)?",o:["Đại hội VI (12/1986) – nơi quyết định đường lối đổi mới toàn diện","Hội nghị TW 6 khóa IV (8/1979)","Hội nghị TW 2 khóa V (12/1982)","Hội nghị TW 8 khóa V (6/1985) và Kết luận của Bộ Chính trị (8/1986)"],a:0,e:"Ba đột phá (khoán, đổi mới quản lý, giá–lương–tiền) là tiền đề; Đại hội VI quyết định đổi mới toàn diện (tr.255–259)."},
+{c:4,q:"Theo Giáo trình LSĐ 2021, ba bước đột phá đổi mới kinh tế 1975–1986 gắn với các hội nghị nào?",o:["TW 6 khóa IV (1979); TW 2 khóa V; TW 8 khóa V và Bộ Chính trị 1986","Chỉ Đại hội VI","Chỉ Đại hội V","Chỉ Chỉ thị 100"],a:0,e:"Các bước đột phá: khoán sản phẩm, đổi mới quản lý, giá–lương–tiền (tr.255–259)."},
+{c:4,q:"Nghị quyết Trung ương 8 khóa V (6/1985) về vấn đề gì?",o:["Giá – lương – tiền","Khoán 10","Cải tạo công thương nghiệp","Đối ngoại"],a:0,e:"NQ TW 8 khóa V (6/1985) về xóa bỏ bao cấp, đổi mới giá–lương–tiền (có mặt vội vàng)."},
+{c:4,q:"Cuộc tổng điều chỉnh giá – lương – tiền (1985) còn được gọi là gì?",o:["Đổi tiền 1985","Khoán 10","Đổi mới 1986","Mở cửa 1988"],a:0,e:"Tháng 9/1985, Nhà nước đổi tiền, điều chỉnh giá–lương–tiền nhưng lạm phát tăng cao."},
+{c:4,q:"Lạm phát ở Việt Nam lên tới đỉnh điểm bao nhiêu vào năm 1986?",o:["Hơn 700% (774,7%)","100%","50%","1000%"],a:0,e:"Lạm phát phi mã 1986 (~774,7%) – biểu hiện gay gắt của khủng hoảng kinh tế – xã hội."},
+{c:4,q:"Khủng hoảng kinh tế – xã hội ở Việt Nam được khẳng định rõ nhất tại Đại hội nào?",o:["Đại hội VI (12/1986)","Đại hội IV","Đại hội V","Đại hội VII"],a:0,e:"Đại hội VI nhìn thẳng sự thật, khẳng định đất nước lâm vào khủng hoảng trầm trọng."},
+{c:4,q:"Nguyên nhân cơ bản của khủng hoảng kinh tế – xã hội 1975–1986 là gì?",o:["Sai lầm chủ quan trong lãnh đạo, quản lý; duy trì cơ chế tập trung quan liêu bao cấp","Thiên tai liên tiếp","Chiến tranh biên giới","Cấm vận của Mỹ"],a:0,e:"Nguyên nhân cơ bản: sai lầm chủ quan – nóng vội, duy trì cơ chế bao cấp, vi phạm quy luật."},
+{c:4,q:"Tổng Bí thư Lê Duẩn qua đời ngày nào?",o:["10/7/1986","10/7/1985","12/12/1986","2/9/1986"],a:0,e:"TBT Lê Duẩn mất ngày 10/7/1986; Trường Chinh được cử làm TBT."},
+{c:4,q:"Sau khi Lê Duẩn mất, ai được cử làm Tổng Bí thư (7/1986)?",o:["Trường Chinh","Nguyễn Văn Linh","Đỗ Mười","Phạm Văn Đồng"],a:0,e:"Trường Chinh làm TBT từ 7/1986, chủ trì chuẩn bị Đại hội VI."},
+{c:4,q:"Hội nghị Bộ Chính trị tháng 8/1986 có kết luận quan trọng gì?",o:["Khẳng định phải đổi mới toàn diện, lấy đổi mới kinh tế làm trọng tâm","Tiếp tục bao cấp","Dừng khoán sản phẩm","Đóng cửa kinh tế"],a:0,e:"Kết luận 8/1986: đổi mới là yêu cầu bức thiết, lấy đổi mới kinh tế làm trọng tâm."},
+{c:4,q:"Đại hội đại biểu toàn quốc lần thứ VI họp khi nào?",o:["12/1986 (15–18/12)","3/1982","6/1991","1/1994"],a:0,e:"Đại hội VI – Đại hội đổi mới – họp 15–18/12/1986 tại Hà Nội."},
+{c:4,q:"Đại hội VI bầu ai làm Tổng Bí thư?",o:["Nguyễn Văn Linh","Trường Chinh","Đỗ Mười","Lê Duẩn"],a:0,e:"Đại hội VI bầu Nguyễn Văn Linh làm Tổng Bí thư."},
+{c:4,q:"Tinh thần nổi bật của Đại hội VI là gì?",o:["“Nhìn thẳng vào sự thật, đánh giá đúng sự thật, nói rõ sự thật”","Đoàn kết – đoàn kết – đại đoàn kết","Tiến nhanh tiến mạnh","Ổn định để phát triển"],a:0,e:"Báo cáo Chính trị của Trường Chinh: nhìn thẳng vào sự thật..."},
+{c:4,q:"Bốn nhóm chính sách xã hội trong chặng đường đầu tiên được Đảng đề ra tại Đại hội nào?",o:["Đại hội VI (12/1986)","Đại hội III","Đại hội IV","Đại hội V"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.263), Đại hội VI đề ra 4 nhóm chính sách xã hội."},
+{c:4,q:"Đại hội VI đề ra đường lối gì?",o:["Đổi mới toàn diện đất nước, lấy đổi mới kinh tế làm trọng tâm","Chỉ đổi mới chính trị","Tiếp tục kế hoạch hóa tập trung","Đóng cửa tự lực"],a:0,e:"Đổi mới toàn diện: kinh tế là trọng tâm, đồng thời đổi mới hệ thống chính trị."},
+{c:4,q:"Ba quan điểm kinh tế của Đại hội VI là gì?",o:["Xây dựng nền kinh tế XHCN nhiều thành phần; đổi mới quản lý; phát huy mọi khả năng sản xuất","Chỉ phát triển quốc doanh","Chỉ phát triển tập thể","Xóa bỏ tư nhân"],a:0,e:"Kinh tế nhiều thành phần vận động theo cơ chế thị trường có sự quản lý của Nhà nước."},
+{c:4,q:"Cơ chế quản lý kinh tế mới theo Đại hội VI là gì?",o:["Xóa bỏ tập trung quan liêu bao cấp, chuyển sang hạch toán kinh doanh XHCN","Tiếp tục bao cấp","Kế hoạch hóa cứng nhắc","Tự do hoàn toàn"],a:0,e:"Xóa bao cấp, chuyển sang hạch toán kinh doanh, tôn trọng quy luật thị trường."},
+{c:4,q:"“Khoán 10” – Nghị quyết 10 của Bộ Chính trị về nông nghiệp ra đời khi nào?",o:["5/4/1988","1/1981","6/1985","12/1986"],a:0,e:"NQ 10 (4/1988) khoán hộ, giải phóng sức sản xuất nông nghiệp – VN thành nước xuất khẩu gạo."},
+{c:4,q:"Từ năm nào Việt Nam từ nước thiếu lương thực trở thành nước xuất khẩu gạo?",o:["1989","1986","1988","1991"],a:0,e:"Năm 1989, VN xuất khẩu 1,5 triệu tấn gạo – thành tựu của Khoán 10."},
+{c:4,q:"Luật Đầu tư nước ngoài đầu tiên của Việt Nam được ban hành năm nào?",o:["1987","1986","1989","1991"],a:0,e:"Tháng 12/1987, Luật Đầu tư nước ngoài mở cửa thu hút FDI."},
+{c:4,q:"Chủ trương đối ngoại của Đại hội VI là gì?",o:["Mở rộng quan hệ, “Việt Nam muốn làm bạn với tất cả các nước”","Đóng cửa","Chỉ quan hệ với phe XHCN","Đối đầu"],a:0,e:"Đa phương hóa, đa dạng hóa quan hệ đối ngoại, hòa bình, hữu nghị, hợp tác."},
+{c:4,q:"Nghị quyết 13 của Bộ Chính trị (5/1988) về vấn đề gì?",o:["Đổi mới chính sách đối ngoại, đa phương hóa quan hệ","Khoán 10","Giá – lương – tiền","Cải cách giáo dục"],a:0,e:"NQ 13 (5/1988): bước ngoặt đối ngoại – đa phương hóa, bình thường hóa quan hệ."},
+{c:4,q:"Việt Nam rút hết quân tình nguyện khỏi Campuchia năm nào?",o:["1989","1979","1985","1991"],a:0,e:"Tháng 9/1989, VN rút hết quân tình nguyện khỏi Campuchia."},
+{c:4,q:"Hiệp định Paris về Campuchia được ký năm nào?",o:["1991","1989","1979","1995"],a:0,e:"Tháng 10/1991, Hiệp định Paris lập lại hòa bình ở Campuchia."},
+{c:4,q:"Sau 1975, công tác cải tạo công thương nghiệp tư bản tư doanh ở miền Nam hoàn thành cơ bản năm nào?",o:["1978","1976","1980","1985"],a:0,e:"Đến 1978, cải tạo XHCN ở miền Nam cơ bản hoàn thành (có mặt nóng vội)."},
+{c:4,q:"Hợp tác hóa nông nghiệp ở miền Nam sau 1975 đạt đỉnh vào năm nào?",o:["1980–1985 (nhưng kém hiệu quả, sau đó đổi mới bằng Khoán 10)","1976","1990","1978"],a:0,e:"Hợp tác hóa ồ ạt nhưng kém hiệu quả, được điều chỉnh bằng khoán hộ."},
+{c:4,q:"“Cởi trói” trong văn học – nghệ thuật gắn với Đại hội nào?",o:["Đại hội VI (1986)","Đại hội IV","Đại hội V","Đại hội VII"],a:0,e:"Đổi mới tư duy văn hóa – văn nghệ, cởi trói sáng tác từ Đại hội VI."},
+{c:4,q:"Bài viết “Tổ quốc trên hết” của Tổng Bí thư Nguyễn Văn Linh ký bút danh gì?",o:["N.V.L (Nói Và Làm)","T.L","C.B","X.Y.Z"],a:0,e:"Loạt bài “Những việc cần làm ngay” ký N.V.L trên báo Nhân Dân (1987)."},
+{c:4,q:"Loạt bài “Những việc cần làm ngay” trên báo Nhân Dân (1987) của ai?",o:["Nguyễn Văn Linh (bút danh N.V.L)","Trường Chinh","Võ Văn Kiệt","Đỗ Mười"],a:0,e:"TBT Nguyễn Văn Linh trực tiếp chỉ đạo chống tiêu cực, quan liêu."},
+{c:4,q:"Hội đồng Bộ trưởng (Chính phủ) giai đoạn đầu đổi mới do ai đứng đầu?",o:["Phạm Hùng (1987–1988), sau đó Đỗ Mười, Võ Văn Kiệt","Phạm Văn Đồng suốt giai đoạn","Võ Nguyên Giáp","Lê Duẩn"],a:0,e:"Phạm Hùng làm Chủ tịch HĐBT 1987–1988; Võ Văn Kiệt là kiến trúc sư đổi mới kinh tế."},
+{c:4,q:"Ai được mệnh danh là “kiến trúc sư” của công cuộc đổi mới kinh tế?",o:["Võ Văn Kiệt","Nguyễn Văn Linh","Đỗ Mười","Phan Văn Khải"],a:0,e:"Võ Văn Kiệt – người chỉ đạo quyết liệt đổi mới kinh tế, xóa bao cấp."},
+{c:4,q:"“Xóa đói giảm nghèo” trở thành quốc sách từ thời kỳ nào?",o:["Từ đổi mới (1986) trở đi","Từ 1976","Từ 1954","Từ 2001"],a:0,e:"Đổi mới gắn tăng trưởng với công bằng, xóa đói giảm nghèo."},
+{c:4,q:"Thành tựu nổi bật nhất của 5 năm đầu đổi mới (1986–1991) là gì?",o:["Từng bước kiềm chế lạm phát, ổn định kinh tế, thoát khỏi khủng hoảng","Hoàn thành CNH","Gia nhập WTO","Trở thành nước phát triển"],a:0,e:"Lạm phát từ ~775% (1986) xuống còn 67% (1991); kinh tế tăng trưởng trở lại."},
+{c:4,q:"Lạm phát năm 1991 còn bao nhiêu (so với 774% năm 1986)?",o:["Khoảng 67%","Khoảng 300%","Khoảng 10%","Khoảng 0%"],a:0,e:"Kiềm chế lạm phát là thắng lợi lớn của những năm đầu đổi mới."},
+{c:4,q:"Đại hội VI xác định chặng đường đầu của thời kỳ quá độ gồm những nhiệm vụ gì?",o:["Ổn định mọi mặt đời sống, tạo tiền đề chuyển sang chặng sau","Hoàn thành CNH ngay","Xây dựng CNXH hoàn chỉnh","Hội nhập toàn diện"],a:0,e:"Chặng đường đầu: ổn định, tạo tiền đề phát triển."},
+{c:4,q:"Quan điểm “kết hợp sức mạnh dân tộc với sức mạnh thời đại” được khẳng định xuyên suốt từ Đại hội nào?",o:["Được kế thừa và phát triển qua các đại hội, đặc biệt từ Đại hội VI","Chỉ Đại hội III","Chỉ Đại hội IV","Mới từ Đại hội XIII"],a:0,e:"Đây là bài học xuyên suốt; Đại hội VI vận dụng vào đổi mới và hội nhập."},
+{c:4,q:"Sau chiến tranh biên giới 1979, quan hệ Việt – Trung bình thường hóa năm nào?",o:["1991","1989","1979","1995"],a:0,e:"Tháng 11/1991, quan hệ Việt – Trung bình thường hóa."},
+{c:4,q:"Hiệp ước hoạch định biên giới đất liền Việt – Trung ký năm nào?",o:["1999","1991","2000","1995"],a:0,e:"Năm 1999 ký Hiệp ước biên giới đất liền; 2000 ký Hiệp định Vịnh Bắc Bộ."},
+{c:4,q:"Hiệp định phân định Vịnh Bắc Bộ Việt – Trung ký năm nào?",o:["2000","1999","1991","2007"],a:0,e:"Tháng 12/2000, hai nước ký Hiệp định phân định Vịnh Bắc Bộ và Hiệp định nghề cá."},
+{c:4,q:"Ý nghĩa của Đại hội VI trong lịch sử Đảng là gì?",o:["Mở ra thời kỳ đổi mới toàn diện, đưa đất nước thoát khỏi khủng hoảng","Kết thúc chiến tranh","Thống nhất đất nước","Gia nhập ASEAN"],a:0,e:"Đại hội VI – mốc son đổi mới, bước ngoặt vĩ đại của cách mạng VN."}
+);
+QBANK.push(
+{c:4,q:"Sau chiến thắng 1975, nhiệm vụ chung của cách mạng Việt Nam được Đại hội IV xác định là gì?",o:["Xây dựng chủ nghĩa xã hội và bảo vệ Tổ quốc xã hội chủ nghĩa","Tiếp tục giải phóng dân tộc","Đấu tranh thống nhất đất nước","Gia nhập thị trường thế giới"],a:0,e:"Cách mạng VN chuyển sang giai đoạn mới: cả nước xây dựng CNXH và bảo vệ Tổ quốc XHCN."},
+{c:4,q:"Đại hội IV xác định động lực to lớn của sự nghiệp xây dựng CNXH là gì?",o:["Con người mới xã hội chủ nghĩa","Vốn đầu tư nước ngoài","Tài nguyên thiên nhiên","Viện trợ quốc tế"],a:0,e:"Phát huy nhân tố con người – động lực của cách mạng XHCN."},
+{c:4,q:"Chủ tịch nước đầu tiên của nước Cộng hòa xã hội chủ nghĩa Việt Nam (1976) là ai?",o:["Tôn Đức Thắng","Trường Chinh","Võ Chí Công","Lê Duẩn"],a:0,e:"Cụ Tôn Đức Thắng làm Chủ tịch nước (1976–1980)."},
+{c:4,q:"Thủ tướng Chính phủ (Chủ tịch Hội đồng Bộ trưởng) giai đoạn 1976–1987 là ai?",o:["Phạm Văn Đồng","Phạm Hùng","Đỗ Mười","Võ Văn Kiệt"],a:0,e:"Phạm Văn Đồng giữ cương vị đứng đầu Chính phủ đến 1987."},
+{c:4,q:"Hiến pháp 1980 thay thế chức danh Chủ tịch nước bằng cơ quan nào?",o:["Hội đồng Nhà nước (tập thể)","Ủy ban Thường vụ Quốc hội","Hội đồng Bộ trưởng","Ban Bí thư"],a:0,e:"Hiến pháp 1980: Hội đồng Nhà nước là cơ quan cao nhất hoạt động thường xuyên của Quốc hội."},
+{c:4,q:"Ai là Chủ tịch Hội đồng Nhà nước (1981–1987)?",o:["Trường Chinh","Võ Chí Công","Tôn Đức Thắng","Lê Duẩn"],a:0,e:"Trường Chinh làm Chủ tịch Hội đồng Nhà nước 1981–1987."},
+{c:4,q:"Việt Nam gia nhập Hội đồng Tương trợ Kinh tế (SEV/COMECON) năm nào?",o:["1978","1976","1977","1980"],a:0,e:"Tháng 6/1978, VN gia nhập SEV – hợp tác kinh tế với phe XHCN."},
+{c:4,q:"Hiệp ước hữu nghị và hợp tác Việt Nam – Liên Xô được ký năm nào?",o:["1978 (3/11/1978)","1976","1979","1985"],a:0,e:"Ngày 3/11/1978, Hiệp ước Việt – Xô được ký tại Mát-xcơ-va."},
+{c:4,q:"Quân Pôn Pốt đánh chiếm đảo Thổ Chu (Phú Quốc) năm nào, và ta giành lại khi nào?",o:["Chiếm 1975, ta giành lại ngay trong tháng 5/1975","Chiếm 1977, giành lại 1979","Chiếm 1979, giành lại 1989","Không có sự kiện này"],a:0,e:"Tháng 5/1975, Khmer Đỏ chiếm Thổ Chu, thảm sát dân; quân ta nhanh chóng giành lại đảo."},
+{c:4,q:"Mặt trận đoàn kết dân tộc cứu nước Campuchia được thành lập ngày nào?",o:["2/12/1978","7/1/1979","17/2/1979","23/9/1978"],a:0,e:"Ngày 2/12/1978 tại Snoul, Mặt trận cứu nước Campuchia ra đời, kêu gọi lật đổ Pôn Pốt."},
+{c:4,q:"Ngày 7/1/1979, Phnôm Pênh được giải phóng bởi lực lượng nào?",o:["Mặt trận cứu nước Campuchia cùng quân tình nguyện Việt Nam","Quân Liên hợp quốc","Quân Trung Quốc","Quân Thái Lan"],a:0,e:"Lực lượng yêu nước Campuchia và quân tình nguyện VN lật đổ chế độ diệt chủng."},
+{c:4,q:"Chế độ Pôn Pốt đã gây ra tội ác gì với nhân dân Campuchia?",o:["Diệt chủng, giết hại khoảng 2–3 triệu người","Phát triển kinh tế","Mở cửa đất nước","Hòa hợp dân tộc"],a:0,e:"Chế độ diệt chủng (1975–1979) – “Cánh đồng chết”, tòa án quốc tế sau này đã xét xử."},
+{c:4,q:"Chiến tranh biên giới phía Bắc (17/2/1979) nổ ra trên bao nhiêu tỉnh?",o:["6 tỉnh: Quảng Ninh, Lạng Sơn, Cao Bằng, Hà Tuyên, Hoàng Liên Sơn, Lai Châu","3 tỉnh","10 tỉnh","Cả nước"],a:0,e:"60 vạn quân Trung Quốc đồng loạt tấn công 6 tỉnh biên giới phía Bắc."},
+{c:4,q:"Thị xã nào bị tàn phá nặng nề, trở thành biểu tượng của chiến tranh biên giới 1979?",o:["Lạng Sơn (và Đồng Đăng)","Hà Nội","Hải Phòng","Huế"],a:0,e:"Thị xã Lạng Sơn bị tàn phá; quân dân các tỉnh biên giới chiến đấu anh dũng."},
+{c:4,q:"“Tiếng súng đã vang trên bầu trời biên giới” là câu hát trong bài hát nào?",o:["Chiến đấu vì độc lập tự do (Phạm Tuyên, 1979)","Tiến quân ca","Như có Bác Hồ trong ngày vui đại thắng","Hò kéo pháo"],a:0,e:"Bài hát cổ động bảo vệ biên giới phía Bắc đầu 1979."},
+{c:4,q:"Nghị quyết Trung ương 6 khóa IV (8/1979) được coi là gì?",o:["Bước đột phá đầu tiên về đổi mới tư duy kinh tế – “cho sản xuất bung ra”","Nghị quyết về quốc phòng","Nghị quyết về giáo dục","Nghị quyết giải tán hợp tác xã"],a:0,e:"NQ TW 6 (1979): cởi trói sản xuất, chấp nhận cơ cấu kinh tế nhiều thành phần."},
+{c:4,q:"Chỉ thị 100-CT/TW (13/1/1981) còn được gọi là gì?",o:["Khoán 100 – khoán sản phẩm đến nhóm và người lao động","Khoán 10","Đổi tiền","Cải cách giá"],a:0,e:"Khoán 100 thúc đẩy sản xuất nông nghiệp tăng vọt đầu thập kỷ 80."},
+{c:4,q:"Quyết định 25-CP (1/1981) cho phép xí nghiệp quốc doanh làm gì?",o:["Chủ động sản xuất ngoài kế hoạch (kế hoạch 3 phần)","Tự ý giải thể","Tăng giá tùy ý","Vay vốn nước ngoài tự do"],a:0,e:"“Kế hoạch 3 phần” – bước cởi trói cho công nghiệp quốc doanh."},
+{c:4,q:"Cuộc đổi tiền tháng 9/1985 quy đổi thế nào?",o:["10 đồng cũ ăn 1 đồng mới","1 đổi 1","100 đổi 1","Không đổi tiền"],a:0,e:"Đổi tiền 9/1985 kèm điều chỉnh giá–lương–tiền nhưng chưa thành công, lạm phát tăng."},
+{c:4,q:"Đại hội VI có bao nhiêu đại biểu tham dự?",o:["1.129 đại biểu, đại diện gần 1,9 triệu đảng viên","2.000 đại biểu","500 đại biểu","1.587 đại biểu"],a:0,e:"Đại hội VI: 1.129 đại biểu (15–18/12/1986)."},
+{c:4,q:"Báo cáo Chính trị tại Đại hội VI do ai trình bày?",o:["Trường Chinh (Tổng Bí thư)","Nguyễn Văn Linh","Lê Duẩn","Phạm Văn Đồng"],a:0,e:"TBT Trường Chinh trình bày Báo cáo Chính trị: nhìn thẳng vào sự thật..."},
+{c:4,q:"Đại hội VI khẳng định trước hết phải đổi mới gì?",o:["Đổi mới tư duy, trước hết là tư duy kinh tế","Đổi mới quân sự","Đổi mới văn học","Đổi mới thể thao"],a:0,e:"Đổi mới tư duy – đặc biệt tư duy kinh tế – là khâu đột phá."},
+{c:4,q:"Đại hội VI đúc kết mấy bài học kinh nghiệm lớn?",o:["4 bài học: lấy dân làm gốc; tôn trọng quy luật khách quan; kết hợp sức mạnh dân tộc – thời đại; xây dựng Đảng ngang tầm","2 bài học","6 bài học","Không đúc kết"],a:0,e:"Bốn bài học quý báu của Đại hội VI về lãnh đạo cách mạng."},
+{c:4,q:"Tổng Bí thư Nguyễn Văn Linh có tên thật là gì, quê ở đâu?",o:["Nguyễn Văn Cúc, quê Hưng Yên","Nguyễn Văn Trỗi, quê Quảng Nam","Nguyễn Đức Cảnh, quê Hải Phòng","Lê Hồng Phong, quê Nghệ An"],a:0,e:"TBT Nguyễn Văn Linh (1915–1998), tên thật Nguyễn Văn Cúc, quê Hưng Yên."},
+{c:4,q:"Nhiệm vụ bao trùm, mục tiêu tổng quát của chặng đường đầu (theo Đại hội VI) là gì?",o:["Ổn định mọi mặt tình hình kinh tế – xã hội, tiếp tục xây dựng tiền đề cần thiết","Hoàn thành CNH ngay","Trở thành nước phát triển","Gia nhập WTO"],a:0,e:"Ổn định – tạo tiền đề – chuyển sang chặng đường sau."},
+{c:4,q:"Đại hội VI chủ trương phát triển nền kinh tế thế nào?",o:["Kinh tế hàng hóa nhiều thành phần theo định hướng XHCN, vận động theo cơ chế thị trường có sự quản lý của Nhà nước","Chỉ kinh tế quốc doanh","Chỉ kinh tế tập thể","Kinh tế thị trường tự do hoàn toàn"],a:0,e:"Xóa bao cấp, phát triển kinh tế hàng hóa nhiều thành phần."},
+{c:4,q:"Về hệ thống chính trị, Đại hội VI chủ trương gì?",o:["Đổi mới tổ chức và phương thức hoạt động, phát huy dân chủ XHCN, hiệu lực quản lý của Nhà nước","Giữ nguyên mọi tổ chức","Đa đảng","Giải tán Mặt trận"],a:0,e:"Đổi mới hệ thống chính trị đồng bộ với đổi mới kinh tế."},
+{c:4,q:"Về văn hóa – xã hội, Đại hội VI đề ra mấy nhóm chính sách xã hội?",o:["4 nhóm chính sách xã hội trong chặng đường đầu","2 nhóm","6 nhóm","10 nhóm"],a:0,e:"Gắn tăng trưởng kinh tế với tiến bộ, công bằng xã hội (tr.263)."},
+{c:4,q:"Về quốc phòng – an ninh, Đại hội VI xác định nhiệm vụ gì?",o:["Kết hợp chặt chẽ kinh tế với quốc phòng; bảo vệ vững chắc Tổ quốc XHCN","Giải trừ quân bị","Chạy đua vũ trang","Chỉ phát triển kinh tế"],a:0,e:"Xây dựng nền quốc phòng toàn dân, an ninh nhân dân."},
+{c:4,q:"Ý nghĩa lịch sử của Đại hội VI là gì?",o:["Mở ra bước ngoặt vĩ đại: thời kỳ đổi mới toàn diện đất nước","Kết thúc kháng chiến","Thống nhất đất nước","Gia nhập LHQ"],a:0,e:"Đại hội VI – Đại hội đổi mới, mốc son trong lịch sử Đảng."}
+);
+
+</script>
+<script>
+/* === embedded js/data-c5.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:5,q:"Đại hội đại biểu toàn quốc lần thứ VII của Đảng họp khi nào?",o:["6/1991 (24–27/6)","12/1986","6/1996","4/2001"],a:0,e:"Đại hội VII họp 24–27/6/1991 tại Hà Nội."},
+{c:5,q:"Chủ đề của Đại hội VII là gì?",o:["“Trí tuệ – Đổi mới, Dân chủ – Kỷ cương – Đoàn kết”","“Đoàn kết – Đổi mới”","“Dân giàu, nước mạnh”","“CNH, HĐH”"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.277), chủ đề Đại hội VII là “Trí tuệ – Đổi mới...”"},
+{c:5,q:"Đại hội VII bầu ai làm Tổng Bí thư?",o:["Đỗ Mười","Nguyễn Văn Linh","Lê Khả Phiêu","Nông Đức Mạnh"],a:0,e:"Đại hội VII bầu Đỗ Mười làm Tổng Bí thư."},
+{c:5,q:"Văn kiện quan trọng nhất được Đại hội VII thông qua là gì?",o:["Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH (Cương lĩnh 1991)","Tuyên ngôn độc lập","Hiến pháp 1992","Luận cương chính trị"],a:0,e:"Cương lĩnh 1991 – ngọn cờ tư tưởng, kim chỉ nam của đổi mới."},
+{c:5,q:"Cương lĩnh 1991 xác định mô hình CNXH ở Việt Nam gồm mấy đặc trưng?",o:["6 đặc trưng","5 đặc trưng","8 đặc trưng","4 đặc trưng"],a:0,e:"Cương lĩnh 1991: 6 đặc trưng của XH XHCN mà nhân dân ta xây dựng."},
+{c:5,q:"Chiến lược ổn định và phát triển kinh tế – xã hội đến năm 2000 được thông qua tại Đại hội nào?",o:["Đại hội VII (1991)","Đại hội VI","Đại hội VIII","Đại hội IX"],a:0,e:"Đại hội VII thông qua Chiến lược đến năm 2000: ổn định và phát triển."},
+{c:5,q:"Mục tiêu tổng quát của Chiến lược đến năm 2000 là gì?",o:["Ra khỏi khủng hoảng, ổn định tình hình, tạo tiền đề chuyển sang thời kỳ mới","Hoàn thành CNH","Trở thành nước công nghiệp","Gia nhập WTO"],a:0,e:"Vượt qua khủng hoảng, ổn định, tạo tiền đề đẩy mạnh CNH–HĐH."},
+{c:5,q:"Hiến pháp 1992 được Quốc hội thông qua ngày nào?",o:["15/4/1992","18/12/1980","28/11/2013","9/11/1946"],a:0,e:"Ngày 15/4/1992, Quốc hội thông qua Hiến pháp 1992 (sửa đổi 2001, thay bằng HP 2013)."},
+{c:5,q:"Hiến pháp 1992 thể chế hóa nội dung của văn kiện Đảng nào?",o:["Cương lĩnh 1991 và đường lối đổi mới của Đại hội VI, VII","Luận cương 1930","Chính cương 1951","Tuyên ngôn 1945"],a:0,e:"Hiến pháp 1992 – Hiến pháp của thời kỳ đổi mới."},
+{c:5,q:"Hội nghị đại biểu toàn quốc giữa nhiệm kỳ khóa VII họp khi nào?",o:["1/1994","6/1993","2/1992","12/1991"],a:0,e:"Tháng 1/1994, Hội nghị giữa nhiệm kỳ khóa VII họp tại Hà Nội."},
+{c:5,q:"“Bốn nguy cơ” đối với cách mạng VN lần đầu được Đảng khẳng định tại hội nghị nào?",o:["Hội nghị đại biểu toàn quốc giữa nhiệm kỳ khóa VII (1/1994)","Đại hội VII","Đại hội VIII","Hội nghị TW 5 khóa VII"],a:0,e:"Theo Giáo trình (tr.283): tụt hậu kinh tế; chệch hướng XHCN; tham nhũng, quan liêu; diễn biến hòa bình."},
+{c:5,q:"Bốn nguy cơ KHÔNG bao gồm nguy cơ nào?",o:["Chiến tranh thế giới bùng nổ","Tụt hậu xa hơn về kinh tế","Chệch hướng XHCN","Tham nhũng, quan liêu; “diễn biến hòa bình”"],a:0,e:"Bốn nguy cơ (1/1994): tụt hậu KT; chệch hướng; tham nhũng; diễn biến hòa bình."},
+{c:5,q:"Mỹ tuyên bố dỡ bỏ cấm vận thương mại với Việt Nam năm nào?",o:["1994 (3/2/1994)","1995","1991","2000"],a:0,e:"Ngày 3/2/1994, Tổng thống Clin-tơn dỡ bỏ cấm vận thương mại với VN."},
+{c:5,q:"Việt Nam và Hoa Kỳ bình thường hóa quan hệ ngoại giao năm nào?",o:["1995 (11/7/1995)","1994","2000","2007"],a:0,e:"Ngày 11/7/1995, VN – Hoa Kỳ chính thức bình thường hóa quan hệ."},
+{c:5,q:"Việt Nam gia nhập ASEAN ngày nào, trở thành thành viên thứ mấy?",o:["28/7/1995, thành viên thứ 7","28/7/1995, thành viên thứ 10","20/9/1977, thứ 149","7/11/2006, thứ 150"],a:0,e:"Ngày 28/7/1995, VN gia nhập ASEAN – thành viên thứ 7."},
+{c:5,q:"Việt Nam tham gia ASEM (Diễn đàn Á – Âu) năm nào?",o:["1996","1995","1998","2000"],a:0,e:"Năm 1996, VN tham gia ASEM từ hội nghị đầu tiên."},
+{c:5,q:"Việt Nam gia nhập APEC năm nào?",o:["1998","1995","1996","2006"],a:0,e:"Năm 1998, VN trở thành thành viên APEC."},
+{c:5,q:"Hiệp định thương mại Việt – Mỹ (BTA) được ký năm nào?",o:["2000 (13/7/2000)","1995","1994","2007"],a:0,e:"Ngày 13/7/2000, Hiệp định thương mại Việt – Mỹ được ký."},
+{c:5,q:"Đại hội đại biểu toàn quốc lần thứ VIII họp khi nào?",o:["6–7/1996 (28/6 – 1/7)","6/1991","4/2001","4/2006"],a:0,e:"Đại hội VIII họp 28/6–1/7/1996."},
+{c:5,q:"Đại hội VIII xác định nhiệm vụ trọng tâm của thời kỳ mới là gì?",o:["Đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước","Ra khỏi khủng hoảng","Cải tạo XHCN","Đổi tiền"],a:0,e:"Đại hội VIII: chuyển sang thời kỳ đẩy mạnh CNH–HĐH."},
+{c:5,q:"“Bước ngoặt chuyển nước ta sang thời kỳ đẩy mạnh CNH–HĐH” được đánh dấu tại Đại hội nào?",o:["Đại hội VIII (6/1996)","Đại hội VII","Đại hội IX","Đại hội VI"],a:0,e:"Theo Giáo trình (tr.286), Đại hội VIII là bước ngoặt sang thời kỳ CNH–HĐH."},
+{c:5,q:"Đại hội VIII bầu ai làm Tổng Bí thư?",o:["Đỗ Mười (sau đó Lê Khả Phiêu từ 12/1997)","Lê Khả Phiêu ngay từ đầu","Nông Đức Mạnh","Nguyễn Văn Linh"],a:0,e:"Đỗ Mười tái cử; HN TW 4 khóa VIII (12/1997) bầu Lê Khả Phiêu."},
+{c:5,q:"Hội nghị TW 4 khóa VIII (12/1997) bầu ai làm Tổng Bí thư?",o:["Lê Khả Phiêu","Nông Đức Mạnh","Đỗ Mười","Trần Đức Lương"],a:0,e:"Tháng 12/1997, Lê Khả Phiêu được bầu làm TBT."},
+{c:5,q:"Mục tiêu đến năm 2020 theo Đại hội VIII là gì?",o:["Cơ bản trở thành nước công nghiệp","Hoàn thành CNXH","Trở thành nước phát triển","Gia nhập OECD"],a:0,e:"Phấn đấu đến 2020 cơ bản thành nước công nghiệp theo hướng hiện đại."},
+{c:5,q:"Tăng trưởng GDP bình quân giai đoạn 1991–1995 đạt bao nhiêu?",o:["Khoảng 8,2%/năm","Khoảng 4%/năm","Khoảng 12%/năm","Khoảng 2%/năm"],a:0,e:"1991–1995: GDP tăng bình quân 8,2% – thời kỳ tăng trưởng cao."},
+{c:5,q:"Lạm phát năm 1996 còn bao nhiêu?",o:["Khoảng 4,5% (một con số)","Khoảng 67%","Khoảng 300%","Khoảng 20%"],a:0,e:"Lạm phát được kiềm chế còn một con số từ giữa thập kỷ 90."},
+{c:5,q:"Thành tựu lớn nhất của thời kỳ 1986–1996 là gì?",o:["Đưa đất nước ra khỏi khủng hoảng kinh tế – xã hội","Hoàn thành CNH","Xóa hết đói nghèo","Trở thành nước phát triển"],a:0,e:"Đại hội VIII khẳng định: đất nước đã ra khỏi khủng hoảng."},
+{c:5,q:"Khủng hoảng tài chính châu Á bùng nổ năm nào, ảnh hưởng tới Việt Nam?",o:["1997–1998","1994","2001","2008"],a:0,e:"Khủng hoảng tài chính châu Á (1997) làm tăng trưởng VN chậm lại."},
+{c:5,q:"“Xóa đói giảm nghèo” giai đoạn 1993–2002 giúp tỷ lệ nghèo giảm từ bao nhiêu?",o:["Từ 58% xuống còn khoảng 29%","Từ 90% xuống 50%","Từ 30% xuống 5%","Từ 70% xuống 60%"],a:0,e:"Tỷ lệ nghèo giảm một nửa – thành tựu được thế giới ghi nhận."},
+{c:5,q:"Chương trình 135 là chương trình gì?",o:["Phát triển kinh tế – xã hội các xã đặc biệt khó khăn miền núi, vùng sâu","Xóa mù chữ","Phổ cập điện","Xây dựng nông thôn mới"],a:0,e:"Chương trình 135 (1998) hỗ trợ xã đặc biệt khó khăn."},
+{c:5,q:"Chương trình 134 về vấn đề gì?",o:["Hỗ trợ đất ở, đất sản xuất, nhà ở cho hộ đồng bào dân tộc thiểu số nghèo","Hỗ trợ ngư dân","Hỗ trợ sinh viên","Hỗ trợ doanh nghiệp"],a:0,e:"QĐ 134 (2004) hỗ trợ đất, nhà cho hộ DTTS nghèo."},
+{c:5,q:"Luật Doanh nghiệp đầu tiên (thống nhất) được ban hành năm nào?",o:["1999 (Luật Doanh nghiệp 1999)","1990","2005","2014"],a:0,e:"Luật DN 1999 (Luật Công ty và DN tư nhân 1990 trước đó) thúc đẩy kinh tế tư nhân."},
+{c:5,q:"Luật Công ty và Luật Doanh nghiệp tư nhân ra đời năm nào?",o:["1990","1987","1999","2005"],a:0,e:"Năm 1990 – hành lang pháp lý đầu tiên cho khu vực tư nhân."},
+{c:5,q:"Sàn giao dịch chứng khoán TP.HCM đi vào hoạt động năm nào?",o:["2000 (28/7/2000)","1996","2005","2007"],a:0,e:"Tháng 7/2000, TTCK Việt Nam chính thức vận hành."},
+{c:5,q:"Việt Nam đăng cai Hội nghị cấp cao ASEAN lần thứ 6 năm nào?",o:["1998 (Hà Nội)","1995","2000","2010"],a:0,e:"Tháng 12/1998, Hà Nội đăng cai ASEAN 6, thông qua Chương trình hành động Hà Nội."},
+{c:5,q:"“Chương trình hành động Hà Nội” được thông qua tại sự kiện nào?",o:["ASEAN 6 (1998) tại Hà Nội","APEC 2006","ASEM 2004","WTO 2006"],a:0,e:"ASEAN 6 (Hà Nội 1998) thông qua Chương trình hành động Hà Nội."},
+{c:5,q:"Nghị quyết TW 5 khóa VIII (1998) về vấn đề gì?",o:["Xây dựng và phát triển nền văn hóa VN tiên tiến, đậm đà bản sắc dân tộc","Kinh tế thị trường","Đối ngoại","CNH nông nghiệp"],a:0,e:"NQ TW 5 khóa VIII – cương lĩnh văn hóa của thời kỳ đổi mới."},
+{c:5,q:"Nghị quyết TW 2 khóa VIII (1996) về vấn đề gì?",o:["Định hướng chiến lược phát triển giáo dục – đào tạo và khoa học – công nghệ","Văn hóa","Y tế","Thể thao"],a:0,e:"NQ TW 2 khóa VIII: giáo dục là quốc sách hàng đầu; KHCN là then chốt."},
+{c:5,q:"“Giáo dục là quốc sách hàng đầu” được khẳng định trong nghị quyết nào?",o:["NQ TW 2 khóa VIII (1996)","NQ TW 5 khóa VIII","Đại hội VI","Cương lĩnh 1991"],a:0,e:"Giáo dục – đào tạo là quốc sách hàng đầu; KHCN là quốc sách then chốt."},
+{c:5,q:"“Khoa học và công nghệ là then chốt” được khẳng định cùng với giáo dục trong văn kiện nào?",o:["NQ TW 2 khóa VIII","NQ TW 5 khóa VIII","Đại hội IX","Đại hội X"],a:0,e:"KHCN giữ vai trò then chốt trong CNH–HĐH."},
+{c:5,q:"Cuộc vận động “Học tập và làm theo tấm gương đạo đức Hồ Chí Minh” phát động năm nào?",o:["2006 (sau Đại hội X)","1991","1996","2011"],a:0,e:"Bộ Chính trị phát động cuộc vận động năm 2006 (Chỉ thị 06)."},
+{c:5,q:"Chỉ thị 06-CT/TW (2006) về vấn đề gì?",o:["Tổ chức cuộc vận động Học tập và làm theo tấm gương đạo đức Hồ Chí Minh","Khoán 10","Phòng chống tham nhũng","Cải cách hành chính"],a:0,e:"Cuộc vận động lớn về tư tưởng, đạo đức từ 2006."},
+{c:5,q:"Đại hội IX của Đảng họp khi nào?",o:["4/2001 (19–22/4)","6/1996","4/2006","1/2011"],a:0,e:"Đại hội IX họp 19–22/4/2001."},
+{c:5,q:"Đại hội IX bầu ai làm Tổng Bí thư?",o:["Nông Đức Mạnh","Lê Khả Phiêu","Đỗ Mười","Nguyễn Phú Trọng"],a:0,e:"Đại hội IX bầu Nông Đức Mạnh làm TBT."},
+{c:5,q:"Chiến lược phát triển kinh tế – xã hội 2001–2010 được thông qua tại Đại hội nào?",o:["Đại hội IX","Đại hội VIII","Đại hội X","Đại hội VII"],a:0,e:"Đại hội IX: Chiến lược 2001–2010 – đẩy mạnh CNH–HĐH theo định hướng XHCN."},
+{c:5,q:"Mục tiêu chiến lược 2001–2010 là gì?",o:["Đưa đất nước ra khỏi tình trạng kém phát triển, nâng cao đời sống vật chất, văn hóa","Trở thành nước phát triển","Hoàn thành CNXH","Gia nhập G20"],a:0,e:"Ra khỏi tình trạng kém phát triển vào năm 2010."},
+{c:5,q:"“Nền kinh tế thị trường định hướng xã hội chủ nghĩa” được khẳng định rõ tại Đại hội nào?",o:["Đại hội IX (2001)","Đại hội VI","Đại hội VII","Đại hội IV"],a:0,e:"Đại hội IX khẳng định mô hình kinh tế thị trường định hướng XHCN."},
+{c:5,q:"Đại hội X của Đảng họp khi nào?",o:["4/2006 (18–25/4)","4/2001","1/2011","1/2016"],a:0,e:"Đại hội X họp 18–25/4/2006."},
+{c:5,q:"Chủ đề của Đại hội X là gì?",o:["“Nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng, phát huy sức mạnh toàn dân tộc, đẩy mạnh toàn diện công cuộc đổi mới, sớm đưa nước ta ra khỏi tình trạng kém phát triển”","“Trí tuệ – Đổi mới”","“Dân giàu, nước mạnh”","“Đoàn kết – Dân chủ”"],a:0,e:"Theo Giáo trình (tr.310), đây là chủ đề Đại hội X."},
+{c:5,q:"Đại hội X tiếp tục bầu ai làm Tổng Bí thư?",o:["Nông Đức Mạnh","Nguyễn Phú Trọng","Lê Khả Phiêu","Trương Tấn Sang"],a:0,e:"Nông Đức Mạnh tái cử TBT tại Đại hội X."},
+{c:5,q:"Việt Nam trở thành thành viên WTO khi nào?",o:["7/11/2006 kết nạp, chính thức 11/1/2007 – thành viên thứ 150","28/7/1995","1998","2000"],a:0,e:"VN là thành viên thứ 150 của WTO (hiệu lực 11/1/2007)."},
+{c:5,q:"Việt Nam là thành viên thứ mấy của WTO?",o:["Thứ 150","Thứ 149","Thứ 7","Thứ 193"],a:0,e:"Thành viên thứ 150 của Tổ chức Thương mại Thế giới."},
+{c:5,q:"APEC Việt Nam 2006 được tổ chức tại đâu?",o:["Hà Nội","TP. Hồ Chí Minh","Đà Nẵng","Hải Phòng"],a:0,e:"Tháng 11/2006, Hà Nội đăng cai APEC 14."},
+{c:5,q:"ASEM 5 (2004) được tổ chức tại đâu?",o:["Hà Nội","TP. Hồ Chí Minh","Huế","Đà Nẵng"],a:0,e:"Tháng 10/2004, Hà Nội đăng cai ASEM 5."},
+{c:5,q:"Tăng trưởng GDP năm 2007 (sau khi gia nhập WTO) đạt bao nhiêu?",o:["8,48%","6,5%","5,2%","10,8%"],a:0,e:"Năm 2007, GDP tăng 8,48% – mức cao của thời kỳ đổi mới."},
+{c:5,q:"Khủng hoảng tài chính toàn cầu 2008 ảnh hưởng tới Việt Nam thế nào?",o:["Tăng trưởng chậm lại, lạm phát cao (2008 ~23%), sau đó phục hồi","Không ảnh hưởng","Suy thoái nặng nề","Tăng trưởng âm"],a:0,e:"VN chịu tác động nhưng vẫn duy trì tăng trưởng dương, phục hồi nhanh."},
+{c:5,q:"Gói kích cầu năm 2009 của Chính phủ nhằm mục đích gì?",o:["Chống suy giảm kinh tế, bảo đảm an sinh sau khủng hoảng toàn cầu","Tăng lạm phát","Đóng cửa thị trường","Cắt giảm đầu tư"],a:0,e:"Gói hỗ trợ lãi suất, kích cầu giúp VN vượt khủng hoảng."},
+{c:5,q:"Đại lễ 1000 năm Thăng Long – Hà Nội tổ chức năm nào?",o:["2010","2000","2005","2015"],a:0,e:"Tháng 10/2010, cả nước kỷ niệm 1000 năm Thăng Long – Hà Nội."},
+{c:5,q:"ASEAN Việt Nam 2010 (Chủ tịch ASEAN) có dấu ấn gì?",o:["Năm Chủ tịch ASEAN, tổ chức thành công ASEAN 16, 17 và các hội nghị liên quan","Gia nhập ASEAN","Rút khỏi ASEAN","Đăng cai SEA Games"],a:0,e:"Năm 2010, VN làm Chủ tịch ASEAN, nâng cao vị thế khu vực."},
+{c:5,q:"Mục tiêu “cơ bản trở thành nước công nghiệp theo hướng hiện đại vào năm 2020” được đề ra từ Đại hội nào?",o:["Đại hội VIII và tiếp tục qua các đại hội sau","Mới từ Đại hội XIII","Đại hội IV","Đại hội VI"],a:0,e:"Mục tiêu CNH–HĐH đến 2020 xuyên suốt từ Đại hội VIII."}
+);
+QBANK.push(
+{c:5,q:"Nghị quyết 10-NQ/TW (Khoán 10) ngày 5/4/1988 có nội dung cốt lõi gì?",o:["Giao ruộng đất ổn định lâu dài cho hộ nông dân (khoán hộ), hộ là đơn vị kinh tế tự chủ","Thu hồi toàn bộ ruộng đất","Giải thể hợp tác xã ngay lập tức","Quốc hữu hóa ruộng đất"],a:0,e:"Khoán 10 giải phóng sức sản xuất, đưa VN thành nước xuất khẩu gạo."},
+{c:5,q:"Năm 1989, Việt Nam xuất khẩu bao nhiêu tấn gạo?",o:["Khoảng 1,5 triệu tấn – lần đầu xuất khẩu gạo","500 nghìn tấn","Không xuất khẩu","10 triệu tấn"],a:0,e:"1989: lần đầu VN xuất khẩu 1,5 triệu tấn gạo."},
+{c:5,q:"Luật Đất đai 1993 quy định hộ nông dân có mấy quyền?",o:["5 quyền: chuyển đổi, chuyển nhượng, cho thuê, thừa kế, thế chấp","3 quyền","7 quyền","Không có quyền nào"],a:0,e:"5 quyền sử dụng đất của hộ nông dân theo Luật Đất đai 1993."},
+{c:5,q:"Chủ trương “xóa bỏ ngăn sông cấm chợ” nhằm mục đích gì?",o:["Tạo thị trường thống nhất cả nước, lưu thông hàng hóa tự do","Chia cắt thị trường","Tăng trạm kiểm soát","Cấm buôn bán"],a:0,e:"Xóa ngăn sông cấm chợ, thống nhất thị trường – nội dung đổi mới thương mại."},
+{c:5,q:"Hệ thống ngân hàng hai cấp ở Việt Nam được hình thành năm nào?",o:["1990 (Pháp lệnh Ngân hàng: Ngân hàng Nhà nước và ngân hàng thương mại)","1986","2000","2007"],a:0,e:"1990: tách NHNN (quản lý) và NHTM (kinh doanh)."},
+{c:5,q:"Việt Nam nộp đơn xin gia nhập GATT/WTO năm nào?",o:["1995","1986","2006","2000"],a:0,e:"1995 nộp đơn; đàm phán 11 năm; gia nhập 2006."},
+{c:5,q:"Thí điểm cổ phần hóa doanh nghiệp nhà nước bắt đầu năm nào?",o:["1992 (Quyết định 202-CT)","1986","2000","2010"],a:0,e:"1992: thí điểm cổ phần hóa, mở đường sắp xếp DNNN."},
+{c:5,q:"Luật Doanh nghiệp 1999 có ý nghĩa gì?",o:["Bùng nổ thành lập doanh nghiệp tư nhân (hơn 14.000 DN năm đầu)","Hạn chế tư nhân","Quốc hữu hóa","Đóng cửa thị trường"],a:0,e:"Luật DN 1999 – “cởi trói” cho khu vực tư nhân phát triển."},
+{c:5,q:"Hiến pháp 1992 khôi phục chức danh nào thay Hội đồng Nhà nước?",o:["Chủ tịch nước","Tổng thống","Thủ tướng","Chủ tịch Quốc hội"],a:0,e:"Hiến pháp 1992: Chủ tịch nước là người đứng đầu Nhà nước."},
+{c:5,q:"Chủ tịch nước nhiệm kỳ 1992–1997 là ai?",o:["Lê Đức Anh","Trần Đức Lương","Nguyễn Minh Triết","Trương Tấn Sang"],a:0,e:"Đại tướng Lê Đức Anh làm Chủ tịch nước 1992–1997."},
+{c:5,q:"Thủ tướng Chính phủ nhiệm kỳ 1992–1997 là ai?",o:["Võ Văn Kiệt","Phan Văn Khải","Phạm Văn Đồng","Nguyễn Tấn Dũng"],a:0,e:"Võ Văn Kiệt – người chỉ đạo quyết liệt đổi mới kinh tế."},
+{c:5,q:"Hội nghị TW 7 khóa VII (7/1994) ra nghị quyết về vấn đề gì?",o:["Định hướng công nghiệp hóa, hiện đại hóa đất nước","Giáo dục tiểu học","Y tế","Thể thao"],a:0,e:"HN TW 7 khóa VII: CNH–HĐH gắn với phát triển kinh tế nhiều thành phần."},
+{c:5,q:"Đại hội VIII xác định CNH–HĐH là gì?",o:["Nhiệm vụ trung tâm trong suốt thời kỳ quá độ lên CNXH","Nhiệm vụ phụ","Chỉ cho nông thôn","Chỉ cho đô thị"],a:0,e:"Đẩy mạnh CNH–HĐH là nhiệm vụ trung tâm của thời kỳ quá độ."},
+{c:5,q:"“Việt Nam sẵn sàng là bạn và là đối tác tin cậy của tất cả các nước” được khẳng định tại Đại hội nào?",o:["Đại hội IX (2001)","Đại hội VI","Đại hội IV","Đại hội III"],a:0,e:"Chính sách đối ngoại rộng mở của Đại hội IX."},
+{c:5,q:"Tuyên bố về ứng xử của các bên ở Biển Đông (DOC) được ký năm nào?",o:["2002 (ASEAN – Trung Quốc, tại Phnôm Pênh)","1995","2012","2016"],a:0,e:"DOC 2002 – cam kết kiềm chế, giải quyết hòa bình tranh chấp Biển Đông."},
+{c:5,q:"Nghị quyết TW 5 khóa IX (2002) về phát triển thành phần kinh tế nào?",o:["Kinh tế tập thể và kinh tế tư nhân","Chỉ kinh tế nhà nước","Chỉ kinh tế FDI","Kinh tế hợp tác xã kiểu cũ"],a:0,e:"Tiếp tục đổi mới, phát triển kinh tế tập thể và khuyến khích kinh tế tư nhân."},
+{c:5,q:"Việt Nam trúng cử Ủy viên không thường trực HĐBA LHQ nhiệm kỳ 2008–2009 với bao nhiêu phiếu?",o:["183/190 phiếu (10/2007)","100 phiếu","150 phiếu","50 phiếu"],a:0,e:"Tháng 10/2007, VN trúng cử với số phiếu cao kỷ lục 183/190."},
+{c:5,q:"Hiến chương ASEAN được ký năm nào, hiệu lực khi nào?",o:["Ký 2007, hiệu lực 12/2008","Ký 1995","Ký 2015","Ký 2000"],a:0,e:"Hiến chương ASEAN (2007) – cơ sở pháp lý của Cộng đồng ASEAN."},
+{c:5,q:"Cộng đồng ASEAN chính thức được thành lập ngày nào?",o:["31/12/2015","28/7/1995","8/8/1967","1/1/2020"],a:0,e:"31/12/2015 – Cộng đồng ASEAN gồm 3 trụ cột: chính trị–an ninh, kinh tế, văn hóa–xã hội."},
+{c:5,q:"Việt Nam hoàn thành phổ cập giáo dục tiểu học năm nào?",o:["2000","1990","2010","1986"],a:0,e:"Năm 2000, VN hoàn thành phổ cập GD tiểu học đúng độ tuổi."},
+{c:5,q:"Luật Bảo hiểm y tế được ban hành năm nào?",o:["2008 (tiến tới BHYT toàn dân)","1992","2000","2015"],a:0,e:"Luật BHYT 2008 – nền tảng chăm sóc sức khỏe toàn dân."},
+{c:5,q:"Tăng trưởng GDP bình quân giai đoạn 2001–2005 đạt bao nhiêu?",o:["Khoảng 7,5%/năm","Khoảng 4%/năm","Khoảng 10%/năm","Khoảng 2%/năm"],a:0,e:"2001–2005: tăng trưởng cao, đời sống cải thiện rõ rệt."}
+);
+
+</script>
+<script>
+/* === embedded js/data-c6.js === */
+var QBANK = window.QBANK = window.QBANK || [];
+QBANK.push(
+{c:6,q:"Đại hội đại biểu toàn quốc lần thứ XI của Đảng họp khi nào?",o:["1/2011 (12–19/1)","4/2006","1/2016","1/2021"],a:0,e:"Đại hội XI họp 12–19/1/2011 tại Hà Nội."},
+{c:6,q:"Đại hội XI bầu ai làm Tổng Bí thư?",o:["Nguyễn Phú Trọng","Nông Đức Mạnh","Trương Tấn Sang","Nguyễn Tấn Dũng"],a:0,e:"Đại hội XI bầu Nguyễn Phú Trọng làm Tổng Bí thư."},
+{c:6,q:"Văn kiện trung tâm được Đại hội XI thông qua (bổ sung, phát triển Cương lĩnh 1991) là gì?",o:["Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH (bổ sung, phát triển năm 2011)","Tuyên ngôn độc lập","Hiến pháp 2013","Luận cương mới"],a:0,e:"Cương lĩnh 1991 (bổ sung, phát triển 2011) – “Cương lĩnh 2011”."},
+{c:6,q:"Cương lĩnh 2011 xác định mô hình CNXH ở Việt Nam có mấy đặc trưng?",o:["8 đặc trưng (phát triển từ 6 đặc trưng của Cương lĩnh 1991)","6 đặc trưng","5 đặc trưng","10 đặc trưng"],a:0,e:"Cương lĩnh 2011: 8 đặc trưng, 8 phương hướng xây dựng CNXH."},
+{c:6,q:"Chiến lược phát triển kinh tế – xã hội 2011–2020 được thông qua tại Đại hội nào?",o:["Đại hội XI","Đại hội X","Đại hội XII","Đại hội XIII"],a:0,e:"Đại hội XI thông qua Chiến lược 2011–2020."},
+{c:6,q:"Mục tiêu đến năm 2020 theo Chiến lược 2011–2020 là gì?",o:["Cơ bản trở thành nước công nghiệp theo hướng hiện đại","Trở thành nước phát triển","Hoàn thành CNXH","Gia nhập G20"],a:0,e:"Phấn đấu đến 2020 cơ bản thành nước công nghiệp theo hướng hiện đại."},
+{c:6,q:"Nghị quyết Trung ương 4 khóa XI (1/2012) về vấn đề gì?",o:["Xây dựng, chỉnh đốn Đảng; ngăn chặn suy thoái tư tưởng, đạo đức; chống tham nhũng","Phát triển kinh tế","Đối ngoại","Giáo dục"],a:0,e:"NQ TW 4 khóa XI – “Một số vấn đề cấp bách về xây dựng Đảng hiện nay”."},
+{c:6,q:"Hiến pháp 2013 được Quốc hội thông qua ngày nào?",o:["28/11/2013","15/4/1992","18/12/1980","27/11/2015"],a:0,e:"Ngày 28/11/2013, Quốc hội khóa XIII thông qua Hiến pháp 2013 (hiệu lực 1/1/2014)."},
+{c:6,q:"Hiến pháp 2013 là Hiến pháp thứ mấy của nước ta?",o:["Thứ năm (1946, 1959, 1980, 1992, 2013)","Thứ tư","Thứ sáu","Thứ ba"],a:0,e:"Hiến pháp 2013 – bản Hiến pháp thứ năm của Việt Nam."},
+{c:6,q:"Điều 4 Hiến pháp 2013 khẳng định vai trò gì của Đảng Cộng sản Việt Nam?",o:["Lực lượng lãnh đạo Nhà nước và xã hội","Tổ chức chính trị – xã hội","Đảng cầm quyền duy nhất không chịu giám sát","Tổ chức nghề nghiệp"],a:0,e:"Đảng là lực lượng lãnh đạo Nhà nước và xã hội; gắn bó mật thiết với nhân dân, chịu sự giám sát."},
+{c:6,q:"Sự kiện giàn khoan Hải Dương 981 của Trung Quốc hạ đặt trái phép ở Biển Đông năm nào?",o:["2014 (5–7/2014)","2016","2012","2019"],a:0,e:"Tháng 5/2014, TQ hạ đặt giàn khoan 981 trong vùng biển VN; VN đấu tranh kiên quyết, hòa bình."},
+{c:6,q:"Chủ trương của Đảng về bảo vệ chủ quyền biển, đảo là gì?",o:["Kiên quyết, kiên trì đấu tranh bằng biện pháp hòa bình, phù hợp luật pháp quốc tế","Dùng vũ lực ngay lập tức","Nhượng bộ để giữ hòa bình","Nhờ nước ngoài can thiệp quân sự"],a:0,e:"Kiên quyết bảo vệ chủ quyền bằng biện pháp hòa bình, theo UNCLOS 1982."},
+{c:6,q:"Công ước Liên hợp quốc về Luật Biển (UNCLOS) được ký năm nào?",o:["1982","1994","1979","2000"],a:0,e:"UNCLOS 1982 – cơ sở pháp lý quốc tế về biển; VN phê chuẩn 1994."},
+{c:6,q:"Đại hội đại biểu toàn quốc lần thứ XII họp khi nào?",o:["1/2016 (20–28/1)","1/2011","1/2021","1/2026"],a:0,e:"Đại hội XII họp 20–28/1/2016."},
+{c:6,q:"Chủ đề của Đại hội XII là gì?",o:["“Tăng cường xây dựng Đảng trong sạch, vững mạnh; phát huy sức mạnh toàn dân tộc, dân chủ XHCN; đẩy mạnh toàn diện, đồng bộ công cuộc đổi mới; bảo vệ vững chắc Tổ quốc, giữ vững môi trường hòa bình, ổn định; phấn đấu sớm đưa nước ta cơ bản trở thành nước công nghiệp theo hướng hiện đại”","“Trí tuệ – Đổi mới”","“Dân giàu, nước mạnh”","“Đoàn kết – Dân chủ – Kỷ cương”"],a:0,e:"Theo Giáo trình LSĐ (2021, tr.367), đây là chủ đề Đại hội XII."},
+{c:6,q:"Đại hội XII bầu ai làm Tổng Bí thư?",o:["Nguyễn Phú Trọng (tái cử)","Trần Đại Quang","Nguyễn Xuân Phúc","Nguyễn Thị Kim Ngân"],a:0,e:"Nguyễn Phú Trọng tái cử TBT tại Đại hội XII."},
+{c:6,q:"Nghị quyết Trung ương 4 khóa XII (10/2016) về vấn đề gì?",o:["Tăng cường xây dựng, chỉnh đốn Đảng; ngăn chặn “tự diễn biến”, “tự chuyển hóa”","Phát triển kinh tế tư nhân","Hội nhập quốc tế","Biến đổi khí hậu"],a:0,e:"NQ TW 4 khóa XII về xây dựng Đảng, nhận diện 27 biểu hiện suy thoái."},
+{c:6,q:"Nghị quyết TW 4 khóa XII chỉ ra bao nhiêu biểu hiện suy thoái?",o:["27 biểu hiện","10 biểu hiện","19 biểu hiện","40 biểu hiện"],a:0,e:"27 biểu hiện suy thoái tư tưởng chính trị, đạo đức, lối sống, “tự diễn biến”, “tự chuyển hóa”."},
+{c:6,q:"Chỉ thị 05-CT/TW (2016) của Bộ Chính trị về vấn đề gì?",o:["Đẩy mạnh học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh","Phòng chống tham nhũng","Cải cách hành chính","Xây dựng nông thôn mới"],a:0,e:"Chỉ thị 05 (5/2016) tiếp nối cuộc vận động học tập và làm theo Bác."},
+{c:6,q:"“Không có vùng cấm, không có ngoại lệ” là quyết tâm trong lĩnh vực nào?",o:["Phòng, chống tham nhũng, tiêu cực","Phát triển kinh tế","Đối ngoại","Giáo dục"],a:0,e:"Quyết tâm của TBT Nguyễn Phú Trọng và Ban Chỉ đạo TW về PCTN, tiêu cực."},
+{c:6,q:"Ban Chỉ đạo Trung ương về phòng, chống tham nhũng do ai làm Trưởng ban (từ 2013)?",o:["Tổng Bí thư Nguyễn Phú Trọng","Thủ tướng","Chủ tịch nước","Chủ tịch Quốc hội"],a:0,e:"Năm 2013, Ban Chỉ đạo TW về PCTN chuyển về trực thuộc Bộ Chính trị, TBT làm Trưởng ban."},
+{c:6,q:"“Đốt lò” là hình ảnh ví von của nhân dân về cuộc đấu tranh nào?",o:["Chống tham nhũng, tiêu cực do Tổng Bí thư Nguyễn Phú Trọng khởi xướng","Chống buôn lậu","Chống ma túy","Chống gian lận thi cử"],a:0,e:"“Lò đã nóng lên rồi...” – quyết tâm chống tham nhũng không ngừng nghỉ."},
+{c:6,q:"Hiệp định CPTPP (Đối tác Toàn diện và Tiến bộ xuyên Thái Bình Dương) có hiệu lực với Việt Nam từ khi nào?",o:["14/1/2019","2018","2020","2016"],a:0,e:"Quốc hội phê chuẩn 11/2018; CPTPP hiệu lực với VN từ 14/1/2019."},
+{c:6,q:"Hiệp định EVFTA (Việt Nam – EU) có hiệu lực từ khi nào?",o:["1/8/2020","2019","2021","2018"],a:0,e:"EVFTA ký 30/6/2019, hiệu lực 1/8/2020."},
+{c:6,q:"Hiệp định RCEP có hiệu lực với Việt Nam từ khi nào?",o:["1/1/2022","2020","2019","2021"],a:0,e:"RCEP (15 nước châu Á – Thái Bình Dương) hiệu lực 1/1/2022."},
+{c:6,q:"Việt Nam làm Ủy viên không thường trực Hội đồng Bảo an Liên hợp quốc nhiệm kỳ nào?",o:["2008–2009 và 2020–2021","Chỉ 2020–2021","2016–2017","2022–2023"],a:0,e:"VN hai lần trúng cử Ủy viên không thường trực HĐBA với số phiếu cao kỷ lục."},
+{c:6,q:"Năm 2020, Việt Nam đồng thời đảm nhiệm vai trò quốc tế nào?",o:["Chủ tịch ASEAN 2020 và Ủy viên không thường trực HĐBA LHQ","Chủ tịch APEC","Chủ tịch ASEM","Tổng thư ký LHQ"],a:0,e:"Năm 2020 – “năm kép”: Chủ tịch ASEAN và Ủy viên HĐBA."},
+{c:6,q:"Đại dịch COVID-19 bùng phát ở Việt Nam từ năm nào?",o:["2020 (ca đầu tiên 23/1/2020)","2019","2021","2022"],a:0,e:"Việt Nam chống dịch với tinh thần “chống dịch như chống giặc”."},
+{c:6,q:"Tinh thần chỉ đạo chống dịch COVID-19 của Đảng, Nhà nước là gì?",o:["“Chống dịch như chống giặc”","“Sống chung ngay từ đầu”","“Đóng cửa hoàn toàn”","“Mặc kệ dịch bệnh”"],a:0,e:"Cả hệ thống chính trị vào cuộc, bảo vệ sức khỏe nhân dân là trên hết."},
+{c:6,q:"Chiến lược vaccine COVID-19 của Việt Nam gồm những trụ cột nào?",o:["Quỹ vaccine + ngoại giao vaccine + tiêm chủng miễn phí toàn dân","Chỉ mua vaccine","Chỉ tự nghiên cứu","Không tiêm vaccine"],a:0,e:"Quỹ vaccine, ngoại giao vaccine, chiến dịch tiêm chủng lớn nhất lịch sử."},
+{c:6,q:"Đại hội đại biểu toàn quốc lần thứ XIII họp khi nào?",o:["1–2/2021 (25/1 – 1/2)","1/2016","1/2026","1/2011"],a:0,e:"Đại hội XIII họp 25/1–1/2/2021 với 1.587 đại biểu."},
+{c:6,q:"Đại hội XIII có bao nhiêu đại biểu tham dự?",o:["1.587 đại biểu","1.586 đại biểu","1.510 đại biểu","1.200 đại biểu"],a:0,e:"Đại hội XIII: 1.587 đại biểu đại diện hơn 5,1 triệu đảng viên."},
+{c:6,q:"Đại hội XIII bầu ai làm Tổng Bí thư?",o:["Nguyễn Phú Trọng (lần thứ ba)","Tô Lâm","Phạm Minh Chính","Vương Đình Huệ"],a:0,e:"Nguyễn Phú Trọng được bầu làm TBT khóa XIII (trường hợp đặc biệt)."},
+{c:6,q:"Chủ đề của Đại hội XIII là gì?",o:["“Tăng cường xây dựng, chỉnh đốn Đảng và hệ thống chính trị trong sạch, vững mạnh; khơi dậy khát vọng phát triển đất nước, phát huy ý chí, sức mạnh đại đoàn kết toàn dân tộc...; đến giữa thế kỷ XXI, phấn đấu đưa nước ta trở thành nước phát triển, theo định hướng XHCN”","“Trí tuệ – Đổi mới”","“Dân giàu, nước mạnh”","“CNH, HĐH”"],a:0,e:"Chủ đề Đại hội XIII – khát vọng phát triển đất nước phồn vinh, hạnh phúc."},
+{c:6,q:"Mục tiêu đến năm 2025 theo Đại hội XIII là gì?",o:["Là nước đang phát triển, có công nghiệp theo hướng hiện đại, vượt qua mức thu nhập trung bình thấp","Trở thành nước phát triển","Thu nhập cao","Hoàn thành CNXH"],a:0,e:"2025: vượt qua thu nhập trung bình thấp; 2030: thu nhập trung bình cao; 2045: thu nhập cao."},
+{c:6,q:"Mục tiêu đến năm 2030 (kỷ niệm 100 năm thành lập Đảng) là gì?",o:["Là nước đang phát triển, có công nghiệp hiện đại, thu nhập trung bình cao","Nước phát triển, thu nhập cao","Nước thu nhập thấp","Nước nông nghiệp"],a:0,e:"2030 – 100 năm Đảng: nước đang phát triển, công nghiệp hiện đại, thu nhập trung bình cao."},
+{c:6,q:"Mục tiêu đến năm 2045 (kỷ niệm 100 năm thành lập nước) là gì?",o:["Trở thành nước phát triển, thu nhập cao","Nước thu nhập trung bình","Nước đang phát triển","Nước nông nghiệp hiện đại"],a:0,e:"2045 – 100 năm nước: nước phát triển, thu nhập cao, theo định hướng XHCN."},
+{c:6,q:"“Khát vọng phát triển đất nước phồn vinh, hạnh phúc” được nêu tại Đại hội nào?",o:["Đại hội XIII","Đại hội XII","Đại hội XI","Đại hội X"],a:0,e:"Đại hội XIII khơi dậy khát vọng phát triển đất nước."},
+{c:6,q:"Chiến lược phát triển kinh tế – xã hội 2021–2030 được thông qua tại Đại hội nào?",o:["Đại hội XIII","Đại hội XII","Đại hội XI","Đại hội XIV"],a:0,e:"Đại hội XIII thông qua Chiến lược 2021–2030 và tầm nhìn đến 2045."},
+{c:6,q:"Tăng trưởng GDP bình quân giai đoạn 2016–2020 đạt bao nhiêu?",o:["Khoảng 6%/năm (thuộc nhóm cao trong khu vực)","Khoảng 8%/năm","Khoảng 3%/năm","Khoảng 10%/năm"],a:0,e:"Dù có COVID-19, VN vẫn tăng trưởng dương, thuộc nhóm cao nhất thế giới 2020."},
+{c:6,q:"Năm 2020, tăng trưởng GDP của Việt Nam đạt bao nhiêu?",o:["2,91% (thuộc nhóm cao nhất thế giới)","0,5%","Âm 3%","7,02%"],a:0,e:"2020: GDP tăng 2,91% – điểm sáng giữa suy thoái toàn cầu."},
+{c:6,q:"Năm 2022, tăng trưởng GDP của Việt Nam đạt bao nhiêu?",o:["8,02%","6,5%","2,58%","5,03%"],a:0,e:"Năm 2022, GDP tăng 8,02% – mức cao nhất nhiều năm."},
+{c:6,q:"Quy mô GDP Việt Nam năm 2023 đạt khoảng bao nhiêu?",o:["Khoảng 430 tỷ USD","Khoảng 100 tỷ USD","Khoảng 1.000 tỷ USD","Khoảng 200 tỷ USD"],a:0,e:"GDP 2023 ~430 tỷ USD; GDP bình quân đầu người ~4.300 USD."},
+{c:6,q:"Chương trình xây dựng nông thôn mới được phát động từ năm nào?",o:["2010","2006","2016","2020"],a:0,e:"Chương trình MTQG nông thôn mới (2010–2020) và giai đoạn 2021–2025."},
+{c:6,q:"Đến 2023, tỷ lệ xã đạt chuẩn nông thôn mới khoảng bao nhiêu?",o:["Khoảng 78%","Khoảng 20%","Khoảng 40%","Khoảng 100%"],a:0,e:"Nông thôn mới làm thay đổi diện mạo nông thôn, nâng thu nhập nông dân."},
+{c:6,q:"Chương trình chuyển đổi số quốc gia được phê duyệt năm nào?",o:["2020 (QĐ 749)","2018","2022","2016"],a:0,e:"Tháng 6/2020, Thủ tướng phê duyệt Chương trình chuyển đổi số quốc gia đến 2025, tầm nhìn 2030."},
+{c:6,q:"Đề án 06 (phát triển dữ liệu dân cư, định danh điện tử) được phê duyệt khi nào?",o:["6/1/2022","2020","2021","2023"],a:0,e:"Đề án 06 (QĐ 06/QĐ-TTg): định danh, xác thực điện tử, VNeID."},
+{c:6,q:"Ứng dụng định danh điện tử quốc gia của Việt Nam là gì?",o:["VNeID","VssID","Bluezone","PC-COVID"],a:0,e:"VNeID – định danh điện tử mức 1, mức 2 thay thế giấy tờ truyền thống."},
+{c:6,q:"Tổng Bí thư Nguyễn Phú Trọng từ trần ngày nào?",o:["19/7/2024","3/8/2024","10/7/1986","2/9/1969"],a:0,e:"TBT Nguyễn Phú Trọng từ trần ngày 19/7/2024, hưởng thọ 80 tuổi."},
+{c:6,q:"Đồng chí Tô Lâm được bầu làm Tổng Bí thư khóa XIII ngày nào?",o:["3/8/2024","22/5/2024","19/7/2024","21/10/2024"],a:0,e:"Sáng 3/8/2024, BCH TW khóa XIII bầu Chủ tịch nước Tô Lâm làm Tổng Bí thư."},
+{c:6,q:"Đồng chí Tô Lâm được Quốc hội bầu làm Chủ tịch nước khi nào?",o:["22/5/2024","3/8/2024","21/10/2024","2/4/2021"],a:0,e:"Ngày 22/5/2024, Quốc hội bầu Đại tướng Tô Lâm làm Chủ tịch nước."},
+{c:6,q:"Đồng chí Lương Cường được bầu làm Chủ tịch nước khi nào?",o:["21/10/2024","22/5/2024","3/8/2024","2/4/2021"],a:0,e:"Ngày 21/10/2024, Đại tướng Lương Cường được bầu làm Chủ tịch nước."},
+{c:6,q:"Thủ tướng Chính phủ nhiệm kỳ 2021–2026 là ai?",o:["Phạm Minh Chính","Nguyễn Xuân Phúc","Nguyễn Tấn Dũng","Trần Hồng Hà"],a:0,e:"Phạm Minh Chính được bầu làm Thủ tướng từ 5/4/2021."},
+{c:6,q:"Chủ tịch Quốc hội khóa XV (từ tháng 5/2024) là ai?",o:["Trần Thanh Mẫn","Vương Đình Huệ","Nguyễn Thị Kim Ngân","Nguyễn Khắc Định"],a:0,e:"Ngày 20/5/2024, Trần Thanh Mẫn được bầu làm Chủ tịch Quốc hội."},
+{c:6,q:"Nghị quyết 18-NQ/TW (2017) về vấn đề gì?",o:["Tinh gọn tổ chức bộ máy, nâng cao hiệu lực, hiệu quả","Phát triển kinh tế","Đối ngoại","Giáo dục"],a:0,e:"NQ 18 (khóa XII): tiếp tục đổi mới, sắp xếp tổ chức bộ máy tinh gọn."},
+{c:6,q:"Cuộc cách mạng tinh gọn bộ máy, sáp nhập tỉnh thành 2025 thực hiện theo tinh thần nghị quyết nào?",o:["Nghị quyết 18-NQ/TW và Kết luận của Bộ Chính trị khóa XIII","Nghị quyết 10","Nghị quyết 13","Chỉ thị 05"],a:0,e:"Tinh thần NQ 18: bộ máy tinh gọn, hoạt động hiệu lực, hiệu quả."},
+{c:6,q:"Từ ngày 12/6/2025 (vận hành từ 1/7/2025), cả nước còn bao nhiêu tỉnh, thành phố?",o:["34 tỉnh, thành phố (28 tỉnh và 6 thành phố trực thuộc TW)","63 tỉnh, thành phố","40 tỉnh, thành phố","16 tỉnh, thành phố"],a:0,e:"Từ 63 còn 34 tỉnh, thành; kết thúc cấp huyện; còn 3.321 xã, phường."},
+{c:6,q:"Từ 1/7/2025, mô hình chính quyền địa phương của Việt Nam gồm mấy cấp?",o:["2 cấp: tỉnh/thành phố và xã/phường (kết thúc cấp huyện)","3 cấp như cũ","1 cấp","4 cấp"],a:0,e:"Chính quyền địa phương 2 cấp chính thức vận hành từ 1/7/2025."},
+{c:6,q:"6 thành phố trực thuộc Trung ương sau sắp xếp 2025 gồm những thành phố nào?",o:["Hà Nội, Hải Phòng, Huế, Đà Nẵng, Cần Thơ, TP. Hồ Chí Minh","Hà Nội, Hải Phòng, Đà Nẵng, Cần Thơ, TP.HCM, Vinh","Hà Nội, TP.HCM và 4 thành phố mới","Chỉ Hà Nội và TP.HCM"],a:0,e:"6 thành phố TW: Hà Nội, Hải Phòng, Huế (từ 1/1/2025), Đà Nẵng, Cần Thơ, TP.HCM."},
+{c:6,q:"Thành phố Huế trở thành thành phố trực thuộc Trung ương từ khi nào?",o:["1/1/2025","2020","2024","2026"],a:0,e:"Từ 1/1/2025, Thừa Thiên Huế trở thành TP. Huế trực thuộc TW."},
+{c:6,q:"Đại hội đại biểu toàn quốc lần thứ XIV của Đảng họp khi nào?",o:["19–23/1/2026","1/2021","1/2016","1/2031"],a:0,e:"Đại hội XIV họp 19–23/1/2026 tại Hà Nội với 1.586 đại biểu."},
+{c:6,q:"Đại hội XIV có bao nhiêu đại biểu tham dự?",o:["1.586 đại biểu","1.587 đại biểu","1.510 đại biểu","2.000 đại biểu"],a:0,e:"1.586 đại biểu dự Đại hội XIV (19–23/1/2026)."},
+{c:6,q:"Đại hội XIV bầu ai làm Tổng Bí thư khóa XIV?",o:["Tô Lâm (tái cử, bầu sáng 23/1/2026)","Lương Cường","Phạm Minh Chính","Trần Cẩm Tú"],a:0,e:"Sáng 23/1/2026, Hội nghị TW lần thứ nhất khóa XIV bầu TBT Tô Lâm tiếp tục làm TBT khóa XIV."},
+{c:6,q:"Bộ Chính trị khóa XIV có bao nhiêu đồng chí?",o:["19 đồng chí","18 đồng chí","16 đồng chí","21 đồng chí"],a:0,e:"Bộ Chính trị khóa XIV gồm 19 đồng chí (10 tái cử, 9 tham gia lần đầu)."},
+{c:6,q:"Đại hội XIV đánh giá 40 năm đổi mới (1986–2026) đạt thành tựu gì?",o:["To lớn, có ý nghĩa lịch sử; VN thành nước đang phát triển thu nhập trung bình, vị thế quốc tế nâng cao","Chưa có thành tựu","Mới thoát nghèo","Suy thoái"],a:0,e:"40 năm đổi mới: thành tựu to lớn, có ý nghĩa lịch sử; đời sống nhân dân cải thiện rõ rệt."},
+{c:6,q:"“Kỷ nguyên mới – kỷ nguyên vươn mình của dân tộc” là định hướng được nhấn mạnh từ khi nào?",o:["Từ Đại hội XIV và chỉ đạo của TBT Tô Lâm (2024–2026)","Từ Đại hội VI","Từ Đại hội X","Từ 1976"],a:0,e:"TBT Tô Lâm nhấn mạnh đưa đất nước bước vào kỷ nguyên mới, vươn mình phát triển."},
+{c:6,q:"Mục tiêu 100 năm thành lập Đảng (2030) được Đại hội XIV tiếp tục khẳng định là gì?",o:["Nước đang phát triển, công nghiệp hiện đại, thu nhập trung bình cao","Nước phát triển","Nước thu nhập thấp","Nước nông nghiệp"],a:0,e:"Kiên định mục tiêu 2030 và tầm nhìn 2045 theo định hướng XHCN."},
+{c:6,q:"Chủ trương phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số được Đại hội XIV xác định là gì?",o:["Đột phá chiến lược hàng đầu, động lực chính của phát triển nhanh, bền vững","Nhiệm vụ phụ","Không quan trọng","Chỉ cho doanh nghiệp"],a:0,e:"KHCN, ĐMST và CĐS là đột phá chiến lược, “chìa khóa” phát triển."},
+{c:6,q:"Nghị quyết 57-NQ/TW (12/2024) của Bộ Chính trị về vấn đề gì?",o:["Đột phá phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số quốc gia","Sáp nhập tỉnh","Phòng chống tham nhũng","Giáo dục"],a:0,e:"NQ 57 (22/12/2024) – đột phá KHCN, ĐMST, chuyển đổi số."},
+{c:6,q:"Nghị quyết 59-NQ/TW (2025) của Bộ Chính trị về vấn đề gì?",o:["Hội nhập quốc tế trong tình hình mới","Kinh tế tư nhân","Giáo dục","Y tế"],a:0,e:"NQ 59 (1/2025) về hội nhập quốc tế sâu rộng, toàn diện."},
+{c:6,q:"Nghị quyết 68-NQ/TW (2025) của Bộ Chính trị về vấn đề gì?",o:["Phát triển kinh tế tư nhân thành động lực quan trọng nhất của nền kinh tế","Kinh tế nhà nước","Kinh tế tập thể","Kinh tế có vốn đầu tư nước ngoài"],a:0,e:"NQ 68 (5/2025): kinh tế tư nhân là một động lực quan trọng nhất."},
+{c:6,q:"Theo NQ 68, kinh tế tư nhân được xác định là gì?",o:["Một động lực quan trọng nhất của nền kinh tế quốc gia","Thành phần phụ","Cần xóa bỏ dần","Chỉ bổ trợ"],a:0,e:"Xóa bỏ định kiến, phát triển mạnh đội ngũ doanh nhân, doanh nghiệp tư nhân."},
+{c:6,q:"Nghị quyết của Bộ Chính trị về phát triển giáo dục – đào tạo (2025) nhấn mạnh điều gì?",o:["Đột phá phát triển nguồn nhân lực chất lượng cao, đổi mới căn bản giáo dục","Giữ nguyên hiện trạng","Giảm đầu tư","Tư nhân hóa hoàn toàn"],a:0,e:"Giáo dục là quốc sách hàng đầu; nhân lực chất lượng cao cho kỷ nguyên mới."},
+{c:6,q:"Tuyên bố nâng cấp quan hệ Việt – Mỹ lên Đối tác chiến lược toàn diện khi nào?",o:["10/9/2023 (chuyến thăm của Tổng thống Biden)","2013","2016","2025"],a:0,e:"Ngày 10/9/2023, VN – Hoa Kỳ nâng cấp lên Đối tác chiến lược toàn diện."},
+{c:6,q:"Việt Nam và Trung Quốc nâng tầm quan hệ “Cộng đồng chia sẻ tương lai” khi nào?",o:["12/2023 (chuyến thăm của TBT, Chủ tịch TQ Tập Cận Bình)","2024","2022","2015"],a:0,e:"Tháng 12/2023, hai nước nhất trí xây dựng Cộng đồng chia sẻ tương lai."},
+{c:6,q:"Tính đến 2024–2025, Việt Nam có quan hệ Đối tác chiến lược toàn diện với bao nhiêu nước?",o:["13 nước (và tiếp tục mở rộng)","5 nước","3 nước","20 nước"],a:0,e:"Mạng lưới đối tác chiến lược toàn diện không ngừng mở rộng (Trung Quốc, Nga, Ấn Độ, Hàn Quốc, Mỹ, Nhật, Úc, Pháp, Malaysia...)."},
+{c:6,q:"Chính sách đối ngoại của Việt Nam hiện nay là gì?",o:["Độc lập, tự chủ, đa phương hóa, đa dạng hóa; là bạn, đối tác tin cậy của cộng đồng quốc tế","Liên minh quân sự","Trung lập thụ động","Đối đầu"],a:0,e:"Độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển."},
+{c:6,q:"“Bốn không” trong chính sách quốc phòng Việt Nam là gì?",o:["Không tham gia liên minh quân sự; không liên kết chống nước thứ ba; không cho đặt căn cứ quân sự; không dùng vũ lực hay đe dọa dùng vũ lực","Không có quân đội","Không mua vũ khí","Không hợp tác quốc phòng"],a:0,e:"Sách trắng Quốc phòng 2019: chính sách quốc phòng “bốn không”."},
+{c:6,q:"Sách trắng Quốc phòng Việt Nam 2019 khẳng định chính sách quốc phòng thế nào?",o:["Hòa bình và tự vệ; “bốn không”","Tấn công phủ đầu","Liên minh quân sự","Chạy đua vũ trang"],a:0,e:"Quốc phòng hòa bình, tự vệ, bảo vệ Tổ quốc từ sớm, từ xa."},
+{c:6,q:"Luật Đất đai (sửa đổi) được Quốc hội thông qua năm nào?",o:["2024 (hiệu lực 1/8/2024)","2023","2013","2020"],a:0,e:"Luật Đất đai 2024 – tháo gỡ điểm nghẽn, khơi thông nguồn lực đất đai."},
+{c:6,q:"Cao tốc Bắc – Nam phía Đông giai đoạn 2021–2025 đặt mục tiêu hoàn thành khi nào?",o:["Cơ bản hoàn thành năm 2025–2026","2030","2020","2045"],a:0,e:"Phấn đấu đến 2025 có khoảng 3.000km cao tốc; đến 2030 có 5.000km."},
+{c:6,q:"Mục tiêu mạng lưới đường bộ cao tốc đến năm 2030 là bao nhiêu km?",o:["Khoảng 5.000 km","Khoảng 3.000 km","Khoảng 1.000 km","Khoảng 10.000 km"],a:0,e:"Quy hoạch đến 2030: khoảng 5.000km cao tốc."},
+{c:6,q:"Dự án đường sắt tốc độ cao Bắc – Nam được Quốc hội thông qua chủ trương năm nào?",o:["2024","2020","2026","2010 (chưa thông qua khi đó)"],a:0,e:"Tháng 11/2024, Quốc hội thông qua chủ trương đầu tư đường sắt tốc độ cao Bắc – Nam."},
+{c:6,q:"Tốc độ thiết kế của đường sắt tốc độ cao Bắc – Nam là bao nhiêu?",o:["350 km/h","200 km/h","160 km/h","500 km/h"],a:0,e:"Tuyến đường sắt tốc độ cao 350km/h, phấn đấu hoàn thành 2035."},
+{c:6,q:"Nhà máy điện hạt nhân Ninh Thuận được tái khởi động chủ trương năm nào?",o:["2024–2025","2016 (tạm dừng khi đó)","2020","2010"],a:0,e:"Năm 2016 tạm dừng; cuối 2024, TW thống nhất tái khởi động điện hạt nhân."},
+{c:6,q:"Cam kết Net Zero (phát thải ròng bằng 0) của Việt Nam vào năm nào, tuyên bố tại đâu?",o:["2050, tại COP26 (2021)","2030, tại COP21","2060, tại G20","2045, tại APEC"],a:0,e:"Thủ tướng Phạm Minh Chính cam kết Net Zero 2050 tại COP26 (Glasgow, 11/2021)."},
+{c:6,q:"SEA Games 31 do Việt Nam đăng cai tổ chức năm nào?",o:["2022 (tháng 5/2022 tại Hà Nội)","2019","2023","2021"],a:0,e:"SEA Games 31 (5/2022): VN nhất toàn đoàn với 205 HCV."},
+{c:6,q:"Đội tuyển bóng đá nữ Việt Nam lần đầu dự World Cup năm nào?",o:["2023 (World Cup nữ tại Úc – New Zealand)","2019","2027","2015"],a:0,e:"Năm 2023, bóng đá nữ VN lần đầu góp mặt ở World Cup."},
+{c:6,q:"“Dân giàu, nước mạnh, dân chủ, công bằng, văn minh” là mục tiêu của ai?",o:["Của cách mạng Việt Nam dưới sự lãnh đạo của Đảng (Cương lĩnh 1991, bổ sung 2011)","Chỉ của Chính phủ","Chỉ của Mặt trận","Của ASEAN"],a:0,e:"Mục tiêu xuyên suốt: dân giàu, nước mạnh, dân chủ, công bằng, văn minh."},
+{c:6,q:"Hệ giá trị quốc gia thời kỳ mới theo Đại hội XIII là gì?",o:["Hòa bình, thống nhất, độc lập, dân giàu, nước mạnh, dân chủ, công bằng, văn minh, hạnh phúc","Chỉ giàu mạnh","Chỉ độc lập","Chỉ hạnh phúc"],a:0,e:"Hệ giá trị: hòa bình, thống nhất, độc lập, dân giàu, nước mạnh, dân chủ, công bằng, văn minh, hạnh phúc."}
+);
+
+</script>
+<script>
+/* === embedded js/app.js === */
+/* Ôn Thi Lịch Sử Đảng — App logic */
+(function(){
+"use strict";
+
+const CHAPTERS = [
+  {id:1, num:"CHƯƠNG 1", title:"Đảng ra đời & lãnh đạo giành chính quyền", desc:"1858–1945: Bối cảnh, Nguyễn Ái Quốc, Hội nghị thành lập Đảng, các cao trào cách mạng và Cách mạng tháng Tám."},
+  {id:2, num:"CHƯƠNG 2", title:"Kháng chiến chống thực dân Pháp", desc:"1945–1954: Xây dựng chính quyền, toàn quốc kháng chiến, Đại hội II và chiến thắng Điện Biên Phủ."},
+  {id:3, num:"CHƯƠNG 3", title:"Kháng chiến chống Mỹ, thống nhất đất nước", desc:"1954–1975: Đồng khởi, Đại hội III, Mậu Thân 1968, Paris 1973 và Đại thắng mùa Xuân 1975."},
+  {id:4, num:"CHƯƠNG 4", title:"Xây dựng CNXH & mở đầu đổi mới", desc:"1975–1986: Thống nhất đất nước, Đại hội IV–V, khủng hoảng và Đại hội VI đổi mới."},
+  {id:5, num:"CHƯƠNG 5", title:"Đổi mới toàn diện & CNH–HĐH", desc:"1986–2006: Đại hội VII–X, Cương lĩnh 1991, ra khỏi khủng hoảng, gia nhập WTO."},
+  {id:6, num:"CHƯƠNG 6", title:"Tiếp tục đổi mới & hội nhập sâu", desc:"2006–nay: Đại hội XI–XIV, xây dựng Đảng, chống tham nhũng, chuyển đổi số, kỷ nguyên mới."}
+];
+const LETTERS = ["A","B","C","D"];
+const LS_KEY = "lsd_progress_v1";
+
+/* ---------- Data ---------- */
+const QBANK = (window.QBANK||[]).map((q,i)=>({id:i, c:q.c, q:q.q, o:q.o, a:q.a, e:q.e||""}));
+const byChapter = id => QBANK.filter(q=>q.c===id);
+
+/* ---------- Store ---------- */
+let store = {answered:{}, wrong:[], marked:[], best:{}, endlessBest:0, streak:0, lastDay:"", history:[]};
+try{ const s = JSON.parse(localStorage.getItem(LS_KEY)); if(s) store = Object.assign(store, s); }catch(e){}
+function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(store)); }catch(e){} }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function touchStreak(){
+  const t = todayStr();
+  if(store.lastDay === t) return;
+  const y = new Date(Date.now()-864e5).toISOString().slice(0,10);
+  store.streak = (store.lastDay === y) ? (store.streak||0)+1 : 1;
+  store.lastDay = t; save();
+  const el = document.getElementById("streakNum"); if(el) el.textContent = store.streak;
+}
+
+/* ---------- Helpers ---------- */
+const $ = id => document.getElementById(id);
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function pickRandom(arr,n){ return shuffle(arr).slice(0,Math.min(n,arr.length)); }
+function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2200); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function chName(id){ const c=CHAPTERS.find(c=>c.id===id); return c?c.num:""; }
+function recordAnswer(q, right){
+  touchStreak();
+  const r = store.answered[q.id]||{t:0,r:0}; r.t++; if(right) r.r++; store.answered[q.id]=r;
+  const wi = store.wrong.indexOf(q.id);
+  if(!right && wi<0) store.wrong.push(q.id);
+  if(right && wi>=0 && r.r>=2) store.wrong.splice(wi,1); // trả lời đúng 2 lần thì xóa khỏi danh sách sai
+  save();
+}
+function fmtTime(s){ s=Math.max(0,s); const m=Math.floor(s/60), ss=s%60; return m+":"+String(ss).padStart(2,"0"); }
+
+/* ---------- Router ---------- */
+function navTo(name){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  $("view-"+name).classList.add("active");
+  document.querySelectorAll("[data-nav]").forEach(b=>{
+    if(b.classList.contains("navbtn")) b.classList.toggle("active", b.dataset.nav===name);
+  });
+  $("mobileNav").classList.remove("open");
+  if(name==="home") renderHome();
+  if(name==="review") renderReview();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+document.querySelectorAll("[data-nav]").forEach(b=>b.addEventListener("click",e=>{e.preventDefault();navTo(b.dataset.nav);}));
+$("menuBtn").addEventListener("click",()=>$("mobileNav").classList.toggle("open"));
+
+/* ---------- Theme ---------- */
+const themeBtn = $("themeBtn");
+function applyTheme(d){ document.body.classList.toggle("dark",d); themeBtn.textContent=d?"☀️":"🌙"; try{localStorage.setItem("lsd_theme",d?"d":"l");}catch(e){} }
+applyTheme((function(){try{return localStorage.getItem("lsd_theme")==="d";}catch(e){return false;}})());
+themeBtn.addEventListener("click",()=>applyTheme(!document.body.classList.contains("dark")));
+
+/* ---------- Home ---------- */
+function stats(){
+  const ids = Object.keys(store.answered);
+  let t=0,r=0; ids.forEach(k=>{t+=store.answered[k].t; r+=store.answered[k].r;});
+  return {done:ids.length, total:t, right:r, acc: t?Math.round(r/t*100):0};
+}
+function renderHome(){
+  const s = stats();
+  $("heroStats").innerHTML =
+    `<div class="hstat"><b>${QBANK.length}</b><span>câu hỏi</span></div>`+
+    `<div class="hstat"><b>${CHAPTERS.length}</b><span>chương</span></div>`+
+    `<div class="hstat"><b>${s.done}</b><span>đã làm</span></div>`+
+    `<div class="hstat"><b>${s.acc}%</b><span>đúng</span></div>`;
+  $("streakNum").textContent = store.streak||0;
+  $("chapterTotal").textContent = `• ${QBANK.length} câu`;
+  $("chapterGrid").innerHTML = CHAPTERS.map(c=>{
+    const list = byChapter(c.id);
+    const done = list.filter(q=>store.answered[q.id]).length;
+    const pct = list.length?Math.round(done/list.length*100):0;
+    return `<div class="chapter" data-ch="${c.id}">
+      <span class="ch-num">${c.num}</span><h4>${esc(c.title)}</h4><p>${esc(c.desc)}</p>
+      <div class="ch-meta"><span class="ch-count">${list.length} câu hỏi</span><span class="ch-done">Đã làm ${done}/${list.length}</span></div>
+      <div class="mini-bar"><i style="width:${pct}%"></i></div></div>`;
+  }).join("");
+  document.querySelectorAll(".chapter").forEach(el=>el.addEventListener("click",()=>{
+    navTo("practice"); $("practiceScope").value = el.dataset.ch;
+  }));
+  const acc = s.total?Math.round(s.right/s.total*100):0;
+  $("progressBox").innerHTML =
+    `<div class="result-grid">
+      <div class="result-cell"><b>${s.done}</b><span>câu đã làm</span></div>
+      <div class="result-cell"><b>${s.total}</b><span>lượt trả lời</span></div>
+      <div class="result-cell"><b>${acc}%</b><span>tỷ lệ đúng</span></div>
+      <div class="result-cell"><b>${store.wrong.length}</b><span>câu cần ôn lại</span></div>
+    </div>`;
+  const keys = Object.keys(store.best);
+  $("bestBox").innerHTML = keys.length
+    ? keys.map(k=>`<div class="tag">🏆 Đề ${k} câu: <strong>${store.best[k]}</strong> điểm</div>`).join("")
+    : `<div class="muted">Chưa có bài thi nào. Hãy vào Thi thử để lập kỷ lục!</div>`;
+  const tags = ["Giáo trình LSĐ 2021","Bộ 270–730 câu SV","Đề NEU","Đề UEH","Đề HUST","Đề HVTC","Ôn thi sinh viên","Tự biên soạn & đối chiếu"];
+  $("sourceTags").innerHTML = tags.map(t=>`<span class="tag">${t}</span>`).join("");
+}
+$("resetProgress").addEventListener("click",()=>{
+  if(!confirm("Xóa toàn bộ tiến độ, câu sai và kỷ lục?")) return;
+  store={answered:{},wrong:[],marked:[],best:{},endlessBest:0,streak:0,lastDay:"",history:[]};
+  save(); renderHome(); renderReview(); toast("Đã xóa tiến độ. Bắt đầu lại nào! 💪");
+});
+$("exportBtn").addEventListener("click",()=>{
+  const s=stats();
+  const txt=`KẾT QUẢ ÔN TẬP LỊCH SỬ ĐẢNG\nNgày xuất: ${new Date().toLocaleString("vi-VN")}\nTổng câu đã làm: ${s.done}/${QBANK.length}\nLượt trả lời: ${s.total} • Đúng: ${s.right} (${s.acc}%)\nCâu cần ôn lại: ${store.wrong.length}\nKỷ lục thi thử: ${JSON.stringify(store.best)}\nKỷ lục vô hạn: ${store.endlessBest||0} streak\n`;
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([txt],{type:"text/plain"})); a.download="ket-qua-on-tap-lich-su-dang.txt"; a.click();
+});
+
+/* ---------- Question card renderer ---------- */
+function qCardHTML(q, idx, total, opts){
+  opts = opts||{};
+  const order = opts.order || [0,1,2,3];
+  const marked = store.marked.includes(q.id);
+  return `<div class="qcard" data-qid="${q.id}">
+    <div class="qhead"><span class="qnum">Câu ${idx}/${total}</span><span class="qchap">${chName(q.c)}</span>
+    <button class="qmark ${marked?"on":""}" data-mark="${q.id}" title="Ghim câu hỏi">⭐</button></div>
+    <p class="qtext">${esc(q.q)}</p>
+    <div class="opts">${order.map((oi,k)=>`<button class="opt" data-opt="${oi}"><span class="key">${LETTERS[k]}</span><span>${esc(q.o[oi])}</span></button>`).join("")}</div>
+    <div class="explain hidden"></div></div>`;
+}
+document.addEventListener("click",e=>{
+  const m = e.target.closest("[data-mark]");
+  if(m){ e.preventDefault();
+    const id=+m.dataset.mark, i=store.marked.indexOf(id);
+    if(i>=0){store.marked.splice(i,1); m.classList.remove("on"); toast("Đã bỏ ghim ⭐");}
+    else{store.marked.push(id); m.classList.add("on"); toast("Đã ghim câu hỏi ⭐");}
+    save(); return;
+  }
+});
+
+/* ---------- PRACTICE ---------- */
+let P = null;
+function fillScope(sel, withAll){
+  sel.innerHTML = (withAll?`<option value="0">🌐 Toàn bộ ngân hàng (${QBANK.length} câu)</option>`:"") +
+    CHAPTERS.map(c=>`<option value="${c.id}">${c.num}: ${esc(c.title)} (${byChapter(c.id).length} câu)</option>`).join("");
+}
+fillScope($("practiceScope"), true);
+$("practiceStart").addEventListener("click",()=>{
+  const scope=+$("practiceScope").value, n=+$("practiceCount").value;
+  const pool = scope===0?QBANK:byChapter(scope);
+  const list = pickRandom(pool,n).map(q=>({q, order: $("practiceShuffle").checked?shuffle([0,1,2,3]):[0,1,2,3], ans:null}));
+  P={list, i:0, right:0, instant:$("practiceInstant").checked};
+  $("practiceSetup").classList.add("hidden"); $("practiceResult").classList.add("hidden");
+  $("practiceBox").classList.remove("hidden"); renderPractice();
+  window.scrollTo({top:$("practiceBox").offsetTop-80,behavior:"smooth"});
+});
+function renderPractice(){
+  const cur=P.list[P.i];
+  $("practiceProg").textContent=`Câu ${P.i+1}/${P.list.length}`;
+  $("practiceScore").textContent=`✅ ${P.right} đúng`;
+  $("practiceBar").style.width=Math.round((P.i)/P.list.length*100)+"%";
+  const box=$("practiceQ");
+  box.innerHTML=qCardHTML(cur.q,P.i+1,P.list.length,{order:cur.order});
+  if(cur.ans!==null) paintPractice(cur,box);
+  box.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+    if(cur.ans!==null) return;
+    cur.ans=+b.dataset.opt;
+    const ok = cur.ans===cur.q.a;
+    if(ok) P.right++;
+    recordAnswer(cur.q,ok);
+    $("practiceScore").textContent=`✅ ${P.right} đúng`;
+    paintPractice(cur,box);
+    if(!P.instant && P.i<P.list.length-1) setTimeout(nextPractice,650);
+  }));
+  $("practicePrev").disabled = P.i===0;
+  $("practiceNext").textContent = P.i===P.list.length-1 ? "Xem kết quả ✓" : "Câu tiếp →";
+}
+function paintPractice(cur,box){
+  const ok = cur.ans===cur.q.a;
+  box.querySelectorAll(".opt").forEach(b=>{
+    const oi=+b.dataset.opt; b.disabled=true;
+    if(oi===cur.q.a) b.classList.add("correct");
+    else if(oi===cur.ans) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  if(P.instant || cur.ans!==null){
+    const ex=box.querySelector(".explain");
+    ex.classList.remove("hidden");
+    ex.innerHTML=`${ok?"✅ <strong>Chính xác!</strong>":"❌ <strong>Chưa đúng.</strong> Đáp án đúng là <strong>"+LETTERS[cur.order.indexOf(cur.q.a)]+"</strong>."} ${cur.q.e?`<br>📖 <em>${esc(cur.q.e)}</em>`:""}`;
+  }
+}
+function nextPractice(){
+  if(P.i<P.list.length-1){P.i++;renderPractice();}
+  else finishPractice();
+}
+$("practiceNext").addEventListener("click",nextPractice);
+$("practicePrev").addEventListener("click",()=>{if(P.i>0){P.i--;renderPractice();}});
+$("practiceQuit").addEventListener("click",()=>{
+  $("practiceBox").classList.add("hidden"); $("practiceSetup").classList.remove("hidden"); P=null;
+});
+function finishPractice(){
+  const total=P.list.length, pct=Math.round(P.right/total*100);
+  const msg = pct>=80?"🎉 Xuất sắc! Bạn đã nắm rất chắc kiến thức!":pct>=60?"💪 Khá tốt! Ôn thêm các câu sai nhé!":pct>=40?"📚 Cần cố gắng thêm, hãy xem lại giải thích!":"🔥 Đừng nản! Ôn lại lý thuyết rồi luyện tiếp nhé!";
+  $("practiceBox").classList.add("hidden");
+  const r=$("practiceResult"); r.classList.remove("hidden");
+  r.innerHTML=`<div class="card result-hero"><h3>Kết quả luyện tập</h3><div class="big-score">${P.right}/${total}</div>
+    <div>${msg}</div><div class="muted">Đúng ${pct}% • Các câu sai đã được lưu vào mục “Ôn câu sai”</div>
+    <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn primary" id="pAgain">↻ Luyện đề mới</button>
+      <button class="btn ghost" id="pReview">📌 Xem câu sai</button></div></div>`;
+  $("pAgain").addEventListener("click",()=>$("practiceStart").click());
+  $("pReview").addEventListener("click",()=>navTo("review"));
+  renderHome();
+}
+
+/* ---------- EXAM ---------- */
+let E=null, timerH=null;
+const EXAM_MIN={15:20,30:40,40:60,50:60};
+$("examStart").addEventListener("click",()=>{
+  const n=+$("examCount").value;
+  const list=pickRandom(QBANK,n).map(q=>({q,order:$("examShuffle").checked?shuffle([0,1,2,3]):[0,1,2,3],ans:null}));
+  E={list,left:EXAM_MIN[n]*60,n,cur:0};
+  $("examSetup").classList.add("hidden"); $("examResult").classList.add("hidden");
+  $("examBox").classList.remove("hidden");
+  renderExam(); startTimer();
+  window.scrollTo({top:$("examBox").offsetTop-80,behavior:"smooth"});
+});
+function renderExam(){
+  const done=E.list.filter(x=>x.ans!==null).length;
+  $("examProg").textContent=`Đã làm ${done}/${E.list.length}`;
+  $("examBar").style.width=Math.round(done/E.list.length*100)+"%";
+  $("examPalette").innerHTML=E.list.map((x,i)=>`<button class="pal ${x.ans!==null?"done":""}" data-pal="${i}">${i+1}</button>`).join("");
+  document.querySelectorAll("[data-pal]").forEach(b=>b.addEventListener("click",()=>{
+    E.cur=+b.dataset.pal; paintExamCur(false);
+    document.querySelector(`[data-exam="${b.dataset.pal}"]`).scrollIntoView({behavior:"smooth",block:"center"});
+  }));
+  const box=$("examQ");
+  box.innerHTML=E.list.map((x,i)=>`<div data-exam="${i}">${qCardHTML(x.q,i+1,E.list.length,{order:x.order})}</div>`).join("");
+  box.querySelectorAll(".qcard").forEach((card,ci)=>{
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      E.list[ci].ans=+b.dataset.opt;
+      card.querySelectorAll(".opt").forEach(o=>o.classList.remove("correct"));
+      b.classList.add("correct");
+      renderExamMeta();
+    }));
+    if(E.list[ci].ans!==null){
+      const oi=E.list[ci].ans;
+      const btn=card.querySelector(`[data-opt="${oi}"]`); if(btn) btn.classList.add("correct");
+    }
+  });
+  paintExamCur(false);
+}
+function paintExamCur(scroll){
+  if(!E) return;
+  document.querySelectorAll("#examQ [data-exam]").forEach((w,i)=>{
+    if(w.firstElementChild) w.firstElementChild.classList.toggle("exam-cur", i===E.cur);
+  });
+  document.querySelectorAll("[data-pal]").forEach((p,i)=>p.classList.toggle("current", i===E.cur));
+  if(scroll){ const w=document.querySelector(`[data-exam="${E.cur}"]`); if(w) w.scrollIntoView({behavior:"smooth",block:"center"}); }
+}
+function examGoto(i){
+  if(!E) return;
+  E.cur=Math.max(0,Math.min(E.list.length-1,i)); paintExamCur(true);
+}
+function examNextUnanswered(from){
+  for(let k=1;k<=E.list.length;k++){ const i=(from+k)%E.list.length; if(E.list[i].ans===null) return i; }
+  return from;
+}
+function renderExamMeta(){
+  const done=E.list.filter(x=>x.ans!==null).length;
+  $("examProg").textContent=`Đã làm ${done}/${E.list.length}`;
+  $("examBar").style.width=Math.round(done/E.list.length*100)+"%";
+  document.querySelectorAll("[data-pal]").forEach((p,i)=>p.classList.toggle("done",E.list[i].ans!==null));
+}
+function startTimer(){
+  clearInterval(timerH);
+  const show=()=>{ $("examTimer").textContent="⏱ "+fmtTime(E.left); $("examTimer").classList.toggle("low",E.left<=300); };
+  show();
+  timerH=setInterval(()=>{ E.left--; show(); if(E.left<=0){clearInterval(timerH); toast("⏰ Hết giờ! Tự động nộp bài."); submitExam();} },1000);
+}
+function submitExam(){
+  clearInterval(timerH);
+  let right=0;
+  E.list.forEach(x=>{ const ok=x.ans===x.q.a; if(ok)right++; if(x.ans!==null) recordAnswer(x.q,ok); });
+  const score10=(right/E.list.length*10);
+  const key=String(E.n);
+  if(!store.best[key]||score10>store.best[key]){store.best[key]=score10.toFixed(2);}
+  store.history.unshift({d:new Date().toLocaleString("vi-VN"),n:E.n,right,score:score10.toFixed(2)});
+  store.history=store.history.slice(0,20); save();
+  $("examBox").classList.add("hidden");
+  const r=$("examResult"); r.classList.remove("hidden");
+  const msg=score10>=8?"🎉 Xuất sắc! Bạn sẵn sàng đi thi rồi!":score10>=6.5?"💪 Khá tốt! Cố thêm chút nữa!":score10>=5?"📚 Đạt yêu cầu, nhưng cần ôn thêm!":"🔥 Chưa đạt. Hãy luyện tập thêm nhé!";
+  r.innerHTML=`<div class="card result-hero"><h3>Kết quả thi thử</h3><div class="big-score">${score10.toFixed(1)}</div>
+    <div>${msg}</div>
+    <div class="result-grid"><div class="result-cell"><b>${right}/${E.list.length}</b><span>số câu đúng</span></div>
+    <div class="result-cell"><b>${Math.round(right/E.list.length*100)}%</b><span>tỷ lệ đúng</span></div>
+    <div class="result-cell"><b>${E.list.length-right}</b><span>câu sai/bỏ</span></div></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn danger" id="eAgain">↻ Thi đề mới</button>
+      <button class="btn primary" id="eDetail">📋 Xem chi tiết từng câu</button></div></div>
+    <div id="eDetailBox"></div>`;
+  $("eAgain").addEventListener("click",()=>{r.classList.add("hidden");$("examSetup").classList.remove("hidden");});
+  $("eDetail").addEventListener("click",()=>{
+    $("eDetailBox").innerHTML=E.list.map((x,i)=>{
+      const ok=x.ans===x.q.a;
+      return `<div class="qcard"><div class="qhead"><span class="qnum">Câu ${i+1}</span><span class="qchap">${chName(x.q.c)}</span></div>
+      <p class="qtext">${esc(x.q.q)}</p><div class="opts">${x.order.map((oi,k)=>{
+        let cls=""; if(oi===x.q.a)cls="correct"; else if(oi===x.ans)cls="wrong";
+        return `<button class="opt ${cls}" disabled><span class="key">${LETTERS[k]}</span><span>${esc(x.q.o[oi])}</span></button>`;}).join("")}</div>
+      <div class="explain">${x.ans===null?"⚠️ <strong>Bạn chưa trả lời.</strong>":ok?"✅ <strong>Bạn trả lời đúng.</strong>":"❌ <strong>Bạn trả lời sai.</strong>"} ${x.q.e?`📖 <em>${esc(x.q.e)}</em>`:""}</div></div>`;
+    }).join("");
+    $("eDetailBox").scrollIntoView({behavior:"smooth"});
+  });
+  renderHome();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("examSubmit").addEventListener("click",()=>{ if(confirm("Nộp bài và chấm điểm?")) submitExam(); });
+$("examSubmit2").addEventListener("click",()=>{ if(confirm("Nộp bài và chấm điểm?")) submitExam(); });
+
+/* ---------- ENDLESS ---------- */
+let G={streak:0,right:0,wrong:0,asked:[],cur:null,order:[]};
+function endlessNext(){
+  let pool=QBANK.filter(q=>!G.asked.includes(q.id));
+  if(!pool.length){G.asked=[];pool=QBANK.slice();}
+  G.cur=pool[Math.floor(Math.random()*pool.length)];
+  G.asked.push(G.cur.id); if(G.asked.length>QBANK.length)G.asked=[];
+  G.order=shuffle([0,1,2,3]);
+  const box=$("endlessQ");
+  box.innerHTML=`<div class="qcard"><div class="qhead"><span class="qnum">Câu ${G.right+G.wrong+1}</span><span class="qchap">${chName(G.cur.c)}</span>
+    <button class="qmark ${store.marked.includes(G.cur.id)?"on":""}" data-mark="${G.cur.id}">⭐</button></div>
+    <p class="qtext">${esc(G.cur.q)}</p>
+    <div class="opts">${G.order.map((oi,k)=>`<button class="opt" data-opt="${oi}"><span class="key">${LETTERS[k]}</span><span>${esc(G.cur.o[oi])}</span></button>`).join("")}</div>
+    <div class="explain hidden"></div>
+    <button class="btn primary full hidden" id="endNext">Câu tiếp theo →</button></div>`;
+  box.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+    const ans=+b.dataset.opt, ok=ans===G.cur.a;
+    box.querySelectorAll(".opt").forEach(o=>{o.disabled=true;const oi=+o.dataset.opt;
+      if(oi===G.cur.a)o.classList.add("correct"); else if(oi===ans)o.classList.add("wrong"); else o.classList.add("dim");});
+    if(ok){G.streak++;G.right++; if(G.streak>(store.endlessBest||0)){store.endlessBest=G.streak;save();}}
+    else{G.streak=0;G.wrong++;}
+    recordAnswer(G.cur,ok);
+    $("endStreak").textContent=G.streak; $("endBest").textContent=store.endlessBest||0;
+    $("endRight").textContent=G.right; $("endWrong").textContent=G.wrong;
+    const ex=box.querySelector(".explain"); ex.classList.remove("hidden");
+    ex.innerHTML=`${ok?`✅ <strong>Chính xác!</strong> 🔥 Streak ${G.streak}`:`❌ <strong>Sai rồi!</strong> Đáp án đúng: <strong>${LETTERS[G.order.indexOf(G.cur.a)]}</strong>. Streak về 0!`} ${G.cur.e?`<br>📖 <em>${esc(G.cur.e)}</em>`:""}`;
+    const nx=$("endNext"); nx.classList.remove("hidden"); nx.addEventListener("click",endlessNext);
+  }));
+}
+$("endReset").addEventListener("click",()=>{G={streak:0,right:0,wrong:0,asked:[],cur:null,order:[]};$("endStreak").textContent=0;$("endRight").textContent=0;$("endWrong").textContent=0;endlessNext();});
+$("endBest").textContent=store.endlessBest||0;
+endlessNext();
+
+/* ---------- REVIEW ---------- */
+let RTab="wrong";
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active")); t.classList.add("active");
+  RTab=t.dataset.tab; renderReview();
+}));
+function renderReview(){
+  $("wrongCount").textContent=store.wrong.length; $("markedCount").textContent=store.marked.length;
+  const ids=RTab==="wrong"?store.wrong:store.marked;
+  const list=$("reviewList");
+  if(!ids.length){
+    list.innerHTML=`<div class="card empty"><div class="big">${RTab==="wrong"?"🎉":"⭐"}</div>
+      <p>${RTab==="wrong"?"Tuyệt vời! Bạn không còn câu sai nào. Hãy luyện tập hoặc thi thử để kiểm tra thêm.":"Bạn chưa ghim câu nào. Nhấn ⭐ ở bất kỳ câu hỏi nào để ghim lại ôn sau."}</p></div>`; return;
+  }
+  const qs=ids.map(id=>QBANK[id]).filter(Boolean);
+  list.innerHTML=`<div class="card" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+    <strong>${qs.length} câu</strong><span class="muted">— nhấn vào đáp án để trả lời, đúng 2 lần sẽ tự xóa khỏi danh sách sai</span>
+    <button class="btn small ghost" id="rClear" style="margin-left:auto">🗑 Xóa hết danh sách</button></div>`+
+    qs.map((q,i)=>{
+      const order=shuffle([0,1,2,3]);
+      return `<div class="qcard" data-rq="${q.id}"><div class="qhead"><span class="qnum">Câu ${i+1}</span><span class="qchap">${chName(q.c)}</span>
+      <button class="qmark ${store.marked.includes(q.id)?"on":""}" data-mark="${q.id}">⭐</button></div>
+      <p class="qtext">${esc(q.q)}</p><div class="opts">${order.map((oi,k)=>`<button class="opt" data-opt="${oi}"><span class="key">${LETTERS[k]}</span><span>${esc(q.o[oi])}</span></button>`).join("")}</div>
+      <div class="explain hidden"></div></div>`;
+    }).join("");
+  $("rClear").addEventListener("click",()=>{
+    if(!confirm("Xóa hết danh sách này?"))return;
+    if(RTab==="wrong")store.wrong=[]; else store.marked=[];
+    save(); renderReview();
+  });
+  list.querySelectorAll("[data-rq]").forEach(card=>{
+    const q=QBANK[+card.dataset.rq];
+    card.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      const ans=+b.dataset.opt, ok=ans===q.a;
+      card.querySelectorAll(".opt").forEach(o=>{o.disabled=true;const oi=+o.dataset.opt;
+        if(oi===q.a)o.classList.add("correct");else if(oi===ans)o.classList.add("wrong");else o.classList.add("dim");});
+      recordAnswer(q,ok);
+      const ex=card.querySelector(".explain"); ex.classList.remove("hidden");
+      ex.innerHTML=`${ok?"✅ <strong>Đúng rồi!</strong>":"❌ <strong>Sai.</strong>"} ${q.e?`📖 <em>${esc(q.e)}</em>`:""}`;
+      $("wrongCount").textContent=store.wrong.length; $("markedCount").textContent=store.marked.length;
+    },{once:false}));
+  });
+}
+
+/* ---------- SEARCH ---------- */
+fillScope($("searchChapter"), true);
+$("searchChapter").options[0].text="🌐 Tất cả các chương";
+let searchH=null;
+function doSearch(){
+  const kw=$("searchInput").value.trim().toLowerCase();
+  const ch=+$("searchChapter").value;
+  let pool=ch===0?QBANK:byChapter(ch);
+  if(kw) pool=pool.filter(q=>(q.q+" "+q.o.join(" ")+" "+q.e).toLowerCase().includes(kw));
+  $("searchInfo").textContent=`Tìm thấy ${pool.length} câu hỏi`+(kw?` với từ khóa “${$("searchInput").value.trim()}”`:"");
+  const show=pool.slice(0,60);
+  $("searchList").innerHTML=show.map((q,i)=>`<div class="qcard"><div class="qhead"><span class="qnum">#${q.id+1}</span><span class="qchap">${chName(q.c)}</span>
+    <button class="qmark ${store.marked.includes(q.id)?"on":""}" data-mark="${q.id}">⭐</button></div>
+    <p class="qtext">${esc(q.q)}</p><div class="opts">${q.o.map((t,k)=>`<button class="opt ${k===q.a?"correct":""}" disabled><span class="key">${LETTERS[k]}</span><span>${esc(t)}</span></button>`).join("")}</div>
+    ${q.e?`<div class="explain">📖 <em>${esc(q.e)}</em></div>`:""}</div>`).join("")+
+    (pool.length>60?`<div class="card empty">Hiển thị 60/${pool.length} câu. Hãy nhập từ khóa cụ thể hơn để thu hẹp kết quả.</div>`:"");
+}
+$("searchInput").addEventListener("input",()=>{clearTimeout(searchH);searchH=setTimeout(doSearch,300);});
+$("searchChapter").addEventListener("change",doSearch);
+doSearch();
+
+/* ---------- KEYBOARD SHORTCUTS ---------- */
+const VIEW_ORDER=["home","practice","exam","endless","review","search"];
+function typingNow(){
+  const a=document.activeElement;
+  return a && (a.tagName==="INPUT"||a.tagName==="TEXTAREA"||a.tagName==="SELECT"||a.isContentEditable);
+}
+function activeView(){ const v=document.querySelector(".view.active"); return v?v.id.replace("view-",""):"home"; }
+function openHelp(){ $("helpModal").classList.remove("hidden"); }
+function closeHelp(){ $("helpModal").classList.add("hidden"); }
+$("helpBtn").addEventListener("click",openHelp);
+$("helpClose").addEventListener("click",closeHelp);
+$("helpModal").addEventListener("click",e=>{ if(e.target===$("helpModal")) closeHelp(); });
+
+function currentQuiz(){
+  const v=activeView();
+  if(v==="practice"&&P&&!$("practiceBox").classList.contains("hidden"))
+    return {type:"practice",card:$("practiceQ .qcard")};
+  if(v==="endless")
+    return {type:"endless",card:$("endlessQ .qcard")};
+  if(v==="review"){
+    const cards=[...document.querySelectorAll("#reviewList [data-rq]")];
+    const c=cards.find(c=>c.querySelector(".opt:not(:disabled)"))||null;
+    return {type:"review",card:c};
+  }
+  if(v==="exam"&&E&&!$("examBox").classList.contains("hidden")){
+    const w=document.querySelector(`[data-exam="${E.cur}"]`);
+    return {type:"exam",card:w?w.querySelector(".qcard"):null};
+  }
+  return {type:null,card:null};
+}
+function cardActionable(card){ return card && card.querySelector(".opt:not(:disabled)"); }
+function answerPos(card,pos){
+  if(!cardActionable(card)) return false;
+  const btns=card.querySelectorAll(".opt");
+  if(btns[pos]&&!btns[pos].disabled){ btns[pos].click(); return true; }
+  return false;
+}
+function starCard(card){ const b=card?card.querySelector("[data-mark]"):null; if(b){b.click();return true;} return false; }
+
+document.addEventListener("keydown",e=>{
+  const modalOpen=!$("helpModal").classList.contains("hidden");
+  if(e.key==="Escape"){ if(modalOpen) closeHelp(); return; }
+  if(modalOpen) return;
+  const k=e.key;
+
+  // Ctrl/Cmd + Enter: nộp bài thi
+  if((e.ctrlKey||e.metaKey)&&k==="Enter"){
+    if(activeView()==="exam"&&E&&!$("examBox").classList.contains("hidden")){
+      e.preventDefault(); if(confirm("Nộp bài và chấm điểm?")) submitExam();
+    }
+    return;
+  }
+  if(e.ctrlKey||e.metaKey) return;
+  // Alt + 1..6: chuyển tab mọi lúc
+  if(e.altKey){
+    if(k>="1"&&k<="6"){ e.preventDefault(); navTo(VIEW_ORDER[+k-1]); }
+    return;
+  }
+  if(typingNow()) return;
+
+  // ? : mở bảng phím tắt
+  if(k==="?"||k==="h"||k==="H"){ e.preventDefault(); openHelp(); return; }
+  // / : tra cứu
+  if(k==="/"){ e.preventDefault(); navTo("search"); setTimeout(()=>$("searchInput").focus(),50); return; }
+  // T : đổi giao diện
+  if(k==="t"||k==="T"){ themeBtn.click(); return; }
+
+  const q=currentQuiz();
+  const actionable=cardActionable(q.card);
+
+  // A-D / 1-4: trả lời
+  const posMap={a:0,b:1,c:2,d:3,A:0,B:1,C:2,D:3,"1":0,"2":1,"3":2,"4":3};
+  if(k in posMap){
+    if(actionable){
+      e.preventDefault();
+      if(q.type==="exam"){
+        // nếu câu hiện tại đã trả lời, nhảy tới câu chưa làm gần nhất rồi trả lời
+        if(E.list[E.cur].ans!==null){ examGoto(examNextUnanswered(E.cur)); }
+        const w=document.querySelector(`[data-exam="${E.cur}"] .qcard`);
+        answerPos(w,posMap[k]); paintExamCur(false);
+      }else{
+        answerPos(q.card,posMap[k]);
+      }
+      return;
+    }
+    // không có câu nào để trả lời: 1-6 chuyển tab
+    if(k>="1"&&k<="6"){ navTo(VIEW_ORDER[+k-1]); return; }
+    return;
+  }
+  if(k==="5"||k==="6"){ if(!actionable){ navTo(VIEW_ORDER[+k-1]); return; } }
+
+  // S: ghim câu hiện tại
+  if(k==="s"||k==="S"){ if(q.card){ e.preventDefault(); starCard(q.card); } return; }
+
+  // → / Enter: tiếp | ←: lùi
+  if(k==="ArrowRight"||k==="Enter"){
+    if(q.type==="practice"){ e.preventDefault(); $("practiceNext").click(); }
+    else if(q.type==="endless"){ const nx=$("endNext"); if(nx&&!nx.classList.contains("hidden")){e.preventDefault();nx.click();} }
+    else if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur+1); }
+    else if(q.type==="review"&&q.card){ e.preventDefault(); q.card.scrollIntoView({behavior:"smooth",block:"center"}); }
+    return;
+  }
+  if(k==="ArrowLeft"){
+    if(q.type==="practice"){ e.preventDefault(); $("practicePrev").click(); }
+    else if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur-1); }
+    return;
+  }
+  // J/K: chuyển câu trong bài thi
+  if(k==="j"||k==="J"){ if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur+1); } return; }
+  if(k==="k"||k==="K"){ if(q.type==="exam"){ e.preventDefault(); examGoto(E.cur-1); } return; }
+});
+
+/* ---------- Init ---------- */
+renderHome();
+touchStreak();
+
+})();
+
+</script>
+</body>
+</html>

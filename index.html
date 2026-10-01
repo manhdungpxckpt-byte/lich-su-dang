@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Thi Trắc Nghiệm Lịch Sử Đảng — Ngân Hàng Câu Hỏi Khổng Lồ</title>
+<meta name="description" content="Website ôn tập trắc nghiệm Lịch sử Đảng Cộng sản Việt Nam với hàng trăm câu hỏi có đáp án, giải thích chi tiết, chế độ luyện tập, thi thử và ôn tập vô hạn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23da251d'/><text x='50' y='72' font-size='62' text-anchor='middle' fill='%23ffde00'>★</text></svg>">
+</head>
+<body>
+<div class="bg-decor" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#" data-nav="home">
+      <span class="brand-badge">★</span>
+      <span class="brand-text">
+        <strong>Ôn Thi Lịch Sử Đảng</strong>
+        <small>Ngân hàng trắc nghiệm toàn giáo trình</small>
+      </span>
+    </a>
+    <nav class="mainnav" id="mainnav">
+      <button class="navbtn active" data-nav="home">🏠 Trang chủ</button>
+      <button class="navbtn" data-nav="practice">📝 Luyện tập</button>
+      <button class="navbtn" data-nav="exam">⏱️ Thi thử</button>
+      <button class="navbtn" data-nav="endless">♾️ Vô hạn</button>
+      <button class="navbtn" data-nav="review">📌 Ôn câu sai</button>
+      <button class="navbtn" data-nav="search">🔎 Tra cứu</button>
+    </nav>
+    <div class="top-actions">
+      <button id="helpBtn" class="iconbtn" title="Phím tắt (nhấn ?)">⌨️</button>
+      <button id="themeBtn" class="iconbtn" title="Chế độ sáng / tối">🌙</button>
+      <button id="menuBtn" class="iconbtn only-mobile" title="Menu">☰</button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="navbtn active" data-nav="home">🏠 Trang chủ</button>
+    <button class="navbtn" data-nav="practice">📝 Luyện tập</button>
+    <button class="navbtn" data-nav="exam">⏱️ Thi thử</button>
+    <button class="navbtn" data-nav="endless">♾️ Vô hạn</button>
+    <button class="navbtn" data-nav="review">📌 Ôn câu sai</button>
+    <button class="navbtn" data-nav="search">🔎 Tra cứu</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ============ HOME ============ -->
+  <section id="view-home" class="view active">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="pill">📚 Bám sát Giáo trình Lịch sử Đảng CSVN (2021) • Có đáp án &amp; giải thích</div>
+        <h1>Ôn tập trắc nghiệm <span class="hl">Lịch Sử Đảng</span> với ngân hàng câu hỏi khổng lồ</h1>
+        <p class="hero-sub">Tổng hợp từ nhiều kho đề, tài liệu ôn thi sinh viên, đề thi các trường đại học. Luyện theo chương, thi thử bấm giờ, cày chế độ vô hạn — tất cả miễn phí, không cần đăng nhập.</p>
+        <div class="hero-cta">
+          <button class="btn primary big" data-nav="practice">📝 Luyện tập ngay</button>
+          <button class="btn danger big" data-nav="exam">⏱️ Vào thi thử</button>
+          <button class="btn ghost big" data-nav="endless">♾️ Cày vô hạn</button>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+      <div class="hero-right">
+        <div class="flag-card">
+          <div class="flag">★</div>
+          <div class="flag-caption">Đảng Cộng sản Việt Nam quang vinh muôn năm!</div>
+          <div class="streak-box">
+            <div class="streak-num" id="streakNum">0</div>
+            <div class="streak-label">🔥 Chuỗi ngày ôn tập liên tiếp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec-title">📖 Ôn tập theo chương <span class="sec-sub" id="chapterTotal"></span></h2>
+    <div class="chapters" id="chapterGrid"></div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>⚡ Chế độ ôn tập</h3>
+        <div class="mode-list">
+          <button class="mode-item" data-nav="practice"><span class="mode-ic">📝</span><span><strong>Luyện tập theo chương</strong><small>Chọn chương, số câu, xem đáp án &amp; giải thích ngay từng câu</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="exam"><span class="mode-ic">⏱️</span><span><strong>Thi thử bấm giờ</strong><small>Đề ngẫu nhiên 15–50 câu, tính giờ, chấm điểm như thi thật</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="endless"><span class="mode-ic">♾️</span><span><strong>Cày vô hạn</strong><small>Câu hỏi nối tiếp không bao giờ hết, giữ chuỗi streak</small></span><span class="go">→</span></button>
+          <button class="mode-item" data-nav="review"><span class="mode-ic">📌</span><span><strong>Ôn câu sai &amp; đã ghim</strong><small>Tự động lưu câu bạn làm sai để ôn lại cho nhớ</small></span><span class="go">→</span></button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📊 Tiến độ của bạn</h3>
+        <div id="progressBox"></div>
+        <div class="progress-actions">
+          <button class="btn small ghost" id="resetProgress">↺ Xóa tiến độ</button>
+          <button class="btn small ghost" id="exportBtn">⬇ Xuất kết quả</button>
+        </div>
+        <h3 style="margin-top:18px">🏆 Kỷ lục thi thử</h3>
+        <div id="bestBox"></div>
+      </div>
+    </div>
+
+    <div class="card sources">
+      <h3>📚 Nguồn câu hỏi tổng hợp</h3>
+      <p>Ngân hàng câu hỏi được biên soạn, đối chiếu từ nhiều nguồn: Giáo trình Lịch sử Đảng CSVN (NXB Chính trị Quốc gia, 2021) • Bộ 270–730 câu trắc nghiệm lưu hành sinh viên • Đề thi trắc nghiệm các trường (NEU, UEH, HUST, HVTC…) • Các kho đề mở trên mạng. Mỗi câu đều có đáp án và giải thích căn cứ rõ ràng.</p>
+      <div class="tag-row" id="sourceTags"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section id="view-practice" class="view">
+    <div class="panel-head">
+      <h2>📝 Luyện tập</h2>
+      <p>Chọn phạm vi và số câu, trả lời từng câu và xem giải thích ngay lập tức.</p>
+    </div>
+    <div class="card setup" id="practiceSetup">
+      <div class="form-grid">
+        <label>Phạm vi ôn tập
+          <select id="practiceScope"></select>
+        </label>
+        <label>Số câu mỗi lượt
+          <select id="practiceCount">
+            <option value="10">10 câu</option>
+            <option value="20" selected>20 câu</option>
+            <option value="30">30 câu</option>
+            <option value="40">40 câu</option>
+            <option value="50">50 câu</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="practiceShuffle" checked> Đảo thứ tự đáp án</label>
+        <label class="check"><input type="checkbox" id="practiceInstant" checked> Hiện đáp án ngay sau mỗi câu</label>
+      </div>
+      <button class="btn primary big" id="practiceStart">▶ Bắt đầu luyện tập</button>
+    </div>
+    <div id="practiceBox" class="hidden">
+      <div class="quiz-meta">
+        <span id="practiceProg"></span>
+        <div class="quiz-score"><span id="practiceScore"></span>
+          <button class="btn small ghost" id="practiceQuit">✕ Thoát</button>
+        </div>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="practiceBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">←</span><span class="kbd">→</span> chuyển câu • <span class="kbd">S</span> ghim • <span class="kbd">?</span> tất cả phím tắt</div>
+      <div id="practiceQ"></div>
+      <div class="quiz-nav">
+        <button class="btn ghost" id="practicePrev">← Câu trước</button>
+        <button class="btn primary" id="practiceNext">Câu tiếp →</button>
+      </div>
+    </div>
+    <div id="practiceResult" class="hidden"></div>
+  </section>
+
+  <!-- ============ EXAM ============ -->
+  <section id="view-exam" class="view">
+    <div class="panel-head">
+      <h2>⏱️ Thi thử bấm giờ</h2>
+      <p>Đề ngẫu nhiên từ toàn bộ ngân hàng, tính giờ và chấm điểm như thi thật.</p>
+    </div>
+    <div class="card setup" id="examSetup">
+      <div class="form-grid">
+        <label>Số câu hỏi
+          <select id="examCount">
+            <option value="15">15 câu — 20 phút</option>
+            <option value="30">30 câu — 40 phút</option>
+            <option value="40" selected>40 câu — 60 phút</option>
+            <option value="50">50 câu — 60 phút</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="examShuffle" checked> Đảo thứ tự đáp án</label>
+      </div>
+      <button class="btn danger big" id="examStart">▶ Bắt đầu làm bài</button>
+    </div>
+    <div id="examBox" class="hidden">
+      <div class="quiz-meta sticky">
+        <span id="examTimer" class="timer">60:00</span>
+        <span id="examProg"></span>
+        <button class="btn danger" id="examSubmit">Nộp bài</button>
+      </div>
+      <div class="progress-track"><div class="progress-fill danger" id="examBar"></div></div>
+      <div class="hint">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời câu đang chọn • <span class="kbd">J</span><span class="kbd">K</span> chuyển câu • <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> nộp bài</div>
+      <div id="examPalette" class="palette"></div>
+      <div id="examQ"></div>
+      <button class="btn danger big full" id="examSubmit2">📩 Nộp bài &amp; chấm điểm</button>
+    </div>
+    <div id="examResult" class="hidden"></div>
+  </section>
+
+  <!-- ============ ENDLESS ============ -->
+  <section id="view-endless" class="view">
+    <div class="panel-head">
+      <h2>♾️ Chế độ vô hạn</h2>
+      <p>Câu hỏi nối tiếp không bao giờ hết. Trả lời đúng để giữ chuỗi 🔥, sai là mất chuỗi!</p>
+    </div>
+    <div class="endless-top">
+      <div class="stat-chip">🔥 Streak: <strong id="endStreak">0</strong></div>
+      <div class="stat-chip">🏅 Kỷ lục: <strong id="endBest">0</strong></div>
+      <div class="stat-chip">✅ Đúng: <strong id="endRight">0</strong></div>
+      <div class="stat-chip">❌ Sai: <strong id="endWrong">0</strong></div>
+      <button class="btn small ghost" id="endReset">↺ Chơi lại</button>
+    </div>
+    <div class="hint" style="margin-bottom:12px">💡 <span class="kbd">A</span>–<span class="kbd">D</span> trả lời • <span class="kbd">Enter</span> câu tiếp • <span class="kbd">S</span> ghim</div>
+    <div id="endlessQ"></div>
+  </section>
+
+  <!-- ============ REVIEW ============ -->
+  <section id="view-review" class="view">
+    <div class="panel-head">
+      <h2>📌 Ôn câu sai &amp; đã ghim</h2>
+      <p>Các câu bạn từng trả lời sai sẽ tự động vào đây. Ghim ⭐ những câu khó để ôn riêng.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="wrong">❌ Câu từng sai (<span id="wrongCount">0</span>)</button>
+      <button class="tab" data-tab="marked">⭐ Câu đã ghim (<span id="markedCount">0</span>)</button>
+    </div>
+    <div id="reviewList"></div>
+  </section>
+
+  <!-- ============ SEARCH ============ -->
+  <section id="view-search" class="view">
+    <div class="panel-head">
+      <h2>🔎 Tra cứu câu hỏi</h2>
+      <p>Tìm nhanh trong toàn bộ ngân hàng theo từ khóa, đáp án hoặc nội dung giải thích.</p>
+    </div>
+    <div class="card">
+      <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Nhập từ khóa… ví dụ: Luận cương, Tân Trào, đổi mới, ASEAN…" autocomplete="off">
+        <select id="searchChapter"></select>
+      </div>
+      <div id="searchInfo" class="muted"></div>
+    </div>
+    <div id="searchList"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container foot-inner">
+    <div>★ <strong>Ôn Thi Lịch Sử Đảng</strong> — Học mọi lúc, đỗ mọi kỳ thi. Made with ❤️ cho sinh viên Việt Nam.</div>
+    <div class="muted">Dữ liệu mang tính tham khảo ôn tập • Bám sát Giáo trình LSD CSVN 2021</div>
+  </div>
+</footer>
+
+<div id="helpModal" class="modal-back hidden">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>⌨️ Phím tắt</h3>
+      <button class="iconbtn" id="helpClose">✕</button>
+    </div>
+    <p class="muted" style="margin:4px 0 0">Ôn tập siêu tốc không cần chạm chuột. Nhấn <span class="kbd">Esc</span> để đóng bảng này.</p>
+    <table class="sc-table">
+      <tr><td><span class="kbd">A</span> <span class="kbd">B</span> <span class="kbd">C</span> <span class="kbd">D</span></td><td>Chọn đáp án của câu hiện tại</td></tr>
+      <tr><td><span class="kbd">1</span>–<span class="kbd">4</span></td><td>Chọn đáp án (khi đang làm bài) / chuyển tab 1–6 (khi ở trang chủ)</td></tr>
+      <tr><td><span class="kbd">Alt</span>+<span class="kbd">1</span>–<span class="kbd">6</span></td><td>Chuyển nhanh giữa 6 tab ở bất kỳ đâu</td></tr>
+      <tr><td><span class="kbd">→</span> / <span class="kbd">Enter</span></td><td>Câu tiếp theo (luyện tập / vô hạn / thi thử)</td></tr>
+      <tr><td><span class="kbd">←</span></td><td>Câu trước đó (luyện tập / thi thử)</td></tr>
+      <tr><td><span class="kbd">J</span> / <span class="kbd">K</span></td><td>Câu tiếp / câu trước trong bài thi thử</td></tr>
+      <tr><td><span class="kbd">S</span></td><td>Ghim ⭐ / bỏ ghim câu hiện tại</td></tr>
+      <tr><td><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></td><td>Nộp bài thi thử</td></tr>
+      <tr><td><span class="kbd">/</span></td><td>Mở tab Tra cứu và gõ từ khóa ngay</td></tr>
+      <tr><td><span class="kbd">T</span></td><td>Bật / tắt chế độ tối</td></tr>
+      <tr><td><span class="kbd">?</span></td><td>Mở bảng phím tắt này</td></tr>
+      <tr><td><span class="kbd">Esc</span></td><td>Đóng bảng phím tắt</td></tr>
+    </table>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/data-c1.js"></script>
+<script src="js/data-c2.js"></script>
+<script src="js/data-c3.js"></script>
+<script src="js/data-c4.js"></script>
+<script src="js/data-c5.js"></script>
+<script src="js/data-c6.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
