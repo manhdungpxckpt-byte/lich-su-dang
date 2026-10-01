@@ -1,5 +1,9 @@
 # ★ Ôn Thi Trắc Nghiệm Lịch Sử Đảng
 
+## 🌐 DÙNG NGAY TẠI ĐÂY (không cần tải gì cả):
+### 👉 https://manhdungpxckpt-byte.github.io/lich-su-dang/
+> Mở link trên bằng điện thoại hoặc máy tính là ôn tập được ngay. Chia sẻ link này cho bạn bè cùng dùng!
+
 Website ôn tập trắc nghiệm **Lịch sử Đảng Cộng sản Việt Nam** với ngân hàng **539 câu hỏi** có đáp án & giải thích chi tiết, bám sát Giáo trình LSĐ (2021) và cập nhật đến **Đại hội XIV (1/2026)**.
 
 ## ✨ Tính năng
